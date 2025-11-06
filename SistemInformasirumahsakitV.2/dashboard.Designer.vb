@@ -27,13 +27,6 @@ Partial Class frmDashboard
         Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.pnlSidebar = New System.Windows.Forms.Panel()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.PanelTopBar = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.lblAppName = New System.Windows.Forms.Label()
-        Me.PanelMainContent = New System.Windows.Forms.Panel()
-        Me.pnlCardDokterAktif = New System.Windows.Forms.FlowLayoutPanel()
-        Me.lblWelcomeERP = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Btnmenu = New System.Windows.Forms.Button()
         Me.btnHome = New System.Windows.Forms.Button()
         Me.Btnpendaftaran = New System.Windows.Forms.Button()
@@ -42,30 +35,37 @@ Partial Class frmDashboard
         Me.Btnrekam = New System.Windows.Forms.Button()
         Me.Btnfarmasi = New System.Windows.Forms.Button()
         Me.Btnbilling = New System.Windows.Forms.Button()
-        Me.lblpasien = New System.Windows.Forms.Label()
-        Me.angka = New System.Windows.Forms.Label()
-        Me.Pnldokter = New System.Windows.Forms.FlowLayoutPanel()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.PanelTopBar = New System.Windows.Forms.Panel()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.lblAppName = New System.Windows.Forms.Label()
+        Me.PanelMainContent = New System.Windows.Forms.Panel()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.pnljanji = New System.Windows.Forms.FlowLayoutPanel()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.Pnldokter = New System.Windows.Forms.FlowLayoutPanel()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.pnlCardDokterAktif = New System.Windows.Forms.FlowLayoutPanel()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.lblpasien = New System.Windows.Forms.Label()
+        Me.angka = New System.Windows.Forms.Label()
+        Me.lblWelcomeERP = New System.Windows.Forms.Label()
         Me.pnlSidebar.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
         Me.PanelTopBar.SuspendLayout()
         Me.PanelMainContent.SuspendLayout()
-        Me.pnlCardDokterAktif.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Pnldokter.SuspendLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnljanji.SuspendLayout()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnljanji.SuspendLayout()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Pnldokter.SuspendLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlCardDokterAktif.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'pnlSidebar
@@ -94,6 +94,129 @@ Partial Class frmDashboard
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
         Me.FlowLayoutPanel1.Size = New System.Drawing.Size(200, 661)
         Me.FlowLayoutPanel1.TabIndex = 5
+        '
+        'Btnmenu
+        '
+        Me.Btnmenu.FlatAppearance.BorderSize = 0
+        Me.Btnmenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btnmenu.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.menu_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
+        Me.Btnmenu.ImageAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.Btnmenu.Location = New System.Drawing.Point(3, 3)
+        Me.Btnmenu.Name = "Btnmenu"
+        Me.Btnmenu.Size = New System.Drawing.Size(197, 50)
+        Me.Btnmenu.TabIndex = 5
+        Me.Btnmenu.UseVisualStyleBackColor = True
+        '
+        'btnHome
+        '
+        Me.btnHome.BackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(73, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.btnHome.FlatAppearance.BorderSize = 0
+        Me.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnHome.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnHome.ForeColor = System.Drawing.Color.White
+        Me.btnHome.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.home_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
+        Me.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnHome.Location = New System.Drawing.Point(3, 59)
+        Me.btnHome.Name = "btnHome"
+        Me.btnHome.Size = New System.Drawing.Size(197, 70)
+        Me.btnHome.TabIndex = 2
+        Me.btnHome.Text = "Home"
+        Me.btnHome.UseVisualStyleBackColor = False
+        '
+        'Btnpendaftaran
+        '
+        Me.Btnpendaftaran.AutoSize = True
+        Me.Btnpendaftaran.BackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(73, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.Btnpendaftaran.FlatAppearance.BorderSize = 0
+        Me.Btnpendaftaran.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btnpendaftaran.Font = New System.Drawing.Font("Segoe UI", 9.75!)
+        Me.Btnpendaftaran.ForeColor = System.Drawing.Color.White
+        Me.Btnpendaftaran.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.app_registration_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
+        Me.Btnpendaftaran.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Btnpendaftaran.Location = New System.Drawing.Point(3, 135)
+        Me.Btnpendaftaran.Name = "Btnpendaftaran"
+        Me.Btnpendaftaran.Size = New System.Drawing.Size(197, 70)
+        Me.Btnpendaftaran.TabIndex = 3
+        Me.Btnpendaftaran.Text = "Pendaftaran Pasien"
+        Me.Btnpendaftaran.UseVisualStyleBackColor = False
+        '
+        'Btnmanajemen
+        '
+        Me.Btnmanajemen.AutoSize = True
+        Me.Btnmanajemen.BackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(73, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.Btnmanajemen.FlatAppearance.BorderSize = 0
+        Me.Btnmanajemen.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btnmanajemen.Font = New System.Drawing.Font("Segoe UI", 9.75!)
+        Me.Btnmanajemen.ForeColor = System.Drawing.Color.White
+        Me.Btnmanajemen.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.article_person_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
+        Me.Btnmanajemen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Btnmanajemen.Location = New System.Drawing.Point(3, 211)
+        Me.Btnmanajemen.Name = "Btnmanajemen"
+        Me.Btnmanajemen.Size = New System.Drawing.Size(197, 70)
+        Me.Btnmanajemen.TabIndex = 2
+        Me.Btnmanajemen.Text = "Manajemen Pasien"
+        Me.Btnmanajemen.UseVisualStyleBackColor = False
+        '
+        'Btnjanji
+        '
+        Me.Btnjanji.FlatAppearance.BorderSize = 0
+        Me.Btnjanji.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btnjanji.Font = New System.Drawing.Font("Segoe UI", 9.75!)
+        Me.Btnjanji.ForeColor = System.Drawing.Color.White
+        Me.Btnjanji.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.assignment_ind_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
+        Me.Btnjanji.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Btnjanji.Location = New System.Drawing.Point(3, 287)
+        Me.Btnjanji.Name = "Btnjanji"
+        Me.Btnjanji.Size = New System.Drawing.Size(197, 70)
+        Me.Btnjanji.TabIndex = 4
+        Me.Btnjanji.Text = "Janji Temu"
+        Me.Btnjanji.UseVisualStyleBackColor = True
+        '
+        'Btnrekam
+        '
+        Me.Btnrekam.BackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(73, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.Btnrekam.FlatAppearance.BorderSize = 0
+        Me.Btnrekam.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btnrekam.Font = New System.Drawing.Font("Segoe UI", 9.75!)
+        Me.Btnrekam.ForeColor = System.Drawing.Color.White
+        Me.Btnrekam.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.prescriptions_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
+        Me.Btnrekam.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Btnrekam.Location = New System.Drawing.Point(3, 363)
+        Me.Btnrekam.Name = "Btnrekam"
+        Me.Btnrekam.Size = New System.Drawing.Size(197, 70)
+        Me.Btnrekam.TabIndex = 3
+        Me.Btnrekam.Text = "Rekam Medis"
+        Me.Btnrekam.UseVisualStyleBackColor = False
+        '
+        'Btnfarmasi
+        '
+        Me.Btnfarmasi.FlatAppearance.BorderSize = 0
+        Me.Btnfarmasi.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btnfarmasi.Font = New System.Drawing.Font("Segoe UI", 9.75!)
+        Me.Btnfarmasi.ForeColor = System.Drawing.Color.White
+        Me.Btnfarmasi.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.pill_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
+        Me.Btnfarmasi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Btnfarmasi.Location = New System.Drawing.Point(3, 439)
+        Me.Btnfarmasi.Name = "Btnfarmasi"
+        Me.Btnfarmasi.Size = New System.Drawing.Size(197, 70)
+        Me.Btnfarmasi.TabIndex = 2
+        Me.Btnfarmasi.Text = "Farmasi"
+        Me.Btnfarmasi.UseVisualStyleBackColor = True
+        '
+        'Btnbilling
+        '
+        Me.Btnbilling.FlatAppearance.BorderSize = 0
+        Me.Btnbilling.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btnbilling.Font = New System.Drawing.Font("Segoe UI", 9.75!)
+        Me.Btnbilling.ForeColor = System.Drawing.Color.White
+        Me.Btnbilling.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.payments_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
+        Me.Btnbilling.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Btnbilling.Location = New System.Drawing.Point(3, 515)
+        Me.Btnbilling.Name = "Btnbilling"
+        Me.Btnbilling.Size = New System.Drawing.Size(197, 70)
+        Me.Btnbilling.TabIndex = 3
+        Me.Btnbilling.Text = "Billing Kasir"
+        Me.Btnbilling.UseVisualStyleBackColor = True
         '
         'PanelTopBar
         '
@@ -148,230 +271,29 @@ Partial Class frmDashboard
         Me.PanelMainContent.Size = New System.Drawing.Size(984, 601)
         Me.PanelMainContent.TabIndex = 2
         '
-        'pnlCardDokterAktif
+        'Panel1
         '
-        Me.pnlCardDokterAktif.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pnlCardDokterAktif.Controls.Add(Me.PictureBox1)
-        Me.pnlCardDokterAktif.Controls.Add(Me.lblpasien)
-        Me.pnlCardDokterAktif.Controls.Add(Me.angka)
-        Me.pnlCardDokterAktif.Location = New System.Drawing.Point(31, 120)
-        Me.pnlCardDokterAktif.Margin = New System.Windows.Forms.Padding(10, 5, 10, 5)
-        Me.pnlCardDokterAktif.Name = "pnlCardDokterAktif"
-        Me.pnlCardDokterAktif.Padding = New System.Windows.Forms.Padding(0, 0, 11, 0)
-        Me.pnlCardDokterAktif.Size = New System.Drawing.Size(250, 150)
-        Me.pnlCardDokterAktif.TabIndex = 1
+        Me.Panel1.Controls.Add(Me.Chart1)
+        Me.Panel1.Location = New System.Drawing.Point(31, 341)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(541, 222)
+        Me.Panel1.TabIndex = 4
         '
-        'lblWelcomeERP
+        'Chart1
         '
-        Me.lblWelcomeERP.AutoSize = True
-        Me.lblWelcomeERP.Font = New System.Drawing.Font("Segoe UI", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblWelcomeERP.Location = New System.Drawing.Point(20, 20)
-        Me.lblWelcomeERP.Name = "lblWelcomeERP"
-        Me.lblWelcomeERP.Size = New System.Drawing.Size(539, 65)
-        Me.lblWelcomeERP.TabIndex = 0
-        Me.lblWelcomeERP.Text = "Selamat datang di ERP"
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.person_24dp_434343_FILL0_wght400_GRAD0_opsz24
-        Me.PictureBox1.Location = New System.Drawing.Point(3, 3)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(44, 35)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
-        '
-        'Btnmenu
-        '
-        Me.Btnmenu.FlatAppearance.BorderSize = 0
-        Me.Btnmenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btnmenu.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.menu_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
-        Me.Btnmenu.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.Btnmenu.Location = New System.Drawing.Point(3, 3)
-        Me.Btnmenu.Name = "Btnmenu"
-        Me.Btnmenu.Size = New System.Drawing.Size(197, 50)
-        Me.Btnmenu.TabIndex = 5
-        Me.Btnmenu.UseVisualStyleBackColor = True
-        '
-        'btnHome
-        '
-        Me.btnHome.BackColor = System.Drawing.Color.Transparent
-        Me.btnHome.FlatAppearance.BorderSize = 0
-        Me.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnHome.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnHome.ForeColor = System.Drawing.Color.White
-        Me.btnHome.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.home_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
-        Me.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnHome.Location = New System.Drawing.Point(3, 59)
-        Me.btnHome.Name = "btnHome"
-        Me.btnHome.Size = New System.Drawing.Size(197, 70)
-        Me.btnHome.TabIndex = 2
-        Me.btnHome.Text = "Home"
-        Me.btnHome.UseVisualStyleBackColor = False
-        '
-        'Btnpendaftaran
-        '
-        Me.Btnpendaftaran.AutoSize = True
-        Me.Btnpendaftaran.BackColor = System.Drawing.Color.Transparent
-        Me.Btnpendaftaran.FlatAppearance.BorderSize = 0
-        Me.Btnpendaftaran.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btnpendaftaran.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Btnpendaftaran.ForeColor = System.Drawing.Color.White
-        Me.Btnpendaftaran.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.app_registration_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
-        Me.Btnpendaftaran.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Btnpendaftaran.Location = New System.Drawing.Point(3, 135)
-        Me.Btnpendaftaran.Name = "Btnpendaftaran"
-        Me.Btnpendaftaran.Size = New System.Drawing.Size(197, 70)
-        Me.Btnpendaftaran.TabIndex = 3
-        Me.Btnpendaftaran.Text = "Pendaftaran Pasien"
-        Me.Btnpendaftaran.UseVisualStyleBackColor = False
-        '
-        'Btnmanajemen
-        '
-        Me.Btnmanajemen.AutoSize = True
-        Me.Btnmanajemen.BackColor = System.Drawing.Color.Transparent
-        Me.Btnmanajemen.FlatAppearance.BorderSize = 0
-        Me.Btnmanajemen.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btnmanajemen.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Btnmanajemen.ForeColor = System.Drawing.Color.White
-        Me.Btnmanajemen.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.article_person_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
-        Me.Btnmanajemen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Btnmanajemen.Location = New System.Drawing.Point(3, 211)
-        Me.Btnmanajemen.Name = "Btnmanajemen"
-        Me.Btnmanajemen.Size = New System.Drawing.Size(197, 70)
-        Me.Btnmanajemen.TabIndex = 2
-        Me.Btnmanajemen.Text = "Manajemen Pasien"
-        Me.Btnmanajemen.UseVisualStyleBackColor = False
-        '
-        'Btnjanji
-        '
-        Me.Btnjanji.FlatAppearance.BorderSize = 0
-        Me.Btnjanji.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btnjanji.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Btnjanji.ForeColor = System.Drawing.Color.White
-        Me.Btnjanji.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.assignment_ind_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
-        Me.Btnjanji.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Btnjanji.Location = New System.Drawing.Point(3, 287)
-        Me.Btnjanji.Name = "Btnjanji"
-        Me.Btnjanji.Size = New System.Drawing.Size(197, 70)
-        Me.Btnjanji.TabIndex = 4
-        Me.Btnjanji.Text = "Janji Temu"
-        Me.Btnjanji.UseVisualStyleBackColor = True
-        '
-        'Btnrekam
-        '
-        Me.Btnrekam.BackColor = System.Drawing.Color.Transparent
-        Me.Btnrekam.FlatAppearance.BorderSize = 0
-        Me.Btnrekam.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btnrekam.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Btnrekam.ForeColor = System.Drawing.Color.White
-        Me.Btnrekam.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.prescriptions_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
-        Me.Btnrekam.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Btnrekam.Location = New System.Drawing.Point(3, 363)
-        Me.Btnrekam.Name = "Btnrekam"
-        Me.Btnrekam.Size = New System.Drawing.Size(197, 70)
-        Me.Btnrekam.TabIndex = 3
-        Me.Btnrekam.Text = "Rekam Medis"
-        Me.Btnrekam.UseVisualStyleBackColor = False
-        '
-        'Btnfarmasi
-        '
-        Me.Btnfarmasi.FlatAppearance.BorderSize = 0
-        Me.Btnfarmasi.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btnfarmasi.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Btnfarmasi.ForeColor = System.Drawing.Color.White
-        Me.Btnfarmasi.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.pill_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
-        Me.Btnfarmasi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Btnfarmasi.Location = New System.Drawing.Point(3, 439)
-        Me.Btnfarmasi.Name = "Btnfarmasi"
-        Me.Btnfarmasi.Size = New System.Drawing.Size(197, 70)
-        Me.Btnfarmasi.TabIndex = 2
-        Me.Btnfarmasi.Text = "Farmasi"
-        Me.Btnfarmasi.UseVisualStyleBackColor = True
-        '
-        'Btnbilling
-        '
-        Me.Btnbilling.FlatAppearance.BorderSize = 0
-        Me.Btnbilling.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btnbilling.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Btnbilling.ForeColor = System.Drawing.Color.White
-        Me.Btnbilling.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.payments_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
-        Me.Btnbilling.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Btnbilling.Location = New System.Drawing.Point(3, 515)
-        Me.Btnbilling.Name = "Btnbilling"
-        Me.Btnbilling.Size = New System.Drawing.Size(197, 70)
-        Me.Btnbilling.TabIndex = 3
-        Me.Btnbilling.Text = "Billing Kasir"
-        Me.Btnbilling.UseVisualStyleBackColor = True
-        '
-        'lblpasien
-        '
-        Me.lblpasien.AutoSize = True
-        Me.lblpasien.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblpasien.Location = New System.Drawing.Point(53, 0)
-        Me.lblpasien.Name = "lblpasien"
-        Me.lblpasien.Size = New System.Drawing.Size(120, 21)
-        Me.lblpasien.TabIndex = 1
-        Me.lblpasien.Text = "Pasien Hari Ini"
-        '
-        'angka
-        '
-        Me.angka.AutoSize = True
-        Me.angka.BackColor = System.Drawing.Color.Transparent
-        Me.angka.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.angka.Font = New System.Drawing.Font("Segoe UI", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.angka.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.angka.Location = New System.Drawing.Point(3, 41)
-        Me.angka.Name = "angka"
-        Me.angka.Size = New System.Drawing.Size(56, 65)
-        Me.angka.TabIndex = 2
-        Me.angka.Text = "0"
-        '
-        'Pnldokter
-        '
-        Me.Pnldokter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Pnldokter.Controls.Add(Me.PictureBox2)
-        Me.Pnldokter.Controls.Add(Me.Label1)
-        Me.Pnldokter.Controls.Add(Me.Label2)
-        Me.Pnldokter.Location = New System.Drawing.Point(322, 120)
-        Me.Pnldokter.Margin = New System.Windows.Forms.Padding(10, 5, 10, 5)
-        Me.Pnldokter.Name = "Pnldokter"
-        Me.Pnldokter.Padding = New System.Windows.Forms.Padding(0, 0, 10, 0)
-        Me.Pnldokter.Size = New System.Drawing.Size(250, 150)
-        Me.Pnldokter.TabIndex = 2
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.person_24dp_434343_FILL0_wght400_GRAD0_opsz24
-        Me.PictureBox2.Location = New System.Drawing.Point(3, 3)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(44, 35)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox2.TabIndex = 0
-        Me.PictureBox2.TabStop = False
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(53, 0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(126, 21)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = " Dokter Hari Ini"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.Label2.Location = New System.Drawing.Point(3, 41)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(56, 65)
-        Me.Label2.TabIndex = 2
-        Me.Label2.Text = "0"
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend1)
+        Me.Chart1.Location = New System.Drawing.Point(0, 0)
+        Me.Chart1.Name = "Chart1"
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.Chart1.Series.Add(Series1)
+        Me.Chart1.Size = New System.Drawing.Size(541, 222)
+        Me.Chart1.TabIndex = 0
+        Me.Chart1.Text = "Chart1"
         '
         'pnljanji
         '
@@ -419,29 +341,107 @@ Partial Class frmDashboard
         Me.Label4.TabIndex = 2
         Me.Label4.Text = "0"
         '
-        'Panel1
+        'Pnldokter
         '
-        Me.Panel1.Controls.Add(Me.Chart1)
-        Me.Panel1.Location = New System.Drawing.Point(31, 341)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(541, 222)
-        Me.Panel1.TabIndex = 4
+        Me.Pnldokter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Pnldokter.Controls.Add(Me.PictureBox2)
+        Me.Pnldokter.Controls.Add(Me.Label1)
+        Me.Pnldokter.Controls.Add(Me.Label2)
+        Me.Pnldokter.Location = New System.Drawing.Point(322, 120)
+        Me.Pnldokter.Margin = New System.Windows.Forms.Padding(10, 5, 10, 5)
+        Me.Pnldokter.Name = "Pnldokter"
+        Me.Pnldokter.Padding = New System.Windows.Forms.Padding(0, 0, 10, 0)
+        Me.Pnldokter.Size = New System.Drawing.Size(250, 150)
+        Me.Pnldokter.TabIndex = 2
         '
-        'Chart1
+        'PictureBox2
         '
-        ChartArea1.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend1)
-        Me.Chart1.Location = New System.Drawing.Point(0, 0)
-        Me.Chart1.Name = "Chart1"
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.Chart1.Series.Add(Series1)
-        Me.Chart1.Size = New System.Drawing.Size(541, 222)
-        Me.Chart1.TabIndex = 0
-        Me.Chart1.Text = "Chart1"
+        Me.PictureBox2.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.person_24dp_434343_FILL0_wght400_GRAD0_opsz24
+        Me.PictureBox2.Location = New System.Drawing.Point(3, 3)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(44, 35)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox2.TabIndex = 0
+        Me.PictureBox2.TabStop = False
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(53, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(126, 21)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = " Dokter Hari Ini"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.Label2.Location = New System.Drawing.Point(3, 41)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(56, 65)
+        Me.Label2.TabIndex = 2
+        Me.Label2.Text = "0"
+        '
+        'pnlCardDokterAktif
+        '
+        Me.pnlCardDokterAktif.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pnlCardDokterAktif.Controls.Add(Me.PictureBox1)
+        Me.pnlCardDokterAktif.Controls.Add(Me.lblpasien)
+        Me.pnlCardDokterAktif.Controls.Add(Me.angka)
+        Me.pnlCardDokterAktif.Location = New System.Drawing.Point(31, 120)
+        Me.pnlCardDokterAktif.Margin = New System.Windows.Forms.Padding(10, 5, 10, 5)
+        Me.pnlCardDokterAktif.Name = "pnlCardDokterAktif"
+        Me.pnlCardDokterAktif.Padding = New System.Windows.Forms.Padding(0, 0, 11, 0)
+        Me.pnlCardDokterAktif.Size = New System.Drawing.Size(250, 150)
+        Me.pnlCardDokterAktif.TabIndex = 1
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.person_24dp_434343_FILL0_wght400_GRAD0_opsz24
+        Me.PictureBox1.Location = New System.Drawing.Point(3, 3)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(44, 35)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 0
+        Me.PictureBox1.TabStop = False
+        '
+        'lblpasien
+        '
+        Me.lblpasien.AutoSize = True
+        Me.lblpasien.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblpasien.Location = New System.Drawing.Point(53, 0)
+        Me.lblpasien.Name = "lblpasien"
+        Me.lblpasien.Size = New System.Drawing.Size(120, 21)
+        Me.lblpasien.TabIndex = 1
+        Me.lblpasien.Text = "Pasien Hari Ini"
+        '
+        'angka
+        '
+        Me.angka.AutoSize = True
+        Me.angka.BackColor = System.Drawing.Color.Transparent
+        Me.angka.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.angka.Font = New System.Drawing.Font("Segoe UI", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.angka.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.angka.Location = New System.Drawing.Point(3, 41)
+        Me.angka.Name = "angka"
+        Me.angka.Size = New System.Drawing.Size(56, 65)
+        Me.angka.TabIndex = 2
+        Me.angka.Text = "0"
+        '
+        'lblWelcomeERP
+        '
+        Me.lblWelcomeERP.AutoSize = True
+        Me.lblWelcomeERP.Font = New System.Drawing.Font("Segoe UI", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblWelcomeERP.Location = New System.Drawing.Point(20, 20)
+        Me.lblWelcomeERP.Name = "lblWelcomeERP"
+        Me.lblWelcomeERP.Size = New System.Drawing.Size(539, 65)
+        Me.lblWelcomeERP.TabIndex = 0
+        Me.lblWelcomeERP.Text = "Selamat datang di ERP"
         '
         'frmDashboard
         '
@@ -463,17 +463,17 @@ Partial Class frmDashboard
         Me.PanelTopBar.PerformLayout()
         Me.PanelMainContent.ResumeLayout(False)
         Me.PanelMainContent.PerformLayout()
-        Me.pnlCardDokterAktif.ResumeLayout(False)
-        Me.pnlCardDokterAktif.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Pnldokter.ResumeLayout(False)
-        Me.Pnldokter.PerformLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
+        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnljanji.ResumeLayout(False)
         Me.pnljanji.PerformLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel1.ResumeLayout(False)
-        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Pnldokter.ResumeLayout(False)
+        Me.Pnldokter.PerformLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlCardDokterAktif.ResumeLayout(False)
+        Me.pnlCardDokterAktif.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
