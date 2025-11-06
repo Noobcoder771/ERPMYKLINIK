@@ -2,7 +2,7 @@
 Public Class frmDashboard
     Private sidebarExpandedWidth As Integer = 200
     Private sidebarCollapsedWidth As Integer = 40
-    Private isSidebarCollapsed As Boolean = True
+    Private isSidebarCollapsed As Boolean = False
     Private animationStep As Integer = 10
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -20,7 +20,7 @@ Public Class frmDashboard
 
     End Sub
 
-    Private Sub FlowLayoutPanel2_Paint(sender As Object, e As PaintEventArgs) Handles pnlCardDokterAktif.Paint
+    Private Sub FlowLayoutPanel2_Paint(sender As Object, e As PaintEventArgs)
 
     End Sub
 
@@ -29,7 +29,7 @@ Public Class frmDashboard
     End Sub
 
     Private Sub btnHome_Click(sender As Object, e As EventArgs) Handles btnHome.Click
-
+        LoadUserControl(New ucHome())
     End Sub
 
     Private Sub Btnpendaftaran_Click(sender As Object, e As EventArgs) Handles Btnpendaftaran.Click
@@ -113,5 +113,17 @@ Public Class frmDashboard
 
         ' Catatan: Pastikan properti ImageAlign dan TextAlign pada tombol
         ' diatur ke MiddleLeft agar ikon dan teks sejajar.
+    End Sub
+    Private Sub LoadUserControl(uc As UserControl)
+        ' Pastikan Anda punya Panel di Desainer (bernama 'mainContentPanel')
+        ' yang properti Dock-nya diatur ke 'Fill'.
+
+        mainContentPanel.Controls.Clear()
+        uc.Dock = DockStyle.Fill
+        mainContentPanel.Controls.Add(uc)
+    End Sub
+
+    Private Sub lblWelcomeERP_Click(sender As Object, e As EventArgs)
+
     End Sub
 End Class

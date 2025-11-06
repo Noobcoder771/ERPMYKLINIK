@@ -82,11 +82,11 @@
       <DependentUpon>dashboard.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frmpendaftaran.Designer.vb">
-      <DependentUpon>Frmpendaftaran.vb</DependentUpon>
+    <Compile Include="ucHome.Designer.vb">
+      <DependentUpon>ucHome.vb</DependentUpon>
     </Compile>
-    <Compile Include="Frmpendaftaran.vb">
-      <SubType>Form</SubType>
+    <Compile Include="ucHome.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -103,10 +103,25 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ucManajemenPasien.Designer.vb">
+      <DependentUpon>ucManajemenPasien.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ucManajemenPasien.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucPendaftaranPasien.Designer.vb">
+      <DependentUpon>ucPendaftaranPasien.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ucPendaftaranPasien.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="dashboard.resx">
       <DependentUpon>dashboard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucHome.resx">
+      <DependentUpon>ucHome.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
