@@ -2,12 +2,12 @@
 Public Class frmDashboard
     Private sidebarExpandedWidth As Integer = 200
     Private sidebarCollapsedWidth As Integer = 40
-    Private isSidebarCollapsed As Boolean = False
+    Private isSidebarCollapsed As Boolean = True
     Private animationStep As Integer = 10
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Saat form pertama kali dimuat, pastikan sidebar dalam keadaan terbuka
-        isSidebarCollapsed = False
+        isSidebarCollapsed = True
         sidebarPanel.Width = sidebarExpandedWidth
         UpdateMenuButtonText()
     End Sub
