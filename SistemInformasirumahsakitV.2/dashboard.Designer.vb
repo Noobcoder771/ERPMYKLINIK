@@ -22,11 +22,10 @@ Partial Class frmDashboard
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Me.pnlSidebar = New System.Windows.Forms.Panel()
-        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.components = New System.ComponentModel.Container()
+        Dim ChartArea4 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend4 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.Btnmenu = New System.Windows.Forms.Button()
         Me.btnHome = New System.Windows.Forms.Button()
         Me.Btnpendaftaran = New System.Windows.Forms.Button()
@@ -54,8 +53,9 @@ Partial Class frmDashboard
         Me.lblpasien = New System.Windows.Forms.Label()
         Me.angka = New System.Windows.Forms.Label()
         Me.lblWelcomeERP = New System.Windows.Forms.Label()
-        Me.pnlSidebar.SuspendLayout()
-        Me.FlowLayoutPanel1.SuspendLayout()
+        Me.sidebarTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.sidebarPanel = New System.Windows.Forms.Panel()
+        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.PanelTopBar.SuspendLayout()
         Me.PanelMainContent.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -66,46 +66,23 @@ Partial Class frmDashboard
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlCardDokterAktif.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.sidebarPanel.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'pnlSidebar
-        '
-        Me.pnlSidebar.BackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(73, Byte), Integer), CType(CType(94, Byte), Integer))
-        Me.pnlSidebar.Controls.Add(Me.FlowLayoutPanel1)
-        Me.pnlSidebar.Dock = System.Windows.Forms.DockStyle.Left
-        Me.pnlSidebar.Location = New System.Drawing.Point(0, 0)
-        Me.pnlSidebar.Name = "pnlSidebar"
-        Me.pnlSidebar.Size = New System.Drawing.Size(200, 661)
-        Me.pnlSidebar.TabIndex = 0
-        '
-        'FlowLayoutPanel1
-        '
-        Me.FlowLayoutPanel1.AutoScroll = True
-        Me.FlowLayoutPanel1.Controls.Add(Me.Btnmenu)
-        Me.FlowLayoutPanel1.Controls.Add(Me.btnHome)
-        Me.FlowLayoutPanel1.Controls.Add(Me.Btnpendaftaran)
-        Me.FlowLayoutPanel1.Controls.Add(Me.Btnmanajemen)
-        Me.FlowLayoutPanel1.Controls.Add(Me.Btnjanji)
-        Me.FlowLayoutPanel1.Controls.Add(Me.Btnrekam)
-        Me.FlowLayoutPanel1.Controls.Add(Me.Btnfarmasi)
-        Me.FlowLayoutPanel1.Controls.Add(Me.Btnbilling)
-        Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 0)
-        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(200, 661)
-        Me.FlowLayoutPanel1.TabIndex = 5
         '
         'Btnmenu
         '
+        Me.Btnmenu.BackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(73, Byte), Integer), CType(CType(94, Byte), Integer))
         Me.Btnmenu.FlatAppearance.BorderSize = 0
         Me.Btnmenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btnmenu.ForeColor = System.Drawing.Color.White
         Me.Btnmenu.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.menu_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
         Me.Btnmenu.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.Btnmenu.Location = New System.Drawing.Point(3, 3)
+        Me.Btnmenu.Location = New System.Drawing.Point(0, 0)
         Me.Btnmenu.Name = "Btnmenu"
-        Me.Btnmenu.Size = New System.Drawing.Size(197, 50)
+        Me.Btnmenu.Size = New System.Drawing.Size(200, 50)
         Me.Btnmenu.TabIndex = 5
-        Me.Btnmenu.UseVisualStyleBackColor = True
+        Me.Btnmenu.UseVisualStyleBackColor = False
         '
         'btnHome
         '
@@ -116,9 +93,9 @@ Partial Class frmDashboard
         Me.btnHome.ForeColor = System.Drawing.Color.White
         Me.btnHome.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.home_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
         Me.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnHome.Location = New System.Drawing.Point(3, 59)
+        Me.btnHome.Location = New System.Drawing.Point(0, 48)
         Me.btnHome.Name = "btnHome"
-        Me.btnHome.Size = New System.Drawing.Size(197, 70)
+        Me.btnHome.Size = New System.Drawing.Size(200, 70)
         Me.btnHome.TabIndex = 2
         Me.btnHome.Text = "Home"
         Me.btnHome.UseVisualStyleBackColor = False
@@ -133,9 +110,9 @@ Partial Class frmDashboard
         Me.Btnpendaftaran.ForeColor = System.Drawing.Color.White
         Me.Btnpendaftaran.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.app_registration_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
         Me.Btnpendaftaran.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Btnpendaftaran.Location = New System.Drawing.Point(3, 135)
+        Me.Btnpendaftaran.Location = New System.Drawing.Point(0, 124)
         Me.Btnpendaftaran.Name = "Btnpendaftaran"
-        Me.Btnpendaftaran.Size = New System.Drawing.Size(197, 70)
+        Me.Btnpendaftaran.Size = New System.Drawing.Size(200, 70)
         Me.Btnpendaftaran.TabIndex = 3
         Me.Btnpendaftaran.Text = "Pendaftaran Pasien"
         Me.Btnpendaftaran.UseVisualStyleBackColor = False
@@ -150,27 +127,28 @@ Partial Class frmDashboard
         Me.Btnmanajemen.ForeColor = System.Drawing.Color.White
         Me.Btnmanajemen.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.article_person_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
         Me.Btnmanajemen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Btnmanajemen.Location = New System.Drawing.Point(3, 211)
+        Me.Btnmanajemen.Location = New System.Drawing.Point(0, 200)
         Me.Btnmanajemen.Name = "Btnmanajemen"
-        Me.Btnmanajemen.Size = New System.Drawing.Size(197, 70)
+        Me.Btnmanajemen.Size = New System.Drawing.Size(200, 70)
         Me.Btnmanajemen.TabIndex = 2
         Me.Btnmanajemen.Text = "Manajemen Pasien"
         Me.Btnmanajemen.UseVisualStyleBackColor = False
         '
         'Btnjanji
         '
+        Me.Btnjanji.BackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(73, Byte), Integer), CType(CType(94, Byte), Integer))
         Me.Btnjanji.FlatAppearance.BorderSize = 0
         Me.Btnjanji.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btnjanji.Font = New System.Drawing.Font("Segoe UI", 9.75!)
         Me.Btnjanji.ForeColor = System.Drawing.Color.White
         Me.Btnjanji.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.assignment_ind_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
         Me.Btnjanji.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Btnjanji.Location = New System.Drawing.Point(3, 287)
+        Me.Btnjanji.Location = New System.Drawing.Point(0, 276)
         Me.Btnjanji.Name = "Btnjanji"
         Me.Btnjanji.Size = New System.Drawing.Size(197, 70)
         Me.Btnjanji.TabIndex = 4
         Me.Btnjanji.Text = "Janji Temu"
-        Me.Btnjanji.UseVisualStyleBackColor = True
+        Me.Btnjanji.UseVisualStyleBackColor = False
         '
         'Btnrekam
         '
@@ -181,7 +159,7 @@ Partial Class frmDashboard
         Me.Btnrekam.ForeColor = System.Drawing.Color.White
         Me.Btnrekam.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.prescriptions_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
         Me.Btnrekam.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Btnrekam.Location = New System.Drawing.Point(3, 363)
+        Me.Btnrekam.Location = New System.Drawing.Point(0, 352)
         Me.Btnrekam.Name = "Btnrekam"
         Me.Btnrekam.Size = New System.Drawing.Size(197, 70)
         Me.Btnrekam.TabIndex = 3
@@ -190,33 +168,35 @@ Partial Class frmDashboard
         '
         'Btnfarmasi
         '
+        Me.Btnfarmasi.BackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(73, Byte), Integer), CType(CType(94, Byte), Integer))
         Me.Btnfarmasi.FlatAppearance.BorderSize = 0
         Me.Btnfarmasi.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btnfarmasi.Font = New System.Drawing.Font("Segoe UI", 9.75!)
         Me.Btnfarmasi.ForeColor = System.Drawing.Color.White
         Me.Btnfarmasi.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.pill_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
         Me.Btnfarmasi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Btnfarmasi.Location = New System.Drawing.Point(3, 439)
+        Me.Btnfarmasi.Location = New System.Drawing.Point(3, 428)
         Me.Btnfarmasi.Name = "Btnfarmasi"
         Me.Btnfarmasi.Size = New System.Drawing.Size(197, 70)
         Me.Btnfarmasi.TabIndex = 2
         Me.Btnfarmasi.Text = "Farmasi"
-        Me.Btnfarmasi.UseVisualStyleBackColor = True
+        Me.Btnfarmasi.UseVisualStyleBackColor = False
         '
         'Btnbilling
         '
+        Me.Btnbilling.BackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(73, Byte), Integer), CType(CType(94, Byte), Integer))
         Me.Btnbilling.FlatAppearance.BorderSize = 0
         Me.Btnbilling.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btnbilling.Font = New System.Drawing.Font("Segoe UI", 9.75!)
         Me.Btnbilling.ForeColor = System.Drawing.Color.White
         Me.Btnbilling.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.payments_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
         Me.Btnbilling.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Btnbilling.Location = New System.Drawing.Point(3, 515)
+        Me.Btnbilling.Location = New System.Drawing.Point(0, 504)
         Me.Btnbilling.Name = "Btnbilling"
         Me.Btnbilling.Size = New System.Drawing.Size(197, 70)
         Me.Btnbilling.TabIndex = 3
         Me.Btnbilling.Text = "Billing Kasir"
-        Me.Btnbilling.UseVisualStyleBackColor = True
+        Me.Btnbilling.UseVisualStyleBackColor = False
         '
         'PanelTopBar
         '
@@ -224,9 +204,9 @@ Partial Class frmDashboard
         Me.PanelTopBar.Controls.Add(Me.Button1)
         Me.PanelTopBar.Controls.Add(Me.lblAppName)
         Me.PanelTopBar.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelTopBar.Location = New System.Drawing.Point(200, 0)
+        Me.PanelTopBar.Location = New System.Drawing.Point(0, 0)
         Me.PanelTopBar.Name = "PanelTopBar"
-        Me.PanelTopBar.Size = New System.Drawing.Size(984, 60)
+        Me.PanelTopBar.Size = New System.Drawing.Size(1184, 60)
         Me.PanelTopBar.TabIndex = 1
         '
         'Button1
@@ -239,7 +219,7 @@ Partial Class frmDashboard
         Me.Button1.ForeColor = System.Drawing.Color.White
         Me.Button1.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.account_circle_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(869, 15)
+        Me.Button1.Location = New System.Drawing.Point(1069, 15)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(103, 32)
         Me.Button1.TabIndex = 1
@@ -260,37 +240,34 @@ Partial Class frmDashboard
         'PanelMainContent
         '
         Me.PanelMainContent.BackColor = System.Drawing.Color.White
-        Me.PanelMainContent.Controls.Add(Me.Panel1)
-        Me.PanelMainContent.Controls.Add(Me.pnljanji)
-        Me.PanelMainContent.Controls.Add(Me.Pnldokter)
-        Me.PanelMainContent.Controls.Add(Me.pnlCardDokterAktif)
-        Me.PanelMainContent.Controls.Add(Me.lblWelcomeERP)
+        Me.PanelMainContent.Controls.Add(Me.Panel2)
+        Me.PanelMainContent.Controls.Add(Me.sidebarPanel)
         Me.PanelMainContent.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelMainContent.Location = New System.Drawing.Point(200, 60)
+        Me.PanelMainContent.Location = New System.Drawing.Point(0, 60)
         Me.PanelMainContent.Name = "PanelMainContent"
-        Me.PanelMainContent.Size = New System.Drawing.Size(984, 601)
+        Me.PanelMainContent.Size = New System.Drawing.Size(1184, 601)
         Me.PanelMainContent.TabIndex = 2
         '
         'Panel1
         '
         Me.Panel1.Controls.Add(Me.Chart1)
-        Me.Panel1.Location = New System.Drawing.Point(31, 341)
+        Me.Panel1.Location = New System.Drawing.Point(43, 352)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(541, 222)
+        Me.Panel1.Size = New System.Drawing.Size(561, 222)
         Me.Panel1.TabIndex = 4
         '
         'Chart1
         '
-        ChartArea1.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend1)
+        ChartArea4.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea4)
+        Legend4.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend4)
         Me.Chart1.Location = New System.Drawing.Point(0, 0)
         Me.Chart1.Name = "Chart1"
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.Chart1.Series.Add(Series1)
+        Series4.ChartArea = "ChartArea1"
+        Series4.Legend = "Legend1"
+        Series4.Name = "Series1"
+        Me.Chart1.Series.Add(Series4)
         Me.Chart1.Size = New System.Drawing.Size(541, 222)
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
@@ -301,7 +278,7 @@ Partial Class frmDashboard
         Me.pnljanji.Controls.Add(Me.PictureBox3)
         Me.pnljanji.Controls.Add(Me.Label3)
         Me.pnljanji.Controls.Add(Me.Label4)
-        Me.pnljanji.Location = New System.Drawing.Point(612, 120)
+        Me.pnljanji.Location = New System.Drawing.Point(667, 124)
         Me.pnljanji.Margin = New System.Windows.Forms.Padding(10, 5, 10, 5)
         Me.pnljanji.Name = "pnljanji"
         Me.pnljanji.Padding = New System.Windows.Forms.Padding(0, 0, 10, 0)
@@ -347,7 +324,7 @@ Partial Class frmDashboard
         Me.Pnldokter.Controls.Add(Me.PictureBox2)
         Me.Pnldokter.Controls.Add(Me.Label1)
         Me.Pnldokter.Controls.Add(Me.Label2)
-        Me.Pnldokter.Location = New System.Drawing.Point(322, 120)
+        Me.Pnldokter.Location = New System.Drawing.Point(354, 124)
         Me.Pnldokter.Margin = New System.Windows.Forms.Padding(10, 5, 10, 5)
         Me.Pnldokter.Name = "Pnldokter"
         Me.Pnldokter.Padding = New System.Windows.Forms.Padding(0, 0, 10, 0)
@@ -393,7 +370,7 @@ Partial Class frmDashboard
         Me.pnlCardDokterAktif.Controls.Add(Me.PictureBox1)
         Me.pnlCardDokterAktif.Controls.Add(Me.lblpasien)
         Me.pnlCardDokterAktif.Controls.Add(Me.angka)
-        Me.pnlCardDokterAktif.Location = New System.Drawing.Point(31, 120)
+        Me.pnlCardDokterAktif.Location = New System.Drawing.Point(43, 124)
         Me.pnlCardDokterAktif.Margin = New System.Windows.Forms.Padding(10, 5, 10, 5)
         Me.pnlCardDokterAktif.Name = "pnlCardDokterAktif"
         Me.pnlCardDokterAktif.Padding = New System.Windows.Forms.Padding(0, 0, 11, 0)
@@ -437,11 +414,45 @@ Partial Class frmDashboard
         '
         Me.lblWelcomeERP.AutoSize = True
         Me.lblWelcomeERP.Font = New System.Drawing.Font("Segoe UI", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblWelcomeERP.Location = New System.Drawing.Point(20, 20)
+        Me.lblWelcomeERP.Location = New System.Drawing.Point(32, 19)
         Me.lblWelcomeERP.Name = "lblWelcomeERP"
         Me.lblWelcomeERP.Size = New System.Drawing.Size(539, 65)
         Me.lblWelcomeERP.TabIndex = 0
         Me.lblWelcomeERP.Text = "Selamat datang di ERP"
+        '
+        'sidebarTimer
+        '
+        Me.sidebarTimer.Interval = 15
+        '
+        'sidebarPanel
+        '
+        Me.sidebarPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(73, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.sidebarPanel.Controls.Add(Me.Btnrekam)
+        Me.sidebarPanel.Controls.Add(Me.Btnjanji)
+        Me.sidebarPanel.Controls.Add(Me.Btnbilling)
+        Me.sidebarPanel.Controls.Add(Me.Btnfarmasi)
+        Me.sidebarPanel.Controls.Add(Me.Btnmenu)
+        Me.sidebarPanel.Controls.Add(Me.Btnmanajemen)
+        Me.sidebarPanel.Controls.Add(Me.Btnpendaftaran)
+        Me.sidebarPanel.Controls.Add(Me.btnHome)
+        Me.sidebarPanel.Dock = System.Windows.Forms.DockStyle.Left
+        Me.sidebarPanel.Location = New System.Drawing.Point(0, 0)
+        Me.sidebarPanel.Name = "sidebarPanel"
+        Me.sidebarPanel.Size = New System.Drawing.Size(200, 601)
+        Me.sidebarPanel.TabIndex = 6
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.Panel1)
+        Me.Panel2.Controls.Add(Me.lblWelcomeERP)
+        Me.Panel2.Controls.Add(Me.pnljanji)
+        Me.Panel2.Controls.Add(Me.pnlCardDokterAktif)
+        Me.Panel2.Controls.Add(Me.Pnldokter)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel2.Location = New System.Drawing.Point(200, 0)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(984, 601)
+        Me.Panel2.TabIndex = 7
         '
         'frmDashboard
         '
@@ -451,18 +462,13 @@ Partial Class frmDashboard
         Me.ClientSize = New System.Drawing.Size(1184, 661)
         Me.Controls.Add(Me.PanelMainContent)
         Me.Controls.Add(Me.PanelTopBar)
-        Me.Controls.Add(Me.pnlSidebar)
         Me.Name = "frmDashboard"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Sistem Informasi Rumah Sakit"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
-        Me.pnlSidebar.ResumeLayout(False)
-        Me.FlowLayoutPanel1.ResumeLayout(False)
-        Me.FlowLayoutPanel1.PerformLayout()
         Me.PanelTopBar.ResumeLayout(False)
         Me.PanelTopBar.PerformLayout()
         Me.PanelMainContent.ResumeLayout(False)
-        Me.PanelMainContent.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnljanji.ResumeLayout(False)
@@ -474,11 +480,13 @@ Partial Class frmDashboard
         Me.pnlCardDokterAktif.ResumeLayout(False)
         Me.pnlCardDokterAktif.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.sidebarPanel.ResumeLayout(False)
+        Me.sidebarPanel.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents pnlSidebar As Panel
     Friend WithEvents PanelTopBar As Panel
     Friend WithEvents btnHome As Button
     Friend WithEvents Btnpendaftaran As Button
@@ -489,7 +497,6 @@ Partial Class frmDashboard
     Friend WithEvents Btnjanji As Button
     Friend WithEvents lblAppName As Label
     Friend WithEvents Button1 As Button
-    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
     Friend WithEvents Btnmenu As Button
     Friend WithEvents PanelMainContent As Panel
     Friend WithEvents lblWelcomeERP As Label
@@ -507,4 +514,7 @@ Partial Class frmDashboard
     Friend WithEvents Label2 As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Chart1 As DataVisualization.Charting.Chart
+    Friend WithEvents sidebarTimer As Timer
+    Friend WithEvents sidebarPanel As Panel
+    Friend WithEvents Panel2 As Panel
 End Class
