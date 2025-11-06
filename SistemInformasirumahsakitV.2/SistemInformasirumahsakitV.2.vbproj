@@ -131,6 +131,24 @@
       <DependentUpon>dashboard.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Menulogin.Designer.vb">
+      <DependentUpon>Menulogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Menulogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ucbilling.Designer.vb">
+      <DependentUpon>ucbilling.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ucbilling.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucfarmasi.Designer.vb">
+      <DependentUpon>ucfarmasi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ucfarmasi.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="ucHome.Designer.vb">
       <DependentUpon>ucHome.vb</DependentUpon>
     </Compile>
@@ -152,10 +170,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ucLoginvb.Designer.vb">
-      <DependentUpon>ucLoginvb.vb</DependentUpon>
+    <Compile Include="ucjanjitemu.Designer.vb">
+      <DependentUpon>ucjanjitemu.vb</DependentUpon>
     </Compile>
-    <Compile Include="ucLoginvb.vb">
+    <Compile Include="ucjanjitemu.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ucManajemenPasien.Designer.vb">
@@ -170,10 +188,19 @@
     <Compile Include="ucPendaftaranPasien.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="ucrekammedis.Designer.vb">
+      <DependentUpon>ucrekammedis.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ucrekammedis.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="dashboard.resx">
       <DependentUpon>dashboard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menulogin.resx">
+      <DependentUpon>Menulogin.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucHome.resx">
       <DependentUpon>ucHome.vb</DependentUpon>
@@ -183,9 +210,6 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ucLoginvb.resx">
-      <DependentUpon>ucLoginvb.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -230,6 +254,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\person_24dp_434343_FILL0_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\key_24dp_434343_FILL0_wght400_GRAD0_opsz24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
