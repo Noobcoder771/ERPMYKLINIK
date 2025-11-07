@@ -24,6 +24,7 @@ Partial Class Menulogin
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Menulogin))
         Me.mainPanel = New System.Windows.Forms.Panel()
+        Me.lblErrorMessage = New System.Windows.Forms.Label()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.txtPassword = New System.Windows.Forms.TextBox()
@@ -31,7 +32,6 @@ Partial Class Menulogin
         Me.txtUsername = New System.Windows.Forms.TextBox()
         Me.lblaja = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.lblErrorMessage = New System.Windows.Forms.Label()
         Me.mainPanel.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -39,6 +39,7 @@ Partial Class Menulogin
         '
         'mainPanel
         '
+        Me.mainPanel.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.mainPanel.Controls.Add(Me.lblErrorMessage)
         Me.mainPanel.Controls.Add(Me.PictureBox2)
         Me.mainPanel.Controls.Add(Me.PictureBox1)
@@ -47,11 +48,20 @@ Partial Class Menulogin
         Me.mainPanel.Controls.Add(Me.txtUsername)
         Me.mainPanel.Controls.Add(Me.lblaja)
         Me.mainPanel.Controls.Add(Me.Label1)
-        Me.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.mainPanel.Location = New System.Drawing.Point(0, 0)
         Me.mainPanel.Name = "mainPanel"
         Me.mainPanel.Size = New System.Drawing.Size(884, 561)
         Me.mainPanel.TabIndex = 0
+        '
+        'lblErrorMessage
+        '
+        Me.lblErrorMessage.AutoSize = True
+        Me.lblErrorMessage.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.lblErrorMessage.ForeColor = System.Drawing.Color.Red
+        Me.lblErrorMessage.Location = New System.Drawing.Point(386, 307)
+        Me.lblErrorMessage.Name = "lblErrorMessage"
+        Me.lblErrorMessage.Size = New System.Drawing.Size(0, 17)
+        Me.lblErrorMessage.TabIndex = 8
         '
         'PictureBox2
         '
@@ -124,20 +134,11 @@ Partial Class Menulogin
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Selamat Datang"
         '
-        'lblErrorMessage
-        '
-        Me.lblErrorMessage.AutoSize = True
-        Me.lblErrorMessage.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
-        Me.lblErrorMessage.ForeColor = System.Drawing.Color.Red
-        Me.lblErrorMessage.Location = New System.Drawing.Point(386, 307)
-        Me.lblErrorMessage.Name = "lblErrorMessage"
-        Me.lblErrorMessage.Size = New System.Drawing.Size(0, 17)
-        Me.lblErrorMessage.TabIndex = 8
-        '
         'Menulogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(884, 561)
         Me.Controls.Add(Me.mainPanel)
         Me.Name = "Menulogin"

@@ -1,5 +1,22 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.Security.Cryptography
+Imports System.Text
+Imports MySql.Data.MySqlClient
+Imports Org.BouncyCastle.Utilities
 Public Class Menulogin
+
+    Private Sub CenterLoginPanel()
+        mainPanel.Left = (Me.ClientSize.Width - mainPanel.Width) / 2
+        mainPanel.Top = (Me.ClientSize.Height - mainPanel.Height) / 2
+    End Sub
+
+    Private Sub MenuLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        CenterLoginPanel()
+    End Sub
+
+    Private Sub MenuLogin_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+        CenterLoginPanel()
+    End Sub
+
     Private Sub txtUsername_TextChanged(sender As Object, e As EventArgs) Handles txtUsername.TextChanged
         If lblErrorMessage.Visible Then
             lblErrorMessage.Visible = False
@@ -86,4 +103,16 @@ Public Class Menulogin
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
 
     End Sub
+
+    Private Function ComputeSha26Hash(plainText As String) As String
+        Using sha256Hash As SHA256 = SHA256.Create()
+            Dim bytes As Byte() = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(plainText))
+            Dim builder As New StringBuilder()
+            For i As Integer = 0 To Bytes.Length - 1
+                builder.Append(Bytes(i).ToString("x2"))
+            Next
+            Return builder.ToString()
+        End Using
+    End Function
+
 End Class
