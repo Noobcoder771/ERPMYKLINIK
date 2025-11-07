@@ -10,6 +10,7 @@ Public Class frmDashboard
         isSidebarCollapsed = True
         sidebarPanel.Width = sidebarExpandedWidth
         UpdateMenuButtonText()
+        LoadUserControl(New ucHome())
     End Sub
 
     Private Sub Btnfarmasi_Click(sender As Object, e As EventArgs) Handles Btnfarmasi.Click
@@ -33,7 +34,7 @@ Public Class frmDashboard
     End Sub
 
     Private Sub Btnpendaftaran_Click(sender As Object, e As EventArgs) Handles Btnpendaftaran.Click
-
+        LoadUserControl(New ucPendaftaranPasien())
     End Sub
 
     Private Sub Btnmenu_Click(sender As Object, e As EventArgs) Handles Btnmenu.Click
@@ -124,6 +125,10 @@ Public Class frmDashboard
     End Sub
 
     Private Sub lblWelcomeERP_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub mainContentPanel_Paint(sender As Object, e As PaintEventArgs) Handles mainContentPanel.Paint
 
     End Sub
 End Class

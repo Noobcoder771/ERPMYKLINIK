@@ -24,10 +24,11 @@ Partial Class frmDashboard
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.PanelTopBar = New System.Windows.Forms.Panel()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.lblAppName = New System.Windows.Forms.Label()
         Me.PanelMainContent = New System.Windows.Forms.Panel()
+        Me.mainContentPanel = New System.Windows.Forms.Panel()
         Me.sidebarPanel = New System.Windows.Forms.Panel()
-        Me.sidebarTimer = New System.Windows.Forms.Timer(Me.components)
         Me.Btnrekam = New System.Windows.Forms.Button()
         Me.Btnjanji = New System.Windows.Forms.Button()
         Me.Btnbilling = New System.Windows.Forms.Button()
@@ -36,8 +37,7 @@ Partial Class frmDashboard
         Me.Btnmanajemen = New System.Windows.Forms.Button()
         Me.Btnpendaftaran = New System.Windows.Forms.Button()
         Me.btnHome = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.mainContentPanel = New System.Windows.Forms.Panel()
+        Me.sidebarTimer = New System.Windows.Forms.Timer(Me.components)
         Me.PanelTopBar.SuspendLayout()
         Me.PanelMainContent.SuspendLayout()
         Me.sidebarPanel.SuspendLayout()
@@ -53,6 +53,23 @@ Partial Class frmDashboard
         Me.PanelTopBar.Name = "PanelTopBar"
         Me.PanelTopBar.Size = New System.Drawing.Size(1184, 60)
         Me.PanelTopBar.TabIndex = 1
+        '
+        'Button1
+        '
+        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button1.AutoSize = True
+        Me.Button1.FlatAppearance.BorderSize = 0
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ForeColor = System.Drawing.Color.White
+        Me.Button1.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.account_circle_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button1.Location = New System.Drawing.Point(1069, 15)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(103, 32)
+        Me.Button1.TabIndex = 1
+        Me.Button1.Text = "Hi, ..."
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'lblAppName
         '
@@ -76,6 +93,14 @@ Partial Class frmDashboard
         Me.PanelMainContent.Size = New System.Drawing.Size(1184, 601)
         Me.PanelMainContent.TabIndex = 2
         '
+        'mainContentPanel
+        '
+        Me.mainContentPanel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.mainContentPanel.Location = New System.Drawing.Point(200, 0)
+        Me.mainContentPanel.Name = "mainContentPanel"
+        Me.mainContentPanel.Size = New System.Drawing.Size(984, 601)
+        Me.mainContentPanel.TabIndex = 7
+        '
         'sidebarPanel
         '
         Me.sidebarPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(73, Byte), Integer), CType(CType(94, Byte), Integer))
@@ -92,10 +117,6 @@ Partial Class frmDashboard
         Me.sidebarPanel.Name = "sidebarPanel"
         Me.sidebarPanel.Size = New System.Drawing.Size(200, 601)
         Me.sidebarPanel.TabIndex = 6
-        '
-        'sidebarTimer
-        '
-        Me.sidebarTimer.Interval = 15
         '
         'Btnrekam
         '
@@ -225,30 +246,9 @@ Partial Class frmDashboard
         Me.btnHome.Text = "Home"
         Me.btnHome.UseVisualStyleBackColor = False
         '
-        'Button1
+        'sidebarTimer
         '
-        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button1.AutoSize = True
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.account_circle_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(1069, 15)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(103, 32)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Hi, ..."
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'mainContentPanel
-        '
-        Me.mainContentPanel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.mainContentPanel.Location = New System.Drawing.Point(200, 0)
-        Me.mainContentPanel.Name = "mainContentPanel"
-        Me.mainContentPanel.Size = New System.Drawing.Size(984, 601)
-        Me.mainContentPanel.TabIndex = 7
+        Me.sidebarTimer.Interval = 15
         '
         'frmDashboard
         '
