@@ -192,9 +192,7 @@
     <Compile Include="ucrekammedis.Designer.vb">
       <DependentUpon>ucrekammedis.vb</DependentUpon>
     </Compile>
-    <Compile Include="ucrekammedis.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="ucrekammedis.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="dashboard.resx">
@@ -206,6 +204,9 @@
     <EmbeddedResource Include="ucbilling.resx">
       <DependentUpon>ucbilling.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ucfarmasi.resx">
+      <DependentUpon>ucfarmasi.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucHome.resx">
       <DependentUpon>ucHome.vb</DependentUpon>
     </EmbeddedResource>
@@ -214,6 +215,18 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucjanjitemu.resx">
+      <DependentUpon>ucjanjitemu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucManajemenPasien.resx">
+      <DependentUpon>ucManajemenPasien.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucPendaftaranPasien.resx">
+      <DependentUpon>ucPendaftaranPasien.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucrekammedis.resx">
+      <DependentUpon>ucrekammedis.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
