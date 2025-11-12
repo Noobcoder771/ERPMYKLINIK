@@ -203,6 +203,9 @@
     <EmbeddedResource Include="Menulogin.resx">
       <DependentUpon>Menulogin.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ucbilling.resx">
+      <DependentUpon>ucbilling.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucHome.resx">
       <DependentUpon>ucHome.vb</DependentUpon>
     </EmbeddedResource>
