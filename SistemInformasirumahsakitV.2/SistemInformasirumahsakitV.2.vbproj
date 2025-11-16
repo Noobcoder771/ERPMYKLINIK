@@ -192,7 +192,9 @@
     <Compile Include="ucrekammedis.Designer.vb">
       <DependentUpon>ucrekammedis.vb</DependentUpon>
     </Compile>
-    <Compile Include="ucrekammedis.vb" />
+    <Compile Include="ucrekammedis.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="dashboard.resx">
