@@ -215,6 +215,12 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="ucManajemenPasien.resx">
+      <DependentUpon>ucManajemenPasien.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucPendaftaranPasien.resx">
+      <DependentUpon>ucPendaftaranPasien.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
@@ -261,6 +267,48 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\key_24dp_434343_FILL0_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\person_24dp_1F1F1F_FILL1_wght400_GRAD0_opsz24 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendar_clock_24dp_1F1F1F_FILL1_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\location_on_24dp_1F1F1F_FILL1_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\call_24dp_1F1F1F_FILL1_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\man_24dp_1F1F1F_FILL1_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\event_note_24dp_1F1F1F_FILL1_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\id_card_24dp_1F1F1F_FILL1_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document_scanner_24dp_1F1F1F_FILL1_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\local_hospital_24dp_1F1F1F_FILL1_wght400_GRAD0_opsz24 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz241.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search_24dp_CCCCCC_FILL0_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\person_24dp_CCCCCC_FILL1_wght400_GRAD0_opsz24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
