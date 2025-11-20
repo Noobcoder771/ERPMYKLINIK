@@ -183,7 +183,7 @@ Partial Class ucManajemenPasien
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(503, 54)
+        Me.Button1.Location = New System.Drawing.Point(490, 54)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(85, 28)
         Me.Button1.TabIndex = 3
