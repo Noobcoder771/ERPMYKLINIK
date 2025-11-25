@@ -23,9 +23,9 @@ Partial Class User
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.UserControl = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.UserControl = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -39,32 +39,6 @@ Partial Class User
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(984, 601)
         Me.Panel1.TabIndex = 0
-        '
-        'UserControl
-        '
-        Me.UserControl.AutoSize = True
-        Me.UserControl.Dock = System.Windows.Forms.DockStyle.Top
-        Me.UserControl.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.UserControl.Location = New System.Drawing.Point(0, 0)
-        Me.UserControl.Name = "UserControl"
-        Me.UserControl.Size = New System.Drawing.Size(187, 37)
-        Me.UserControl.TabIndex = 0
-        Me.UserControl.Text = "User Account"
-        Me.UserControl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.DimGray
-        Me.Label1.Location = New System.Drawing.Point(0, 37)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Padding = New System.Windows.Forms.Padding(0, 0, 0, 15)
-        Me.Label1.Size = New System.Drawing.Size(179, 32)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Sistem Informasi Rumah Sakit"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'TableLayoutPanel1
         '
@@ -86,6 +60,32 @@ Partial Class User
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(200, 100)
         Me.TableLayoutPanel1.TabIndex = 2
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.DimGray
+        Me.Label1.Location = New System.Drawing.Point(0, 37)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Padding = New System.Windows.Forms.Padding(0, 0, 0, 15)
+        Me.Label1.Size = New System.Drawing.Size(179, 32)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "Sistem Informasi Rumah Sakit"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'UserControl
+        '
+        Me.UserControl.AutoSize = True
+        Me.UserControl.Dock = System.Windows.Forms.DockStyle.Top
+        Me.UserControl.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.UserControl.Location = New System.Drawing.Point(0, 0)
+        Me.UserControl.Name = "UserControl"
+        Me.UserControl.Size = New System.Drawing.Size(187, 37)
+        Me.UserControl.TabIndex = 0
+        Me.UserControl.Text = "User Account"
+        Me.UserControl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'User
         '

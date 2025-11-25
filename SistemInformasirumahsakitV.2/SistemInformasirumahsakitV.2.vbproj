@@ -236,6 +236,9 @@
     <EmbeddedResource Include="ucPendaftaranPasien.resx">
       <DependentUpon>ucPendaftaranPasien.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="User.resx">
+      <DependentUpon>User.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
