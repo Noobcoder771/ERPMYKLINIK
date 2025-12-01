@@ -230,11 +230,17 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="ucjanjitemu.resx">
+      <DependentUpon>ucjanjitemu.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucManajemenPasien.resx">
       <DependentUpon>ucManajemenPasien.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucPendaftaranPasien.resx">
       <DependentUpon>ucPendaftaranPasien.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucrekammedis.resx">
+      <DependentUpon>ucrekammedis.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User.resx">
       <DependentUpon>User.vb</DependentUpon>
@@ -327,6 +333,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\person_24dp_CCCCCC_FILL1_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\calendar-regular.png" />
+    <Content Include="Resources\clock-regular.png" />
+    <Content Include="Resources\search-solid.png" />
+    <Content Include="Resources\tinywow_font_to_png_86176567.png" />
+    <Content Include="Resources\user-regular.png" />
+    <Content Include="Resources\user-solid.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
