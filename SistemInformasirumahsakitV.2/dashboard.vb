@@ -14,11 +14,11 @@ Public Class frmDashboard
     End Sub
 
     Private Sub Btnfarmasi_Click(sender As Object, e As EventArgs) Handles Btnfarmasi.Click
-
+        LoadUserControl(New ucfarmasi())
     End Sub
 
     Private Sub Btnbilling_Click(sender As Object, e As EventArgs) Handles Btnbilling.Click
-
+        LoadUserControl(New ucbilling())
     End Sub
 
     Private Sub FlowLayoutPanel2_Paint(sender As Object, e As PaintEventArgs)
@@ -130,5 +130,17 @@ Public Class frmDashboard
 
     Private Sub mainContentPanel_Paint(sender As Object, e As PaintEventArgs) Handles mainContentPanel.Paint
 
+    End Sub
+
+    Private Sub Btnmanajemen_Click(sender As Object, e As EventArgs) Handles Btnmanajemen.Click
+        LoadUserControl(New ucManajemenPasien())
+    End Sub
+
+    Private Sub Btnjanji_Click(sender As Object, e As EventArgs) Handles Btnjanji.Click
+        LoadUserControl(New ucjanjitemu)
+    End Sub
+
+    Private Sub Btnrekam_Click(sender As Object, e As EventArgs) Handles Btnrekam.Click
+        LoadUserControl(New ucrekammedis())
     End Sub
 End Class
