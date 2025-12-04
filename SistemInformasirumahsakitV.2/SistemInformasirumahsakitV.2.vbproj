@@ -146,9 +146,7 @@
     <Compile Include="ucfarmasi.Designer.vb">
       <DependentUpon>ucfarmasi.vb</DependentUpon>
     </Compile>
-    <Compile Include="ucfarmasi.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="ucfarmasi.vb" />
     <Compile Include="ucHome.Designer.vb">
       <DependentUpon>ucHome.vb</DependentUpon>
     </Compile>
@@ -205,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucbilling.resx">
       <DependentUpon>ucbilling.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucfarmasi.resx">
+      <DependentUpon>ucfarmasi.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucHome.resx">
       <DependentUpon>ucHome.vb</DependentUpon>
