@@ -367,7 +367,7 @@ Partial Class ucManajemenPasien
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(31, 23)
         Me.Button7.TabIndex = 4
-        Me.Button7.Text = "3"
+        Me.Button7.Text = "2"
         Me.Button7.UseVisualStyleBackColor = False
         '
         'Button6
@@ -379,7 +379,7 @@ Partial Class ucManajemenPasien
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(31, 23)
         Me.Button6.TabIndex = 3
-        Me.Button6.Text = "2"
+        Me.Button6.Text = "1"
         Me.Button6.UseVisualStyleBackColor = False
         '
         'Button5
