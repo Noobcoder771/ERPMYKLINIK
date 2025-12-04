@@ -146,7 +146,9 @@
     <Compile Include="ucfarmasi.Designer.vb">
       <DependentUpon>ucfarmasi.vb</DependentUpon>
     </Compile>
-    <Compile Include="ucfarmasi.vb" />
+    <Compile Include="ucfarmasi.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="ucHome.Designer.vb">
       <DependentUpon>ucHome.vb</DependentUpon>
     </Compile>
