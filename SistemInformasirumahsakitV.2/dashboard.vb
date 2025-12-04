@@ -7,7 +7,7 @@ Public Class frmDashboard
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Saat form pertama kali dimuat, pastikan sidebar dalam keadaan terbuka
-        isSidebarCollapsed = True
+        isSidebarCollapsed = False
         sidebarPanel.Width = sidebarExpandedWidth
         UpdateMenuButtonText()
         LoadUserControl(New ucHome())

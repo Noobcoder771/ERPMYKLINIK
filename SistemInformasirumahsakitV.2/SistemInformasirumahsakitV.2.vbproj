@@ -180,9 +180,7 @@
     <Compile Include="ucManajemenPasien.Designer.vb">
       <DependentUpon>ucManajemenPasien.vb</DependentUpon>
     </Compile>
-    <Compile Include="ucManajemenPasien.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="ucManajemenPasien.vb" />
     <Compile Include="ucPendaftaranPasien.Designer.vb">
       <DependentUpon>ucPendaftaranPasien.vb</DependentUpon>
     </Compile>
@@ -198,9 +196,7 @@
     <Compile Include="User.Designer.vb">
       <DependentUpon>User.vb</DependentUpon>
     </Compile>
-    <Compile Include="User.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="User.vb" />
     <Compile Include="usermini.Designer.vb">
       <DependentUpon>usermini.vb</DependentUpon>
     </Compile>

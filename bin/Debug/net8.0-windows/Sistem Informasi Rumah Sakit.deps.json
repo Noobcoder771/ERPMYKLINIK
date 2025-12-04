@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Sistem Informasi Rumah Sakit/1.0.0": {
+        "runtime": {
+          "Sistem Informasi Rumah Sakit.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Sistem Informasi Rumah Sakit/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

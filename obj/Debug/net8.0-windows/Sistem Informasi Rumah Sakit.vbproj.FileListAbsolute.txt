@@ -1,0 +1,18 @@
+C:\MY JOB\VS2022Projects\Sistem Informasi Rumah Sakit\bin\Debug\net8.0-windows\Sistem Informasi Rumah Sakit.exe
+C:\MY JOB\VS2022Projects\Sistem Informasi Rumah Sakit\bin\Debug\net8.0-windows\Sistem Informasi Rumah Sakit.deps.json
+C:\MY JOB\VS2022Projects\Sistem Informasi Rumah Sakit\bin\Debug\net8.0-windows\Sistem Informasi Rumah Sakit.runtimeconfig.json
+C:\MY JOB\VS2022Projects\Sistem Informasi Rumah Sakit\bin\Debug\net8.0-windows\Sistem Informasi Rumah Sakit.dll
+C:\MY JOB\VS2022Projects\Sistem Informasi Rumah Sakit\bin\Debug\net8.0-windows\Sistem Informasi Rumah Sakit.pdb
+C:\MY JOB\VS2022Projects\Sistem Informasi Rumah Sakit\obj\Debug\net8.0-windows\Sistem_Informasi_Rumah_Sakit.Form1.resources
+C:\MY JOB\VS2022Projects\Sistem Informasi Rumah Sakit\obj\Debug\net8.0-windows\Sistem_Informasi_Rumah_Sakit.Resources.resources
+C:\MY JOB\VS2022Projects\Sistem Informasi Rumah Sakit\obj\Debug\net8.0-windows\Sistem Informasi Rumah Sakit.vbproj.GenerateResource.cache
+C:\MY JOB\VS2022Projects\Sistem Informasi Rumah Sakit\obj\Debug\net8.0-windows\Sistem Informasi Rumah Sakit.GeneratedMSBuildEditorConfig.editorconfig
+C:\MY JOB\VS2022Projects\Sistem Informasi Rumah Sakit\obj\Debug\net8.0-windows\Sistem Informasi Rumah Sakit.AssemblyInfoInputs.cache
+C:\MY JOB\VS2022Projects\Sistem Informasi Rumah Sakit\obj\Debug\net8.0-windows\Sistem Informasi Rumah Sakit.AssemblyInfo.vb
+C:\MY JOB\VS2022Projects\Sistem Informasi Rumah Sakit\obj\Debug\net8.0-windows\Sistem Informasi Rumah Sakit.vbproj.CoreCompileInputs.cache
+C:\MY JOB\VS2022Projects\Sistem Informasi Rumah Sakit\obj\Debug\net8.0-windows\Sistem Informasi Rumah Sakit.dll
+C:\MY JOB\VS2022Projects\Sistem Informasi Rumah Sakit\obj\Debug\net8.0-windows\refint\Sistem Informasi Rumah Sakit.dll
+C:\MY JOB\VS2022Projects\Sistem Informasi Rumah Sakit\obj\Debug\net8.0-windows\Sistem Informasi Rumah Sakit.pdb
+C:\MY JOB\VS2022Projects\Sistem Informasi Rumah Sakit\obj\Debug\net8.0-windows\Sistem Informasi Rumah Sakit.genruntimeconfig.cache
+C:\MY JOB\VS2022Projects\Sistem Informasi Rumah Sakit\obj\Debug\net8.0-windows\ref\Sistem Informasi Rumah Sakit.dll
+C:\MY JOB\VS2022Projects\Sistem Informasi Rumah Sakit\obj\Debug\net8.0-windows\Sistem_Informasi_Rumah_Sakit.FrmRekamMedis.resources
