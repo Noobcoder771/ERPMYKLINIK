@@ -1,13 +1,29 @@
 ﻿Imports MySql.Data.MySqlClient
 
-Module KoneksiDB
-    Private ReadOnly connString As String = "Server=localhost;Database=sirs_db;User=root;Password=;"
-    Public Function GetConnection() As MySqlConnection
+Module ModulKoneksi
+    ' Ganti info database di bawah ini sesuai settingan XAMPP kamu
+    Public strKoneksi As String = "Server=localhost;User Id=root;Password=;Database=sirs_db"
+
+    ' PENTING: Gunakan kata 'Public' agar bisa dibaca oleh Form lain
+    Public Conn As MySqlConnection
+    Public Cmd As MySqlCommand
+    Public Rd As MySqlDataReader
+
+    ' Sub ini harus PUBLIC agar bisa dipanggil dari Form Pendaftaran
+    Public Sub BukaKoneksi()
         Try
-            Return New MySqlConnection(connString)
+            If Conn Is Nothing OrElse Conn.State = ConnectionState.Closed Then
+                Conn = New MySqlConnection(strKoneksi)
+                Conn.Open()
+            End If
         Catch ex As Exception
-            MessageBox.Show("Gagal membuat koneksi ke database: " & vbCrLf & ex.Message, "Error Koneksi", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Return Nothing
+            MsgBox("Koneksi Database Gagal: " & ex.Message)
         End Try
-    End Function
+    End Sub
+
+    Public Sub TutupKoneksi()
+        If Conn IsNot Nothing AndAlso Conn.State = ConnectionState.Open Then
+            Conn.Close()
+        End If
+    End Sub
 End Module

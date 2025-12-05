@@ -24,25 +24,22 @@ Partial Class ucPendaftaranPasien
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.cmbkelamin = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.dtplahir = New System.Windows.Forms.DateTimePicker()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.txtnama = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtnik = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.txtalamat = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txttelepon = New System.Windows.Forms.TextBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.PictureBox7 = New System.Windows.Forms.PictureBox()
@@ -52,6 +49,8 @@ Partial Class ucPendaftaranPasien
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.CentralPanel = New System.Windows.Forms.Panel()
+        Me.cmbpoli = New System.Windows.Forms.ComboBox()
+        Me.dtpRegistrasi = New System.Windows.Forms.DateTimePicker()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -85,14 +84,14 @@ Partial Class ucPendaftaranPasien
         Me.Label2.Text = "Sistem Informasi Rumah Sakit"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'ComboBox1
+        'cmbkelamin
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Laki-laki", "Perempuan"})
-        Me.ComboBox1.Location = New System.Drawing.Point(305, 246)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(119, 21)
-        Me.ComboBox1.TabIndex = 8
+        Me.cmbkelamin.FormattingEnabled = True
+        Me.cmbkelamin.Items.AddRange(New Object() {"Laki-laki", "Perempuan"})
+        Me.cmbkelamin.Location = New System.Drawing.Point(305, 246)
+        Me.cmbkelamin.Name = "cmbkelamin"
+        Me.cmbkelamin.Size = New System.Drawing.Size(119, 21)
+        Me.cmbkelamin.TabIndex = 8
         '
         'Label3
         '
@@ -114,15 +113,15 @@ Partial Class ucPendaftaranPasien
         Me.Label5.TabIndex = 17
         Me.Label5.Text = "Jenis Kelamin"
         '
-        'DateTimePicker1
+        'dtplahir
         '
-        Me.DateTimePicker1.CustomFormat = "dd MMMM yyyy"
-        Me.DateTimePicker1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DateTimePicker1.Location = New System.Drawing.Point(305, 210)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(151, 21)
-        Me.DateTimePicker1.TabIndex = 18
+        Me.dtplahir.CustomFormat = "dd MMMM yyyy"
+        Me.dtplahir.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtplahir.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dtplahir.Location = New System.Drawing.Point(305, 210)
+        Me.dtplahir.Name = "dtplahir"
+        Me.dtplahir.Size = New System.Drawing.Size(151, 21)
+        Me.dtplahir.TabIndex = 18
         '
         'Label4
         '
@@ -140,27 +139,17 @@ Partial Class ucPendaftaranPasien
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.Location = New System.Drawing.Point(511, 323)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(185, 15)
+        Me.Label6.Size = New System.Drawing.Size(34, 15)
         Me.Label6.TabIndex = 22
-        Me.Label6.Text = "Nomor Rekam Medis (Otomatis)"
+        Me.Label6.Text = "POLI"
         '
-        'TextBox5
+        'txtnama
         '
-        Me.TextBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox5.Location = New System.Drawing.Point(513, 351)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.ReadOnly = True
-        Me.TextBox5.Size = New System.Drawing.Size(204, 21)
-        Me.TextBox5.TabIndex = 23
-        Me.TextBox5.Text = "RM202240523001"
-        '
-        'TextBox6
-        '
-        Me.TextBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox6.Location = New System.Drawing.Point(218, 171)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(206, 21)
-        Me.TextBox6.TabIndex = 24
+        Me.txtnama.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtnama.Location = New System.Drawing.Point(218, 171)
+        Me.txtnama.Name = "txtnama"
+        Me.txtnama.Size = New System.Drawing.Size(206, 21)
+        Me.txtnama.TabIndex = 24
         '
         'Button1
         '
@@ -196,13 +185,13 @@ Partial Class ucPendaftaranPasien
         Me.Label8.TabIndex = 29
         Me.Label8.Text = "Nama Lengkap"
         '
-        'TextBox1
+        'txtnik
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(514, 286)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(203, 21)
-        Me.TextBox1.TabIndex = 30
+        Me.txtnik.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtnik.Location = New System.Drawing.Point(514, 286)
+        Me.txtnik.Name = "txtnik"
+        Me.txtnik.Size = New System.Drawing.Size(203, 21)
+        Me.txtnik.TabIndex = 30
         '
         'Label7
         '
@@ -224,21 +213,13 @@ Partial Class ucPendaftaranPasien
         Me.Label9.TabIndex = 34
         Me.Label9.Text = "Tgl. Registrasi"
         '
-        'TextBox3
+        'txtalamat
         '
-        Me.TextBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(514, 223)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(207, 21)
-        Me.TextBox3.TabIndex = 35
-        '
-        'TextBox4
-        '
-        Me.TextBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox4.Location = New System.Drawing.Point(217, 313)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(207, 21)
-        Me.TextBox4.TabIndex = 36
+        Me.txtalamat.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtalamat.Location = New System.Drawing.Point(217, 313)
+        Me.txtalamat.Name = "txtalamat"
+        Me.txtalamat.Size = New System.Drawing.Size(207, 21)
+        Me.txtalamat.TabIndex = 36
         '
         'Label10
         '
@@ -250,24 +231,13 @@ Partial Class ucPendaftaranPasien
         Me.Label10.TabIndex = 37
         Me.Label10.Text = "NIK"
         '
-        'TextBox2
+        'txttelepon
         '
-        Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(514, 171)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(207, 21)
-        Me.TextBox2.TabIndex = 38
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.ForeColor = System.Drawing.Color.DimGray
-        Me.Label11.Location = New System.Drawing.Point(381, 449)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(154, 13)
-        Me.Label11.TabIndex = 43
-        Me.Label11.Text = "© 2024. Semua Hak Dilindungi"
-        Me.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.txttelepon.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txttelepon.Location = New System.Drawing.Point(514, 171)
+        Me.txttelepon.Name = "txttelepon"
+        Me.txttelepon.Size = New System.Drawing.Size(207, 21)
+        Me.txttelepon.TabIndex = 38
         '
         'PictureBox1
         '
@@ -356,39 +326,55 @@ Partial Class ucPendaftaranPasien
         '
         'CentralPanel
         '
+        Me.CentralPanel.Controls.Add(Me.dtpRegistrasi)
+        Me.CentralPanel.Controls.Add(Me.cmbpoli)
         Me.CentralPanel.Controls.Add(Me.Label1)
-        Me.CentralPanel.Controls.Add(Me.TextBox3)
         Me.CentralPanel.Controls.Add(Me.PictureBox4)
         Me.CentralPanel.Controls.Add(Me.Label2)
         Me.CentralPanel.Controls.Add(Me.Label7)
         Me.CentralPanel.Controls.Add(Me.PictureBox1)
         Me.CentralPanel.Controls.Add(Me.Label4)
-        Me.CentralPanel.Controls.Add(Me.Label11)
         Me.CentralPanel.Controls.Add(Me.PictureBox3)
         Me.CentralPanel.Controls.Add(Me.Button1)
-        Me.CentralPanel.Controls.Add(Me.ComboBox1)
+        Me.CentralPanel.Controls.Add(Me.cmbkelamin)
         Me.CentralPanel.Controls.Add(Me.Button2)
         Me.CentralPanel.Controls.Add(Me.Label5)
         Me.CentralPanel.Controls.Add(Me.Label9)
         Me.CentralPanel.Controls.Add(Me.PictureBox8)
         Me.CentralPanel.Controls.Add(Me.PictureBox5)
-        Me.CentralPanel.Controls.Add(Me.TextBox5)
-        Me.CentralPanel.Controls.Add(Me.DateTimePicker1)
+        Me.CentralPanel.Controls.Add(Me.dtplahir)
         Me.CentralPanel.Controls.Add(Me.Label8)
         Me.CentralPanel.Controls.Add(Me.PictureBox6)
         Me.CentralPanel.Controls.Add(Me.PictureBox7)
         Me.CentralPanel.Controls.Add(Me.Label3)
         Me.CentralPanel.Controls.Add(Me.Label6)
         Me.CentralPanel.Controls.Add(Me.Label10)
-        Me.CentralPanel.Controls.Add(Me.TextBox6)
+        Me.CentralPanel.Controls.Add(Me.txtnama)
         Me.CentralPanel.Controls.Add(Me.PictureBox2)
-        Me.CentralPanel.Controls.Add(Me.TextBox1)
-        Me.CentralPanel.Controls.Add(Me.TextBox2)
-        Me.CentralPanel.Controls.Add(Me.TextBox4)
+        Me.CentralPanel.Controls.Add(Me.txtnik)
+        Me.CentralPanel.Controls.Add(Me.txttelepon)
+        Me.CentralPanel.Controls.Add(Me.txtalamat)
         Me.CentralPanel.Location = New System.Drawing.Point(0, 0)
         Me.CentralPanel.Name = "CentralPanel"
         Me.CentralPanel.Size = New System.Drawing.Size(948, 600)
         Me.CentralPanel.TabIndex = 44
+        '
+        'cmbpoli
+        '
+        Me.cmbpoli.FormattingEnabled = True
+        Me.cmbpoli.Location = New System.Drawing.Point(514, 351)
+        Me.cmbpoli.Name = "cmbpoli"
+        Me.cmbpoli.Size = New System.Drawing.Size(203, 21)
+        Me.cmbpoli.TabIndex = 44
+        '
+        'dtpRegistrasi
+        '
+        Me.dtpRegistrasi.CustomFormat = "dd MMMM yyyy"
+        Me.dtpRegistrasi.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dtpRegistrasi.Location = New System.Drawing.Point(514, 223)
+        Me.dtpRegistrasi.Name = "dtpRegistrasi"
+        Me.dtpRegistrasi.Size = New System.Drawing.Size(200, 20)
+        Me.dtpRegistrasi.TabIndex = 45
         '
         'ucPendaftaranPasien
         '
@@ -415,31 +401,30 @@ Partial Class ucPendaftaranPasien
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents cmbkelamin As ComboBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents dtplahir As DateTimePicker
     Friend WithEvents Label4 As Label
     Friend WithEvents Label6 As Label
-    Friend WithEvents TextBox5 As TextBox
-    Friend WithEvents TextBox6 As TextBox
+    Friend WithEvents txtnama As TextBox
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents Label8 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtnik As TextBox
     Friend WithEvents PictureBox3 As PictureBox
     Friend WithEvents Label7 As Label
     Friend WithEvents PictureBox4 As PictureBox
     Friend WithEvents Label9 As Label
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents txtalamat As TextBox
     Friend WithEvents Label10 As Label
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents txttelepon As TextBox
     Friend WithEvents PictureBox5 As PictureBox
     Friend WithEvents PictureBox6 As PictureBox
     Friend WithEvents PictureBox7 As PictureBox
     Friend WithEvents PictureBox8 As PictureBox
-    Friend WithEvents Label11 As Label
     Friend WithEvents CentralPanel As Panel
+    Friend WithEvents cmbpoli As ComboBox
+    Friend WithEvents dtpRegistrasi As DateTimePicker
 End Class
