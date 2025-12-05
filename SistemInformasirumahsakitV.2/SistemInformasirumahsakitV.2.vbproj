@@ -123,7 +123,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="KoneksiDB.vb" />
+    <Compile Include="modulkoneksi.vb" />
     <Compile Include="dashboard.vb">
       <SubType>Form</SubType>
     </Compile>

@@ -1,15 +1,16 @@
 ﻿Imports MySql.Data.MySqlClient
+Imports System.Data ' Penting agar kata "ConnectionState" tidak error
 
 Module ModulKoneksi
-    ' Ganti info database di bawah ini sesuai settingan XAMPP kamu
+    ' Info Database (Sesuai punya kamu: sirs_db)
     Public strKoneksi As String = "Server=localhost;User Id=root;Password=;Database=sirs_db"
 
-    ' PENTING: Gunakan kata 'Public' agar bisa dibaca oleh Form lain
+    ' Variabel Global (Untuk Form Pendaftaran, dll)
     Public Conn As MySqlConnection
     Public Cmd As MySqlCommand
     Public Rd As MySqlDataReader
 
-    ' Sub ini harus PUBLIC agar bisa dipanggil dari Form Pendaftaran
+    ' 1. SUB UNTUK FORM PENDAFTARAN (Gaya Global)
     Public Sub BukaKoneksi()
         Try
             If Conn Is Nothing OrElse Conn.State = ConnectionState.Closed Then
@@ -26,4 +27,13 @@ Module ModulKoneksi
             Conn.Close()
         End If
     End Sub
+
+    ' 2. FUNGSI UNTUK FORM LOGIN (Ini yang dicari error GetConnection tadi)
+    ' Fungsi ini mengembalikan koneksi baru khusus untuk perintah "Using"
+    Public Function GetConnection() As MySqlConnection
+        Dim connTemp As New MySqlConnection(strKoneksi)
+        connTemp.Open()
+        Return connTemp
+    End Function
+
 End Module

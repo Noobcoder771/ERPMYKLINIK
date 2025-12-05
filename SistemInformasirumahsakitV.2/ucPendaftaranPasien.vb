@@ -19,12 +19,7 @@ Public Class ucPendaftaranPasien
         dtpRegistrasi.Value = Now
         dtpRegistrasi.Enabled = False ' Kunci agar tidak diubah
     End Sub
-    Private Sub ucPendaftaranPasien_Resize(sender As Object, e As EventArgs, y As Integer) Handles Me.Resize
-        If CentralPanel IsNot Nothing Then
-            Dim x As Integer = (Me.Width - CentralPanel.Width) / 2 ' <-- Ganti CenterPanel ke CentralPanel
-            CentralPanel.Location = New Point(x, y)
-        End If
-    End Sub
+
     Private Sub CentralPanel_Paint(sender As Object, e As PaintEventArgs) Handles CentralPanel.Paint
 
     End Sub
@@ -86,7 +81,7 @@ Public Class ucPendaftaranPasien
             NoRMBaru = GenerateNoRM()
 
             ' 2. SIMPAN KE TABEL PASIEN
-            Dim QueryPasien As String = "INSERT INTO tbl_pasien (no_rm, nama_pasien, nik, tgl_lahir, jk, alamat, no_telp, tgl_registrasi) VALUES (@rm, @nama, @nik, @lahir, @jk, @alamat, @telp, @tgl_reg)"
+            Dim QueryPasien As String = "INSERT INTO tbl_pasien (no_rm, nama_pasien, nik, tanggal_lahir, jenis_kelamin, alamat, no_telepon, tgl_registrasi) VALUES (@rm, @nama, @nik, @lahir, @jk, @alamat, @telp, @tgl_reg)"
 
             Cmd = New MySqlCommand(QueryPasien, Conn)
             Cmd.Parameters.AddWithValue("@rm", NoRMBaru)
