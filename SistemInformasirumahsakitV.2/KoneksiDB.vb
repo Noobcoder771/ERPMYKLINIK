@@ -1,5 +1,4 @@
 ﻿Imports MySql.Data.MySqlClient
-Imports System.Windows.Forms
 
 Module KoneksiDB
     Private ReadOnly connString As String = "Server=localhost;Database=sirs_db;User=root;Password=;"

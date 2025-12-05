@@ -21,9 +21,6 @@ Public Class ucPendaftaranPasien
             ' Hitung posisi Y
             Dim y As Integer = 50
 
-            ' Atur Lokasi Panel
-            CentralPanel.Location = New Point(x, y) ' <-- Ganti CenterPanel ke CentralPanel
-        End If
     End Sub
     Private Sub CentralPanel_Paint(sender As Object, e As PaintEventArgs) Handles CentralPanel.Paint
 
