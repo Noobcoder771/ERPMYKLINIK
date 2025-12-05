@@ -197,6 +197,7 @@ Partial Class ucfarmasi
         Me.Column6.HeaderText = "Kunjungan"
         Me.Column6.Name = "Column6"
         Me.Column6.ReadOnly = True
+        Me.Column6.Width = 80
         '
         'Column7
         '
