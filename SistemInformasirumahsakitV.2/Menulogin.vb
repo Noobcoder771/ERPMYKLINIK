@@ -53,7 +53,6 @@ Public Class Menulogin
                     cmd.Parameters.AddWithValue("@user", txtUsername.Text)
                     cmd.Parameters.AddWithValue("@pass", txtPassword.Text)
 
-                    conn.Open()
 
                     Dim result As Integer = Convert.ToInt32(cmd.ExecuteScalar())
 
