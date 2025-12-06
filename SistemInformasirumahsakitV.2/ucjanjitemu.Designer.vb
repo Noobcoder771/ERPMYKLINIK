@@ -382,6 +382,7 @@ Partial Class ucjanjitemu
         Me.TextBox3.Location = New System.Drawing.Point(40, 6)
         Me.TextBox3.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.ReadOnly = True
         Me.TextBox3.Size = New System.Drawing.Size(151, 13)
         Me.TextBox3.TabIndex = 0
         Me.TextBox3.Text = "Nama Lengkap Pasien"
@@ -489,9 +490,10 @@ Partial Class ucjanjitemu
         Me.TextBox2.Location = New System.Drawing.Point(41, 6)
         Me.TextBox2.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.ReadOnly = True
         Me.TextBox2.Size = New System.Drawing.Size(146, 13)
         Me.TextBox2.TabIndex = 0
-        Me.TextBox2.Text = "Sena Mertomen"
+        Me.TextBox2.Text = "POLI"
         '
         'Label1
         '
