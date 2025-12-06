@@ -113,13 +113,6 @@ Public Class ucPendaftaranPasien
                "No. RM: " & NoRMBaru & " (CATAT INI!)" & vbCrLf &
                "Tujuan: " & cmbpoli.Text, MsgBoxStyle.Information, "Sukses")
 
-            ' 4. BERSIHKAN FORM
-            txtNama.Clear()
-            txtNIK.Clear()
-            txtAlamat.Clear()
-            txtTelepon.Clear()
-            cmbpoli.SelectedIndex = -1
-            txtNama.Focus()
 
         Catch ex As Exception
             MsgBox("Terjadi Kesalahan: " & ex.Message, MsgBoxStyle.Critical)
