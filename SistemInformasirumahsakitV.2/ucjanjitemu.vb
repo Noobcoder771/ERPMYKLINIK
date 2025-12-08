@@ -2,22 +2,22 @@
 
 Public Class ucjanjitemu
 
-    ' Variabel Global
+    ' Variabel Global untuk menyimpan No RM Pasien yang ditemukan
     Dim PasienTerpilih As String = ""
 
-    ' --- 1. SAAT FORM DIMUAT ---
+    ' --- 1. SAAT FORM DIMUAT (LOAD) ---
     Private Sub ucjanjitemu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Setting Placeholder
+        ' Setting Placeholder Pencarian
         txtCariRM.Text = "Masukan No. RM"
         txtCariRM.ForeColor = Color.Gray
 
         ' Sembunyikan panel hasil pencarian di awal
         pnlHasil.Visible = False
 
-        ' Isi Data Poli ke ComboBox (INI PENTING BIAR TIDAK KOSONG)
+        ' Isi Data Poli ke ComboBox agar tidak kosong
         Call IsiComboPoli()
 
-        ' Set tanggal minimal hari ini
+        ' Set tanggal minimal hari ini (Gaboleh pilih kemarin)
         dtpjanji.MinDate = Now
     End Sub
 
@@ -38,9 +38,9 @@ Public Class ucjanjitemu
         End Try
     End Sub
 
-    ' --- 3. TOMBOL CARI PASIEN (UPDATE: TAMPIL DI PANEL) ---
+    ' --- 3. TOMBOL CARI PASIEN (MUNCULKAN PANEL) ---
     Private Sub btnCari_Click(sender As Object, e As EventArgs) Handles btnCari.Click
-        ' Validasi
+        ' Validasi Input
         If txtCariRM.Text = "" Or txtCariRM.Text = "Masukan No. RM" Then
             MsgBox("Mohon isi No. RM atau Nama Pasien!", MsgBoxStyle.Exclamation)
             Exit Sub
@@ -49,7 +49,7 @@ Public Class ucjanjitemu
         Try
             Call BukaKoneksi()
 
-            ' Query Cari Pasien
+            ' Query Cari Pasien (Berdasarkan RM atau Nama)
             Dim query As String = "SELECT * FROM tbl_pasien WHERE no_rm = @cari OR nama_pasien LIKE @nama"
             Cmd = New MySqlCommand(query, Conn)
             Cmd.Parameters.AddWithValue("@cari", txtCariRM.Text)
@@ -63,17 +63,19 @@ Public Class ucjanjitemu
                 ' 1. Simpan No RM ke Variabel Global
                 PasienTerpilih = Rd("no_rm").ToString()
 
-                ' 2. Tampilkan Panel Abu-abu
+                ' 2. Tampilkan Panel Abu-abu (pnlHasil)
                 pnlHasil.Visible = True
 
                 ' 3. Isi Label di dalam Panel
+                ' Pastikan kamu punya label: lblNamaPasien & lblDetailPasien di dalam pnlHasil
                 lblNamaPasien.Text = Rd("nama_pasien").ToString()
-                ' Format detail: RM001 | Laki-laki | 12 Jan 1990
+
+                ' Tampilkan detail lengkap
                 lblDetailPasien.Text = "No. RM: " & PasienTerpilih & vbCrLf &
                                        "JK: " & Rd("jenis_kelamin").ToString() & vbCrLf &
                                        "Alamat: " & Rd("alamat").ToString()
 
-                ' Opsional: Ubah warna label nama biar jelas
+                ' Ubah warna nama biar jelas
                 lblNamaPasien.ForeColor = Color.DarkBlue
 
             Else
@@ -102,7 +104,7 @@ Public Class ucjanjitemu
 
             Call BukaKoneksi()
 
-            ' Ambil Dokter sesuai Poli DAN Harinya
+            ' Query: Ambil Dokter sesuai Poli DAN Harinya
             Dim query As String = "SELECT d.id_dokter, d.nama_dokter, j.jam_mulai, j.jam_selesai " &
                                   "FROM tbl_dokter d " &
                                   "JOIN tbl_jadwal_dokter j ON d.id_dokter = j.id_dokter " &
@@ -116,7 +118,7 @@ Public Class ucjanjitemu
             Dim dt As New DataTable
             da.Fill(dt)
 
-            ' Buat tampilan: "Dr. Budi | 09:00-12:00"
+            ' Buat tampilan cantik: "Dr. Budi | 09:00-12:00"
             dt.Columns.Add("Tampilan", GetType(String))
             For Each row As DataRow In dt.Rows
                 row("Tampilan") = row("nama_dokter") & " | " & row("jam_mulai") & "-" & row("jam_selesai")
@@ -135,22 +137,24 @@ Public Class ucjanjitemu
             End If
 
         Catch ex As Exception
-            ' Error loading diabaikan
+            ' Error loading diabaikan saja
         End Try
     End Sub
 
-    ' Trigger Filter Dokter (Saat Poli berubah / Tanggal berubah)
+    ' Trigger saat Poli berubah
     Private Sub cmbPoli_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPoli.SelectedIndexChanged
         Call FilterDokterOtomatis()
     End Sub
 
+    ' Trigger saat Tanggal berubah
     Private Sub dtpjanji_ValueChanged(sender As Object, e As EventArgs) Handles dtpjanji.ValueChanged
         Call FilterDokterOtomatis()
     End Sub
 
-    ' --- 5. TOMBOL BUAT JANJI (SIMPAN) ---
+    ' --- 5. TOMBOL BUAT JANJI (SIMPAN DATA) ---
+    ' Ini adalah kode yang sudah diperbaiki bagian KELUHAN-nya
     Private Sub btnBuatJanji_Click(sender As Object, e As EventArgs) Handles btnBuatJanji.Click
-        ' Validasi
+        ' Validasi Input
         If PasienTerpilih = "" Then
             MsgBox("Cari Pasien Dulu!", MsgBoxStyle.Exclamation)
             Exit Sub
@@ -175,7 +179,16 @@ Public Class ucjanjitemu
             Cmd.Parameters.AddWithValue("@dr", cmbDokter.SelectedValue)
             Cmd.Parameters.AddWithValue("@poli", cmbPoli.SelectedValue)
             Cmd.Parameters.AddWithValue("@tgl", dtpjanji.Value.ToString("yyyy-MM-dd"))
-            Cmd.Parameters.AddWithValue("@keluhan", "Pendaftaran Poli")
+
+            ' --- PERBAIKAN DI SINI (LOGIKA KELUHAN) ---
+            ' Pastikan kamu punya TextBox bernama txtKeluhan di desain
+            If txtKeluhan.Text = "" Then
+                Cmd.Parameters.AddWithValue("@keluhan", "-")
+            Else
+                Cmd.Parameters.AddWithValue("@keluhan", txtKeluhan.Text)
+            End If
+            ' -------------------------------------------
+
             Cmd.Parameters.AddWithValue("@dibuat", Now.ToString("yyyy-MM-dd HH:mm:ss"))
 
             Cmd.ExecuteNonQuery()
@@ -183,11 +196,12 @@ Public Class ucjanjitemu
             ' C. Sukses
             MsgBox("Pendaftaran Berhasil!" & vbCrLf & "No Registrasi: " & NoRegBaru, MsgBoxStyle.Information)
 
-            ' Reset Form
+            ' Reset Form agar siap dipakai lagi
             txtCariRM.Text = "Masukan No. RM"
             txtCariRM.ForeColor = Color.Gray
-            pnlHasil.Visible = False ' Sembunyikan lagi panelnya
+            pnlHasil.Visible = False
             PasienTerpilih = ""
+            txtKeluhan.Clear() ' Bersihkan keluhan
             cmbPoli.SelectedIndex = -1
             cmbDokter.DataSource = Nothing
 
@@ -200,11 +214,10 @@ Public Class ucjanjitemu
 
     ' --- FUNGSI PENDUKUNG ---
 
+    ' Fungsi 1: Generate Nomor Registrasi (Unik)
     Function GenerateNoRegistrasi() As String
         Dim noReg As String = ""
         Try
-            ' Koneksi harus sudah terbuka saat fungsi ini dipanggil di dalam btnSimpan
-            ' Tapi untuk aman kita cek state
             If Conn.State = ConnectionState.Closed Then Conn.Open()
 
             Dim tgl As String = Format(Now, "yyyyMMdd")
@@ -228,6 +241,7 @@ Public Class ucjanjitemu
         Return noReg
     End Function
 
+    ' Fungsi 2: Terjemahkan Hari (Inggris ke Indo)
     Function GetHariIndo(tanggal As DateTime) As String
         Select Case tanggal.DayOfWeek
             Case DayOfWeek.Sunday : Return "Minggu"
@@ -241,7 +255,7 @@ Public Class ucjanjitemu
         End Select
     End Function
 
-    ' --- PLACEHOLDER TEXTBOX ---
+    ' --- PLACEHOLDER TEXTBOX PENCARIAN ---
     Private Sub txtCariRM_Enter(sender As Object, e As EventArgs) Handles txtCariRM.Enter
         If txtCariRM.Text = "Masukan No. RM" Then
             txtCariRM.Text = ""

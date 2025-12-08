@@ -28,8 +28,10 @@ Partial Class ucjanjitemu
         Me.btnBuatJanji = New System.Windows.Forms.Button()
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.tbKeluhan = New System.Windows.Forms.TextBox()
+        Me.txtKeluhan = New System.Windows.Forms.TextBox()
         Me.pnlHasil = New System.Windows.Forms.Panel()
+        Me.lblNamaPasien = New System.Windows.Forms.Label()
+        Me.lblDetailPasien = New System.Windows.Forms.Label()
         Me.PictureBox7 = New System.Windows.Forms.PictureBox()
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.cmbDokter = New System.Windows.Forms.ComboBox()
@@ -49,8 +51,6 @@ Partial Class ucjanjitemu
         Me.Label6 = New System.Windows.Forms.Label()
         Me.PictureBox6 = New System.Windows.Forms.PictureBox()
         Me.cmbPoli = New System.Windows.Forms.ComboBox()
-        Me.lblDetailPasien = New System.Windows.Forms.Label()
-        Me.lblNamaPasien = New System.Windows.Forms.Label()
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlHasil.SuspendLayout()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -131,14 +131,14 @@ Partial Class ucjanjitemu
         Me.Label11.TabIndex = 34
         Me.Label11.Text = "Keluhan Awal Pasien (Ringkas)"
         '
-        'tbKeluhan
+        'txtKeluhan
         '
-        Me.tbKeluhan.Location = New System.Drawing.Point(480, 249)
-        Me.tbKeluhan.Margin = New System.Windows.Forms.Padding(2)
-        Me.tbKeluhan.Multiline = True
-        Me.tbKeluhan.Name = "tbKeluhan"
-        Me.tbKeluhan.Size = New System.Drawing.Size(263, 51)
-        Me.tbKeluhan.TabIndex = 20
+        Me.txtKeluhan.Location = New System.Drawing.Point(480, 249)
+        Me.txtKeluhan.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtKeluhan.Multiline = True
+        Me.txtKeluhan.Name = "txtKeluhan"
+        Me.txtKeluhan.Size = New System.Drawing.Size(263, 51)
+        Me.txtKeluhan.TabIndex = 20
         '
         'pnlHasil
         '
@@ -151,6 +151,22 @@ Partial Class ucjanjitemu
         Me.pnlHasil.Size = New System.Drawing.Size(193, 112)
         Me.pnlHasil.TabIndex = 33
         Me.pnlHasil.Visible = False
+        '
+        'lblNamaPasien
+        '
+        Me.lblNamaPasien.AutoSize = True
+        Me.lblNamaPasien.Location = New System.Drawing.Point(6, 9)
+        Me.lblNamaPasien.Name = "lblNamaPasien"
+        Me.lblNamaPasien.Size = New System.Drawing.Size(0, 13)
+        Me.lblNamaPasien.TabIndex = 1
+        '
+        'lblDetailPasien
+        '
+        Me.lblDetailPasien.AutoSize = True
+        Me.lblDetailPasien.Location = New System.Drawing.Point(6, 40)
+        Me.lblDetailPasien.Name = "lblDetailPasien"
+        Me.lblDetailPasien.Size = New System.Drawing.Size(0, 13)
+        Me.lblDetailPasien.TabIndex = 0
         '
         'PictureBox7
         '
@@ -351,22 +367,6 @@ Partial Class ucjanjitemu
         Me.cmbPoli.Size = New System.Drawing.Size(125, 21)
         Me.cmbPoli.TabIndex = 12
         '
-        'lblDetailPasien
-        '
-        Me.lblDetailPasien.AutoSize = True
-        Me.lblDetailPasien.Location = New System.Drawing.Point(6, 40)
-        Me.lblDetailPasien.Name = "lblDetailPasien"
-        Me.lblDetailPasien.Size = New System.Drawing.Size(0, 13)
-        Me.lblDetailPasien.TabIndex = 0
-        '
-        'lblNamaPasien
-        '
-        Me.lblNamaPasien.AutoSize = True
-        Me.lblNamaPasien.Location = New System.Drawing.Point(6, 9)
-        Me.lblNamaPasien.Name = "lblNamaPasien"
-        Me.lblNamaPasien.Size = New System.Drawing.Size(0, 13)
-        Me.lblNamaPasien.TabIndex = 1
-        '
         'ucjanjitemu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -377,7 +377,7 @@ Partial Class ucjanjitemu
         Me.Controls.Add(Me.btnBuatJanji)
         Me.Controls.Add(Me.PictureBox8)
         Me.Controls.Add(Me.Label11)
-        Me.Controls.Add(Me.tbKeluhan)
+        Me.Controls.Add(Me.txtKeluhan)
         Me.Controls.Add(Me.pnlHasil)
         Me.Controls.Add(Me.Panel9)
         Me.Controls.Add(Me.Label4)
@@ -415,7 +415,7 @@ Partial Class ucjanjitemu
     Friend WithEvents btnBuatJanji As Button
     Friend WithEvents PictureBox8 As PictureBox
     Friend WithEvents Label11 As Label
-    Friend WithEvents tbKeluhan As TextBox
+    Friend WithEvents txtKeluhan As TextBox
     Friend WithEvents pnlHasil As Panel
     Friend WithEvents PictureBox7 As PictureBox
     Friend WithEvents Panel9 As Panel
