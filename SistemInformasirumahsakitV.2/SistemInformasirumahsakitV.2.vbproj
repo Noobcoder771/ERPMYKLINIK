@@ -123,7 +123,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="KoneksiDB.vb" />
+    <Compile Include="modulkoneksi.vb" />
     <Compile Include="dashboard.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +141,12 @@
       <DependentUpon>ucbilling.vb</DependentUpon>
     </Compile>
     <Compile Include="ucbilling.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UcDokter.Designer.vb">
+      <DependentUpon>UcDokter.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UcDokter.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ucfarmasi.Designer.vb">
@@ -175,6 +181,12 @@
       <DependentUpon>ucjanjitemu.vb</DependentUpon>
     </Compile>
     <Compile Include="ucjanjitemu.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uckartuPasien.Designer.vb">
+      <DependentUpon>uckartuPasien.vb</DependentUpon>
+    </Compile>
+    <Compile Include="uckartuPasien.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ucManajemenPasien.Designer.vb">
@@ -218,6 +230,9 @@
     <EmbeddedResource Include="ucbilling.resx">
       <DependentUpon>ucbilling.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UcDokter.resx">
+      <DependentUpon>UcDokter.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucfarmasi.resx">
       <DependentUpon>ucfarmasi.vb</DependentUpon>
     </EmbeddedResource>
@@ -230,11 +245,20 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="ucjanjitemu.resx">
+      <DependentUpon>ucjanjitemu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uckartuPasien.resx">
+      <DependentUpon>uckartuPasien.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucManajemenPasien.resx">
       <DependentUpon>ucManajemenPasien.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucPendaftaranPasien.resx">
       <DependentUpon>ucPendaftaranPasien.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucrekammedis.resx">
+      <DependentUpon>ucrekammedis.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User.resx">
       <DependentUpon>User.vb</DependentUpon>
@@ -327,6 +351,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\person_24dp_CCCCCC_FILL1_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\calendar-regular.png" />
+    <Content Include="Resources\clock-regular.png" />
+    <Content Include="Resources\search-solid.png" />
+    <Content Include="Resources\tinywow_font_to_png_86176567.png" />
+    <Content Include="Resources\user-regular.png" />
+    <Content Include="Resources\user-solid.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

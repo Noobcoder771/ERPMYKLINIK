@@ -40,7 +40,7 @@ Public Class Menulogin
 
         ' 3. Proses Login ke Database
         ' Pastikan Anda punya Modul KoneksiDB.vb
-        Using conn As MySqlConnection = KoneksiDB.GetConnection()
+        Using conn As MySqlConnection = ModulKoneksi.GetConnection()
             If conn Is Nothing Then Return ' Gagal dapat koneksi (pesan error dari KoneksiDB)
 
             Try
@@ -53,7 +53,6 @@ Public Class Menulogin
                     cmd.Parameters.AddWithValue("@user", txtUsername.Text)
                     cmd.Parameters.AddWithValue("@pass", txtPassword.Text)
 
-                    conn.Open()
 
                     Dim result As Integer = Convert.ToInt32(cmd.ExecuteScalar())
 
@@ -108,8 +107,8 @@ Public Class Menulogin
         Using sha256Hash As SHA256 = SHA256.Create()
             Dim bytes As Byte() = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(plainText))
             Dim builder As New StringBuilder()
-            For i As Integer = 0 To Bytes.Length - 1
-                builder.Append(Bytes(i).ToString("x2"))
+            For i As Integer = 0 To bytes.Length - 1
+                builder.Append(bytes(i).ToString("x2"))
             Next
             Return builder.ToString()
         End Using

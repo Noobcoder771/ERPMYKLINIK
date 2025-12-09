@@ -137,7 +137,7 @@ Public Class frmDashboard
     End Sub
 
     Private Sub Btnjanji_Click(sender As Object, e As EventArgs) Handles Btnjanji.Click
-        LoadUserControl(New ucjanjitemu())
+        LoadUserControl(New ucjanjitemu)
     End Sub
 
     Private Sub Btnrekam_Click(sender As Object, e As EventArgs) Handles Btnrekam.Click

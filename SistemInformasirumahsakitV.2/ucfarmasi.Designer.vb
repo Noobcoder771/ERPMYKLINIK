@@ -22,15 +22,18 @@ Partial Class ucfarmasi
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PnlContent = New System.Windows.Forms.Panel()
         Me.pnlWorkspace = New System.Windows.Forms.Panel()
         Me.tlpMain = New System.Windows.Forms.TableLayoutPanel()
         Me.gbResep = New System.Windows.Forms.GroupBox()
         Me.tlpResep = New System.Windows.Forms.TableLayoutPanel()
         Me.dgvResep = New System.Windows.Forms.DataGridView()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.lblDokter = New System.Windows.Forms.Label()
         Me.lblPasien = New System.Windows.Forms.Label()
@@ -70,20 +73,15 @@ Partial Class ucfarmasi
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip()
+        Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.ContextMenuStrip3 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ContextMenuStrip4 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ContextMenuStrip5 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ContextMenuStrip6 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ContextMenuStrip7 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ContextMenuStrip8 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ContextMenuStrip3 = New System.Windows.Forms.ContextMenuStrip()
+        Me.ContextMenuStrip4 = New System.Windows.Forms.ContextMenuStrip()
+        Me.ContextMenuStrip5 = New System.Windows.Forms.ContextMenuStrip()
+        Me.ContextMenuStrip6 = New System.Windows.Forms.ContextMenuStrip()
+        Me.ContextMenuStrip7 = New System.Windows.Forms.ContextMenuStrip()
+        Me.ContextMenuStrip8 = New System.Windows.Forms.ContextMenuStrip()
         Me.PnlContent.SuspendLayout()
         Me.pnlWorkspace.SuspendLayout()
         Me.tlpMain.SuspendLayout()
@@ -174,14 +172,6 @@ Partial Class ucfarmasi
         '
         Me.dgvResep.AllowUserToAddRows = False
         Me.dgvResep.BackgroundColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvResep.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvResep.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column5, Me.Column6, Me.Column7, Me.Column8, Me.Column9})
         Me.dgvResep.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvResep.Location = New System.Drawing.Point(3, 3)
@@ -191,6 +181,42 @@ Partial Class ucfarmasi
         Me.dgvResep.RowHeadersVisible = False
         Me.dgvResep.Size = New System.Drawing.Size(343, 167)
         Me.dgvResep.TabIndex = 0
+        '
+        'Column5
+        '
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Column5.DefaultCellStyle = DataGridViewCellStyle1
+        Me.Column5.HeaderText = "No"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
+        Me.Column5.Width = 50
+        '
+        'Column6
+        '
+        Me.Column6.HeaderText = "Kunjungan"
+        Me.Column6.Name = "Column6"
+        Me.Column6.ReadOnly = True
+        Me.Column6.Width = 80
+        '
+        'Column7
+        '
+        Me.Column7.HeaderText = "No. RM"
+        Me.Column7.Name = "Column7"
+        Me.Column7.ReadOnly = True
+        Me.Column7.Width = 70
+        '
+        'Column8
+        '
+        Me.Column8.HeaderText = "Pasien"
+        Me.Column8.Name = "Column8"
+        Me.Column8.ReadOnly = True
+        Me.Column8.Width = 70
+        '
+        'Column9
+        '
+        Me.Column9.HeaderText = "Dokter"
+        Me.Column9.Name = "Column9"
+        Me.Column9.ReadOnly = True
         '
         'TableLayoutPanel2
         '
@@ -669,42 +695,6 @@ Partial Class ucfarmasi
         '
         Me.ContextMenuStrip8.Name = "ContextMenuStrip8"
         Me.ContextMenuStrip8.Size = New System.Drawing.Size(61, 4)
-        '
-        'Column5
-        '
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Column5.DefaultCellStyle = DataGridViewCellStyle2
-        Me.Column5.HeaderText = "No"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
-        Me.Column5.Width = 50
-        '
-        'Column6
-        '
-        Me.Column6.HeaderText = "Kunjungan"
-        Me.Column6.Name = "Column6"
-        Me.Column6.ReadOnly = True
-        Me.Column6.Width = 80
-        '
-        'Column7
-        '
-        Me.Column7.HeaderText = "No. RM"
-        Me.Column7.Name = "Column7"
-        Me.Column7.ReadOnly = True
-        Me.Column7.Width = 70
-        '
-        'Column8
-        '
-        Me.Column8.HeaderText = "Pasien"
-        Me.Column8.Name = "Column8"
-        Me.Column8.ReadOnly = True
-        Me.Column8.Width = 70
-        '
-        'Column9
-        '
-        Me.Column9.HeaderText = "Dokter"
-        Me.Column9.Name = "Column9"
-        Me.Column9.ReadOnly = True
         '
         'ucfarmasi
         '
