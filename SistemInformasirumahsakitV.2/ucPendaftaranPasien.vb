@@ -1,34 +1,26 @@
 ﻿Imports System.Windows.Forms
 Imports MySql.Data.MySqlClient
+
 Public Class ucPendaftaranPasien
     Dim NoRMBaru As String = ""
 
-
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
-
-    End Sub
-
-    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
-
-    End Sub
-
+    ' --- 1. SAAT FORM DIBUKA ---
     Private Sub ucPendaftaranPasien_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call IsiComboPoli()
-
-        ' Set tanggal registrasi otomatis hari ini
-        dtpRegistrasi.Value = Now
-        dtpRegistrasi.Enabled = False ' Kunci agar tidak diubah
         Call PercantikTampilan()
 
+        ' Setting ComboBox Pembayaran (Manual saja lebih cepat)
+        cmbBayar.Items.Clear()
+        cmbBayar.Items.Add("Umum / Tunai")
+        cmbBayar.Items.Add("BPJS Kesehatan")
+        cmbBayar.Items.Add("Asuransi Lain")
+        cmbBayar.SelectedIndex = 0 ' Default ke Umum
+
+        ' CATATAN: dtpRegistrasi sudah dihapus dari kodingan ini
+        ' Tanggal akan kita ambil langsung dari sistem (Now) saat Simpan.
     End Sub
 
-    Private Sub CentralPanel_Paint(sender As Object, e As PaintEventArgs) Handles CentralPanel.Paint
-
-    End Sub
-
-    Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbpoli.SelectedIndexChanged
-
-    End Sub
+    ' --- 2. ISI COMBOBOX POLI DARI DATABASE ---
     Sub IsiComboPoli()
         Try
             Call BukaKoneksi()
@@ -45,9 +37,10 @@ Public Class ucPendaftaranPasien
         End Try
     End Sub
 
+    ' --- 3. GENERATE NO RM OTOMATIS ---
     Function GenerateNoRM() As String
         Call BukaKoneksi()
-        Dim tgl As String = Format(Now, "yyyyMM") ' Contoh: 202505
+        Dim tgl As String = Format(Now, "yyyyMM") ' Contoh: 202512
         Dim urutan As String = "001"
 
         ' Cari nomor terakhir di bulan ini
@@ -55,69 +48,68 @@ Public Class ucPendaftaranPasien
         Rd = Cmd.ExecuteReader
 
         If Rd.Read Then
-            ' Jika ada, ambil 3 digit terakhir, tambah 1
             Dim lastNo As String = Rd.Item("no_rm")
             Dim hitung As Integer = Val(Microsoft.VisualBasic.Right(lastNo, 3)) + 1
             urutan = Format(hitung, "000")
         End If
         Rd.Close()
 
-        ' Kembalikan hasil gabungan (Contoh: RM202505002)
         Return "RM" & tgl & urutan
     End Function
 
+    ' --- 4. TOMBOL SIMPAN (LOGIKA UTAMA) ---
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        ' --- VALIDASI INPUT ---
-        If txtNama.Text = "" Or txtNIK.Text = "" Or cmbpoli.SelectedIndex = -1 Then
-            MsgBox("Mohon lengkapi Nama, NIK, dan Poli Tujuan!", MsgBoxStyle.Exclamation, "Data Belum Lengkap")
+        ' A. Validasi Input (Wajib Diisi)
+        If txtnama.Text = "" Or txtnik.Text = "" Or cmbpoli.SelectedIndex = -1 Or cmbBayar.Text = "" Then
+            MsgBox("Mohon lengkapi Nama, NIK, Poli, dan Metode Pembayaran!", MsgBoxStyle.Exclamation, "Data Belum Lengkap")
             Exit Sub
         End If
 
-        ' --- KONFIRMASI ---
-        If MsgBox("Apakah data sudah benar?", MsgBoxStyle.YesNo + MsgBoxStyle.Question, "Konfirmasi") = MsgBoxResult.No Then Exit Sub
+        ' B. Konfirmasi
+        If MsgBox("Pastikan data sudah benar." & vbCrLf & "Simpan data pasien ini?", MsgBoxStyle.YesNo + MsgBoxStyle.Question, "Konfirmasi") = MsgBoxResult.No Then Exit Sub
 
         Try
             Call BukaKoneksi()
 
-            ' 1. GENERATE NOMOR RM BARU
+            ' C. Generate RM Baru
             NoRMBaru = GenerateNoRM()
+            Dim WaktuSekarang As String = Now.ToString("yyyy-MM-dd HH:mm:ss")
+            Dim TanggalSaja As String = Now.ToString("yyyy-MM-dd")
 
-            ' 2. SIMPAN KE TABEL PASIEN
+            ' D. SIMPAN KE TABEL PASIEN
+            ' Perhatikan: @tgl_reg diisi otomatis oleh variabel TanggalSaja (System Date)
             Dim QueryPasien As String = "INSERT INTO tbl_pasien (no_rm, nama_pasien, nik, tanggal_lahir, jenis_kelamin, alamat, no_telepon, tgl_registrasi) VALUES (@rm, @nama, @nik, @lahir, @jk, @alamat, @telp, @tgl_reg)"
 
             Cmd = New MySqlCommand(QueryPasien, Conn)
             Cmd.Parameters.AddWithValue("@rm", NoRMBaru)
-            Cmd.Parameters.AddWithValue("@nama", txtNama.Text)
-            Cmd.Parameters.AddWithValue("@nik", txtNIK.Text)
-            Cmd.Parameters.AddWithValue("@lahir", dtpLahir.Value.ToString("yyyy-MM-dd"))
-            Cmd.Parameters.AddWithValue("@jk", cmbKelamin.Text)
-            Cmd.Parameters.AddWithValue("@alamat", txtAlamat.Text)
-            Cmd.Parameters.AddWithValue("@telp", txtTelepon.Text)
-            Cmd.Parameters.AddWithValue("@tgl_reg", Now.ToString("yyyy-MM-dd"))
+            Cmd.Parameters.AddWithValue("@nama", txtnama.Text)
+            Cmd.Parameters.AddWithValue("@nik", txtnik.Text)
+            Cmd.Parameters.AddWithValue("@lahir", dtplahir.Value.ToString("yyyy-MM-dd"))
+            Cmd.Parameters.AddWithValue("@jk", cmbkelamin.Text)
+            Cmd.Parameters.AddWithValue("@alamat", txtalamat.Text)
+            Cmd.Parameters.AddWithValue("@telp", txttelepon.Text)
+            Cmd.Parameters.AddWithValue("@tgl_reg", TanggalSaja) ' <--- INI PENGGANTI DTPREGISTRASI
             Cmd.ExecuteNonQuery()
 
-            ' 3. SIMPAN KE TABEL JANJI TEMU (ANTRIAN POLI)
-            ' Status default: 'Menunggu'. Dokter sementara kita set 0 atau null jika belum dipilih, tapi karena wajib poli, kita catat Polinya.
-            ' Asumsi: id_dokter nanti diupdate saat pasien dipanggil perawat/dokter, atau bisa dipilih di form ini jika mau.
-
-            Dim QueryJanji As String = "INSERT INTO tbl_janji_temu (no_rm, id_dokter, id_poli, tanggal_janji, keluhan, tanggal_dibuat, no_antrian, status) VALUES (@rm, @dokter, @poli, @tgl_janji, @keluhan, @tgl_buat, @antrian, 'Menunggu')"
+            ' E. SIMPAN KE TABEL JANJI TEMU (Tambahkan Cara Bayar)
+            ' Kita simpan cara bayar di sini
+            Dim QueryJanji As String = "INSERT INTO tbl_janji_temu (no_rm, id_dokter, id_poli, cara_bayar, tanggal_janji, keluhan, tanggal_dibuat, no_antrian, status) VALUES (@rm, 0, @poli, @bayar, @tgl_janji, @keluhan, @tgl_buat, 0, 'Menunggu')"
 
             Cmd = New MySqlCommand(QueryJanji, Conn)
             Cmd.Parameters.AddWithValue("@rm", NoRMBaru)
-            Cmd.Parameters.AddWithValue("@dokter", 0)
-            Cmd.Parameters.AddWithValue("@poli", cmbpoli.SelectedValue) ' Mengambil ID Poli dari ValueMember
-            Cmd.Parameters.AddWithValue("@tgl_janji", Now.ToString("yyyy-MM-dd"))
+            Cmd.Parameters.AddWithValue("@poli", cmbpoli.SelectedValue)
+            Cmd.Parameters.AddWithValue("@bayar", cmbBayar.Text) ' <--- DATA DARI COMBOBOX PEMBAYARAN
+            Cmd.Parameters.AddWithValue("@tgl_janji", TanggalSaja)
             Cmd.Parameters.AddWithValue("@keluhan", "Pendaftaran Pasien Baru")
-            Cmd.Parameters.AddWithValue("@tgl_buat", Now.ToString("yyyy-MM-dd HH:mm:ss"))
-            Cmd.Parameters.AddWithValue("@antrian", 0)
+            Cmd.Parameters.AddWithValue("@tgl_buat", WaktuSekarang)
             Cmd.ExecuteNonQuery()
 
-            ' --- BERHASIL ---
+            ' F. BERHASIL
             MsgBox("Pendaftaran Berhasil!" & vbCrLf & vbCrLf &
-               "Nama: " & txtNama.Text & vbCrLf &
-               "No. RM: " & NoRMBaru & " (CATAT INI!)" & vbCrLf &
-               "Tujuan: " & cmbpoli.Text, MsgBoxStyle.Information, "Sukses")
-
+                "Nama: " & txtnama.Text & vbCrLf &
+                "No. RM: " & NoRMBaru & " (CATAT!)" & vbCrLf &
+                "Poli: " & cmbpoli.Text & vbCrLf &
+                "Bayar: " & cmbBayar.Text, MsgBoxStyle.Information, "Sukses")
 
         Catch ex As Exception
             MsgBox("Terjadi Kesalahan: " & ex.Message, MsgBoxStyle.Critical)
@@ -126,98 +118,40 @@ Public Class ucPendaftaranPasien
         End Try
     End Sub
 
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles txtnik.TextChanged
-
-    End Sub
-
-    ' --- SUBRUTIN UNTUK MEMPERCANTIK TAMPILAN (MODERN LOOK) ---
-    Sub PercantikTampilan()
-        ' 1. FONT & BACKGROUND
-        ' Gunakan ukuran 9pt agar terlihat lebih profesional dan tidak "Raksasa"
-        Me.Font = New Font("Segoe UI", 9, FontStyle.Regular)
-        Me.BackColor = Color.FromArgb(245, 247, 250) ' Putih keabu-abuan (Soft)
-
-        For Each ctrl As Control In Me.Controls
-            ' --- LABEL (Tulisan) ---
-            If TypeOf ctrl Is Label Then
-                ' Label judul dibuat beda sendiri
-                If ctrl.Name.ToLower().Contains("judul") Or ctrl.Text.Contains("Pendaftaran") Then
-                    ctrl.Font = New Font("Segoe UI", 16, FontStyle.Bold)
-                    ctrl.ForeColor = Color.FromArgb(50, 50, 50) ' Hitam soft
-                Else
-                    ctrl.ForeColor = Color.FromArgb(80, 80, 80) ' Abu tua
-                End If
-            End If
-
-            ' --- TEXTBOX / COMBO / DATE (Inputan) ---
-            If TypeOf ctrl Is TextBox Or TypeOf ctrl Is ComboBox Or TypeOf ctrl Is DateTimePicker Then
-                ctrl.Font = New Font("Segoe UI", 10, FontStyle.Regular) ' Isi inputan sedikit lebih besar dari label
-
-                ' Trik agar TextBox tidak terlihat gepeng (Flat)
-                If TypeOf ctrl Is TextBox Then
-                    DirectCast(ctrl, TextBox).BorderStyle = BorderStyle.FixedSingle
-                End If
-            End If
-
-            ' --- TOMBOL (Button) ---
-            If TypeOf ctrl Is Button Then
-                Dim btn As Button = DirectCast(ctrl, Button)
-                btn.FlatStyle = FlatStyle.Flat
-                btn.FlatAppearance.BorderSize = 0
-                btn.Cursor = Cursors.Hand
-                btn.Height = 35 ' Tinggi tombol dipatok 35px agar ramping
-                btn.Font = New Font("Segoe UI", 9, FontStyle.Bold)
-                btn.ForeColor = Color.White
-
-                ' Pewarnaan Tombol
-                If btn.Text.ToUpper().Contains("SIMPAN") Then
-                    btn.BackColor = Color.FromArgb(0, 120, 215) ' Biru Windows 10
-                ElseIf btn.Text.ToUpper().Contains("HAPUS") Or btn.Text.ToUpper().Contains("BATAL") Then
-                    btn.BackColor = Color.FromArgb(220, 53, 69) ' Merah Soft
-                    btn.ForeColor = Color.White
-                Else
-                    btn.BackColor = Color.LightGray
-                    btn.ForeColor = Color.Black
-                End If
-            End If
-        Next
-    End Sub
-
+    ' --- 5. TOMBOL HAPUS (BATAL TRANSAKSI TERAKHIR) ---
     Private Sub hpsbtn_Click(sender As Object, e As EventArgs) Handles hpsbtn.Click
         If NoRMBaru = "" Then
-            MsgBox("Tidak ada data baru yang bisa dihapus/dibatalkan.", MsgBoxStyle.Exclamation)
+            MsgBox("Tidak ada data baru yang bisa dihapus.", MsgBoxStyle.Exclamation)
             Exit Sub
         End If
 
-        ' 2. Konfirmasi penghapusan (PENTING)
-        If MsgBox("Apakah Anda yakin ingin membatalkan/menghapus data pasien: " & txtnama.Text & "?", MsgBoxStyle.YesNo + MsgBoxStyle.Critical, "Hapus Data") = MsgBoxResult.No Then
-            Exit Sub
-        End If
+        If MsgBox("Batalkan pendaftaran pasien: " & txtnama.Text & "?", MsgBoxStyle.YesNo + MsgBoxStyle.Critical, "Batal Daftar") = MsgBoxResult.No Then Exit Sub
 
         Try
             Call BukaKoneksi()
-
-            ' 3. HAPUS DARI TABEL ANAK DULU (Janji Temu)
-            ' Kita hapus berdasarkan no_rm
-            Dim QueryHapusJanji As String = "DELETE FROM tbl_janji_temu WHERE no_rm = @rm"
-            Cmd = New MySqlCommand(QueryHapusJanji, Conn)
+            ' Hapus Janji Temu dulu (Anak)
+            Dim Q1 As String = "DELETE FROM tbl_janji_temu WHERE no_rm = @rm"
+            Cmd = New MySqlCommand(Q1, Conn)
             Cmd.Parameters.AddWithValue("@rm", NoRMBaru)
             Cmd.ExecuteNonQuery()
 
-            ' 4. BARU HAPUS DARI TABEL INDUK (Pasien)
-            Dim QueryHapusPasien As String = "DELETE FROM tbl_pasien WHERE no_rm = @rm"
-            Cmd = New MySqlCommand(QueryHapusPasien, Conn)
+            ' Hapus Pasien (Induk)
+            Dim Q2 As String = "DELETE FROM tbl_pasien WHERE no_rm = @rm"
+            Cmd = New MySqlCommand(Q2, Conn)
             Cmd.Parameters.AddWithValue("@rm", NoRMBaru)
             Cmd.ExecuteNonQuery()
 
-            MsgBox("Data berhasil dihapus dari database.", MsgBoxStyle.Information)
+            MsgBox("Data berhasil dibatalkan/dihapus.", MsgBoxStyle.Information)
+            Call BersihkanForm()
 
         Catch ex As Exception
-            MsgBox("Gagal menghapus: " & ex.Message, MsgBoxStyle.Critical)
+            MsgBox("Gagal hapus: " & ex.Message)
         Finally
             Call TutupKoneksi()
         End Try
     End Sub
+
+    ' --- 6. BERSIHKAN FORM ---
     Sub BersihkanForm()
         txtnama.Clear()
         txtnik.Clear()
@@ -225,11 +159,50 @@ Public Class ucPendaftaranPasien
         txttelepon.Clear()
         cmbpoli.SelectedIndex = -1
         cmbkelamin.SelectedIndex = -1
+        cmbBayar.SelectedIndex = 0 ' Reset ke Umum
         dtplahir.Value = Now
-
-        ' Reset variabel NoRMBaru agar tombol hapus tidak salah hapus data
         NoRMBaru = ""
+        txtnama.Focus()
+    End Sub
 
-        txtnama.Focus() ' Kembalikan kursor ke nama
+    ' --- 7. PERCANTIK TAMPILAN ---
+    Sub PercantikTampilan()
+        Me.Font = New Font("Segoe UI", 9, FontStyle.Regular)
+        Me.BackColor = Color.FromArgb(245, 247, 250)
+
+        For Each ctrl As Control In Me.Controls
+            ' Label
+            If TypeOf ctrl Is Label Then
+                If ctrl.Text.Contains("Pendaftaran") Then
+                    ctrl.Font = New Font("Segoe UI", 16, FontStyle.Bold)
+                    ctrl.ForeColor = Color.FromArgb(50, 50, 50)
+                Else
+                    ctrl.ForeColor = Color.FromArgb(80, 80, 80)
+                End If
+            End If
+            ' Input Controls
+            If TypeOf ctrl Is TextBox Or TypeOf ctrl Is ComboBox Or TypeOf ctrl Is DateTimePicker Then
+                ctrl.Font = New Font("Segoe UI", 10, FontStyle.Regular)
+                If TypeOf ctrl Is TextBox Then DirectCast(ctrl, TextBox).BorderStyle = BorderStyle.FixedSingle
+            End If
+            ' Buttons
+            If TypeOf ctrl Is Button Then
+                Dim btn As Button = DirectCast(ctrl, Button)
+                btn.FlatStyle = FlatStyle.Flat
+                btn.FlatAppearance.BorderSize = 0
+                btn.Height = 35
+                btn.Cursor = Cursors.Hand
+                If btn.Text.ToUpper.Contains("SIMPAN") Then
+                    btn.BackColor = Color.FromArgb(0, 120, 215)
+                    btn.ForeColor = Color.White
+                Else
+                    btn.BackColor = Color.LightGray
+                End If
+            End If
+        Next
+    End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbBayar.SelectedIndexChanged
+
     End Sub
 End Class

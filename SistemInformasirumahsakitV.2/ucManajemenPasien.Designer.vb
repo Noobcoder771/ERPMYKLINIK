@@ -22,8 +22,8 @@ Partial Class ucManajemenPasien
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.tlpMain = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -38,11 +38,6 @@ Partial Class ucManajemenPasien
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.dgvPasien = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.flpActions = New System.Windows.Forms.FlowLayoutPanel()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
@@ -52,8 +47,11 @@ Partial Class ucManajemenPasien
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.no_rm = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.nama_pasien = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.jenis_kelamin = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.no_telepon = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.tgl_registrasi = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tlpMain.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.pnlSearch.SuspendLayout()
@@ -222,59 +220,25 @@ Partial Class ucManajemenPasien
         Me.dgvPasien.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvPasien.BackgroundColor = System.Drawing.Color.White
         Me.dgvPasien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvPasien.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5})
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvPasien.DefaultCellStyle = DataGridViewCellStyle4
+        Me.dgvPasien.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.no_rm, Me.nama_pasien, Me.jenis_kelamin, Me.no_telepon, Me.tgl_registrasi})
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvPasien.DefaultCellStyle = DataGridViewCellStyle2
         Me.dgvPasien.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgvPasien.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
         Me.dgvPasien.GridColor = System.Drawing.Color.Gainsboro
         Me.dgvPasien.Location = New System.Drawing.Point(13, 215)
         Me.dgvPasien.Margin = New System.Windows.Forms.Padding(13, 3, 3, 3)
         Me.dgvPasien.Name = "dgvPasien"
-        Me.dgvPasien.ReadOnly = True
         Me.dgvPasien.RowHeadersVisible = False
         Me.dgvPasien.RowTemplate.Height = 30
         Me.dgvPasien.Size = New System.Drawing.Size(733, 197)
         Me.dgvPasien.TabIndex = 2
-        '
-        'Column1
-        '
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Column1.DefaultCellStyle = DataGridViewCellStyle3
-        Me.Column1.FillWeight = 45.0!
-        Me.Column1.HeaderText = "No. RM "
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "Nama Lengkap"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "Jenis Kelamin"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "No. Telepon"
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        '
-        'Column5
-        '
-        Me.Column5.HeaderText = "Tgl. Registrasi"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
         '
         'flpActions
         '
@@ -337,8 +301,6 @@ Partial Class ucManajemenPasien
         Me.Panel2.Controls.Add(Me.Button7)
         Me.Panel2.Controls.Add(Me.Button6)
         Me.Panel2.Controls.Add(Me.Button5)
-        Me.Panel2.Controls.Add(Me.Label6)
-        Me.Panel2.Controls.Add(Me.CheckBox1)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(3, 418)
         Me.Panel2.Name = "Panel2"
@@ -394,26 +356,34 @@ Partial Class ucManajemenPasien
         Me.Button5.Text = "Previous"
         Me.Button5.UseVisualStyleBackColor = False
         '
-        'Label6
+        'no_rm
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.Color.Black
-        Me.Label6.Location = New System.Drawing.Point(22, 12)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(15, 17)
-        Me.Label6.TabIndex = 1
-        Me.Label6.Text = "1"
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.no_rm.DefaultCellStyle = DataGridViewCellStyle1
+        Me.no_rm.FillWeight = 45.0!
+        Me.no_rm.HeaderText = "No. RM "
+        Me.no_rm.Name = "no_rm"
         '
-        'CheckBox1
+        'nama_pasien
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(47, 14)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(81, 17)
-        Me.CheckBox1.TabIndex = 0
-        Me.CheckBox1.Text = "CheckBox1"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.nama_pasien.HeaderText = "Nama Lengkap"
+        Me.nama_pasien.Name = "nama_pasien"
+        '
+        'jenis_kelamin
+        '
+        Me.jenis_kelamin.HeaderText = "Jenis Kelamin"
+        Me.jenis_kelamin.Name = "jenis_kelamin"
+        '
+        'no_telepon
+        '
+        Me.no_telepon.HeaderText = "No. Telepon"
+        Me.no_telepon.Name = "no_telepon"
+        '
+        'tgl_registrasi
+        '
+        Me.tgl_registrasi.HeaderText = "Tgl. Registrasi"
+        Me.tgl_registrasi.Name = "tgl_registrasi"
         '
         'ucManajemenPasien
         '
@@ -433,7 +403,6 @@ Partial Class ucManajemenPasien
         CType(Me.dgvPasien, System.ComponentModel.ISupportInitialize).EndInit()
         Me.flpActions.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -453,19 +422,17 @@ Partial Class ucManajemenPasien
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents CheckBox1 As CheckBox
-    Friend WithEvents Column1 As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Label5 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents PictureBox2 As PictureBox
-    Friend WithEvents Label6 As Label
     Friend WithEvents Button5 As Button
     Friend WithEvents Button8 As Button
     Friend WithEvents Button7 As Button
     Friend WithEvents Button6 As Button
+    Friend WithEvents no_rm As DataGridViewTextBoxColumn
+    Friend WithEvents nama_pasien As DataGridViewTextBoxColumn
+    Friend WithEvents jenis_kelamin As DataGridViewTextBoxColumn
+    Friend WithEvents no_telepon As DataGridViewTextBoxColumn
+    Friend WithEvents tgl_registrasi As DataGridViewTextBoxColumn
 End Class

@@ -22,7 +22,8 @@ Partial Class ucfarmasi
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PnlContent = New System.Windows.Forms.Panel()
         Me.pnlWorkspace = New System.Windows.Forms.Panel()
         Me.tlpMain = New System.Windows.Forms.TableLayoutPanel()
@@ -35,14 +36,10 @@ Partial Class ucfarmasi
         Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
-        Me.lblDokter = New System.Windows.Forms.Label()
-        Me.lblPasien = New System.Windows.Forms.Label()
-        Me.lblRM = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.lblKunjungan = New System.Windows.Forms.Label()
         Me.btnProsesResep = New System.Windows.Forms.Button()
         Me.tlpLeft = New System.Windows.Forms.TableLayoutPanel()
         Me.pnlForm = New System.Windows.Forms.Panel()
@@ -73,15 +70,15 @@ Partial Class ucfarmasi
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip()
-        Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.ContextMenuStrip3 = New System.Windows.Forms.ContextMenuStrip()
-        Me.ContextMenuStrip4 = New System.Windows.Forms.ContextMenuStrip()
-        Me.ContextMenuStrip5 = New System.Windows.Forms.ContextMenuStrip()
-        Me.ContextMenuStrip6 = New System.Windows.Forms.ContextMenuStrip()
-        Me.ContextMenuStrip7 = New System.Windows.Forms.ContextMenuStrip()
-        Me.ContextMenuStrip8 = New System.Windows.Forms.ContextMenuStrip()
+        Me.ContextMenuStrip3 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ContextMenuStrip4 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ContextMenuStrip5 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ContextMenuStrip6 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ContextMenuStrip7 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ContextMenuStrip8 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.PnlContent.SuspendLayout()
         Me.pnlWorkspace.SuspendLayout()
         Me.tlpMain.SuspendLayout()
@@ -184,8 +181,8 @@ Partial Class ucfarmasi
         '
         'Column5
         '
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Column5.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Column5.DefaultCellStyle = DataGridViewCellStyle2
         Me.Column5.HeaderText = "No"
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
@@ -223,14 +220,10 @@ Partial Class ucfarmasi
         Me.TableLayoutPanel2.ColumnCount = 2
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel2.Controls.Add(Me.lblDokter, 1, 3)
-        Me.TableLayoutPanel2.Controls.Add(Me.lblPasien, 1, 2)
-        Me.TableLayoutPanel2.Controls.Add(Me.lblRM, 1, 1)
         Me.TableLayoutPanel2.Controls.Add(Me.Label5, 0, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.Label4, 0, 1)
         Me.TableLayoutPanel2.Controls.Add(Me.Label6, 0, 2)
         Me.TableLayoutPanel2.Controls.Add(Me.Label7, 0, 3)
-        Me.TableLayoutPanel2.Controls.Add(Me.lblKunjungan, 1, 0)
         Me.TableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel2.Location = New System.Drawing.Point(3, 188)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
@@ -241,40 +234,6 @@ Partial Class ucfarmasi
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
         Me.TableLayoutPanel2.Size = New System.Drawing.Size(343, 100)
         Me.TableLayoutPanel2.TabIndex = 1
-        '
-        'lblDokter
-        '
-        Me.lblDokter.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lblDokter.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDokter.Location = New System.Drawing.Point(174, 80)
-        Me.lblDokter.Margin = New System.Windows.Forms.Padding(3, 5, 3, 0)
-        Me.lblDokter.Name = "lblDokter"
-        Me.lblDokter.Size = New System.Drawing.Size(166, 20)
-        Me.lblDokter.TabIndex = 7
-        Me.lblDokter.Text = "Label11"
-        Me.lblDokter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'lblPasien
-        '
-        Me.lblPasien.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lblPasien.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPasien.Location = New System.Drawing.Point(174, 50)
-        Me.lblPasien.Name = "lblPasien"
-        Me.lblPasien.Size = New System.Drawing.Size(166, 25)
-        Me.lblPasien.TabIndex = 6
-        Me.lblPasien.Text = "Label10"
-        Me.lblPasien.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'lblRM
-        '
-        Me.lblRM.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lblRM.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblRM.Location = New System.Drawing.Point(174, 25)
-        Me.lblRM.Name = "lblRM"
-        Me.lblRM.Size = New System.Drawing.Size(166, 25)
-        Me.lblRM.TabIndex = 5
-        Me.lblRM.Text = "Label9"
-        Me.lblRM.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Label5
         '
@@ -319,17 +278,6 @@ Partial Class ucfarmasi
         Me.Label7.Size = New System.Drawing.Size(49, 17)
         Me.Label7.TabIndex = 3
         Me.Label7.Text = "Dokter"
-        '
-        'lblKunjungan
-        '
-        Me.lblKunjungan.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lblKunjungan.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblKunjungan.Location = New System.Drawing.Point(174, 0)
-        Me.lblKunjungan.Name = "lblKunjungan"
-        Me.lblKunjungan.Size = New System.Drawing.Size(166, 25)
-        Me.lblKunjungan.TabIndex = 4
-        Me.lblKunjungan.Text = "Label8"
-        Me.lblKunjungan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'btnProsesResep
         '
@@ -771,10 +719,6 @@ Partial Class ucfarmasi
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents btnProsesResep As Button
-    Friend WithEvents lblDokter As Label
-    Friend WithEvents lblPasien As Label
-    Friend WithEvents lblRM As Label
-    Friend WithEvents lblKunjungan As Label
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
