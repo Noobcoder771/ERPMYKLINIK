@@ -143,6 +143,12 @@
     <Compile Include="ucbilling.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UcDokter.Designer.vb">
+      <DependentUpon>UcDokter.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UcDokter.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="ucfarmasi.Designer.vb">
       <DependentUpon>ucfarmasi.vb</DependentUpon>
     </Compile>
@@ -175,6 +181,12 @@
       <DependentUpon>ucjanjitemu.vb</DependentUpon>
     </Compile>
     <Compile Include="ucjanjitemu.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uckartuPasien.Designer.vb">
+      <DependentUpon>uckartuPasien.vb</DependentUpon>
+    </Compile>
+    <Compile Include="uckartuPasien.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ucManajemenPasien.Designer.vb">
@@ -218,6 +230,9 @@
     <EmbeddedResource Include="ucbilling.resx">
       <DependentUpon>ucbilling.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UcDokter.resx">
+      <DependentUpon>UcDokter.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucfarmasi.resx">
       <DependentUpon>ucfarmasi.vb</DependentUpon>
     </EmbeddedResource>
@@ -232,6 +247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucjanjitemu.resx">
       <DependentUpon>ucjanjitemu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uckartuPasien.resx">
+      <DependentUpon>uckartuPasien.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucManajemenPasien.resx">
       <DependentUpon>ucManajemenPasien.vb</DependentUpon>
