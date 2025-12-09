@@ -30,7 +30,7 @@ Partial Class uckartuPasien
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Name = "uckartuPasien"
-        Me.Size = New System.Drawing.Size(252, 685)
+        Me.Size = New System.Drawing.Size(240, 685)
         Me.ResumeLayout(False)
 
     End Sub
