@@ -355,6 +355,7 @@
   <ItemGroup>
     <Content Include="Resources\calendar-regular.png" />
     <Content Include="Resources\clock-regular.png" />
+    <None Include="Resources\person_24dp_5985E1_FILL0_wght400_GRAD0_opsz24.png" />
     <Content Include="Resources\search-solid.png" />
     <Content Include="Resources\tinywow_font_to_png_86176567.png" />
     <Content Include="Resources\user-regular.png" />
