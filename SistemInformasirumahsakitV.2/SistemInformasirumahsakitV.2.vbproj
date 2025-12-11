@@ -183,12 +183,6 @@
     <Compile Include="ucjanjitemu.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="uckartuPasien.Designer.vb">
-      <DependentUpon>uckartuPasien.vb</DependentUpon>
-    </Compile>
-    <Compile Include="uckartuPasien.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="ucManajemenPasien.Designer.vb">
       <DependentUpon>ucManajemenPasien.vb</DependentUpon>
     </Compile>
@@ -247,9 +241,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucjanjitemu.resx">
       <DependentUpon>ucjanjitemu.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="uckartuPasien.resx">
-      <DependentUpon>uckartuPasien.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucManajemenPasien.resx">
       <DependentUpon>ucManajemenPasien.vb</DependentUpon>
@@ -354,6 +345,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\calendar-regular.png" />
+    <None Include="Resources\clinical_notes_24dp_434343_FILL0_wght400_GRAD0_opsz24.png" />
+    <None Include="Resources\clinical_notes_24dp_F3F3F3_FILL0_wght400_GRAD0_opsz24.png" />
     <Content Include="Resources\clock-regular.png" />
     <None Include="Resources\person_24dp_5985E1_FILL0_wght400_GRAD0_opsz24.png" />
     <Content Include="Resources\search-solid.png" />

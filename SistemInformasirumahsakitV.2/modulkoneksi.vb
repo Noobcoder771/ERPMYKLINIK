@@ -3,7 +3,7 @@ Imports System.Data ' Penting agar kata "ConnectionState" tidak error
 
 Module ModulKoneksi
     ' Info Database (Sesuai punya kamu: sirs_db)
-    Public strKoneksi As String = "Server=localhost;User Id=root;Password=;Database=sirs_db"
+    Public strKoneksi As String = "Server=localhost;User Id=root;Password=;Database=sirs"
 
     ' Variabel Global (Untuk Form Pendaftaran, dll)
     Public Conn As MySqlConnection

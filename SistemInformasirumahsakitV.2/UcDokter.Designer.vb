@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class UcDokter
+Partial Class ucDokter
     Inherits System.Windows.Forms.UserControl
 
     'UserControl overrides dispose to clean up the component list.
@@ -34,34 +34,34 @@ Partial Class UcDokter
         Me.txtSubjective = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.txtKeluhanUtama = New System.Windows.Forms.TextBox()
+        Me.txtKeluhanawal = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.lblDetailPasien = New System.Windows.Forms.Label()
+        Me.lblNamaPasien = New System.Windows.Forms.Label()
         Me.pnlResep = New System.Windows.Forms.Panel()
         Me.flpKontenKanan = New System.Windows.Forms.FlowLayoutPanel()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.txtAlergi = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.txtResep = New System.Windows.Forms.TextBox()
+        Me.txtTindakan = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.btnSimpan = New System.Windows.Forms.Button()
+        Me.btnRiwayat = New System.Windows.Forms.Button()
+        Me.btnSimpanperiksa = New System.Windows.Forms.Button()
         Me.pnlList = New System.Windows.Forms.Panel()
-        Me.flpAntrian = New System.Windows.Forms.FlowLayoutPanel()
+        Me.flpDaftarPasien = New System.Windows.Forms.FlowLayoutPanel()
         Me.lblAntrianPasien = New System.Windows.Forms.Label()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.btnRiwayatLama = New System.Windows.Forms.Button()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.txtAlergi = New System.Windows.Forms.TextBox()
         Me.ContextMenuStrip3 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.TableLayoutPanel1.SuspendLayout()
         Me.pnlPeriksa.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlResep.SuspendLayout()
         Me.flpKontenKanan.SuspendLayout()
         Me.pnlList.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -93,7 +93,7 @@ Partial Class UcDokter
         Me.pnlPeriksa.Controls.Add(Me.txtSubjective)
         Me.pnlPeriksa.Controls.Add(Me.Label5)
         Me.pnlPeriksa.Controls.Add(Me.Label4)
-        Me.pnlPeriksa.Controls.Add(Me.txtKeluhanUtama)
+        Me.pnlPeriksa.Controls.Add(Me.txtKeluhanawal)
         Me.pnlPeriksa.Controls.Add(Me.Label3)
         Me.pnlPeriksa.Controls.Add(Me.Panel1)
         Me.pnlPeriksa.Dock = System.Windows.Forms.DockStyle.Fill
@@ -198,18 +198,18 @@ Partial Class UcDokter
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "2. Catatan Pemeriksaan (SOAP)"
         '
-        'txtKeluhanUtama
+        'txtKeluhanawal
         '
-        Me.txtKeluhanUtama.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.txtKeluhanawal.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtKeluhanUtama.BackColor = System.Drawing.Color.White
-        Me.txtKeluhanUtama.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtKeluhanUtama.Location = New System.Drawing.Point(22, 117)
-        Me.txtKeluhanUtama.Multiline = True
-        Me.txtKeluhanUtama.Name = "txtKeluhanUtama"
-        Me.txtKeluhanUtama.ReadOnly = True
-        Me.txtKeluhanUtama.Size = New System.Drawing.Size(323, 60)
-        Me.txtKeluhanUtama.TabIndex = 2
+        Me.txtKeluhanawal.BackColor = System.Drawing.Color.White
+        Me.txtKeluhanawal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtKeluhanawal.Location = New System.Drawing.Point(22, 117)
+        Me.txtKeluhanawal.Multiline = True
+        Me.txtKeluhanawal.Name = "txtKeluhanawal"
+        Me.txtKeluhanawal.ReadOnly = True
+        Me.txtKeluhanawal.Size = New System.Drawing.Size(323, 60)
+        Me.txtKeluhanawal.TabIndex = 2
         '
         'Label3
         '
@@ -225,29 +225,49 @@ Partial Class UcDokter
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(253, Byte), Integer))
         Me.Panel1.Controls.Add(Me.PictureBox1)
-        Me.Panel1.Controls.Add(Me.Label13)
-        Me.Panel1.Controls.Add(Me.Label2)
+        Me.Panel1.Controls.Add(Me.lblDetailPasien)
+        Me.Panel1.Controls.Add(Me.lblNamaPasien)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(15, 15)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(330, 60)
         Me.Panel1.TabIndex = 0
         '
-        'Label2
+        'PictureBox1
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(39, 5)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(122, 25)
-        Me.Label2.TabIndex = 0
-        Me.Label2.Text = "Budi Santoso"
+        Me.PictureBox1.BackgroundImage = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.person_24dp_5985E1_FILL0_wght400_GRAD0_opsz24
+        Me.PictureBox1.Location = New System.Drawing.Point(11, 20)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(25, 27)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 2
+        Me.PictureBox1.TabStop = False
+        '
+        'lblDetailPasien
+        '
+        Me.lblDetailPasien.AutoSize = True
+        Me.lblDetailPasien.ForeColor = System.Drawing.Color.Gray
+        Me.lblDetailPasien.Location = New System.Drawing.Point(41, 32)
+        Me.lblDetailPasien.Name = "lblDetailPasien"
+        Me.lblDetailPasien.Size = New System.Drawing.Size(213, 15)
+        Me.lblDetailPasien.TabIndex = 1
+        Me.lblDetailPasien.Text = "Laki-laki, 45 Tahun | RM-00123 | Umum"
+        '
+        'lblNamaPasien
+        '
+        Me.lblNamaPasien.AutoSize = True
+        Me.lblNamaPasien.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNamaPasien.Location = New System.Drawing.Point(39, 5)
+        Me.lblNamaPasien.Name = "lblNamaPasien"
+        Me.lblNamaPasien.Size = New System.Drawing.Size(122, 25)
+        Me.lblNamaPasien.TabIndex = 0
+        Me.lblNamaPasien.Text = "Budi Santoso"
         '
         'pnlResep
         '
         Me.pnlResep.BackColor = System.Drawing.Color.White
         Me.pnlResep.Controls.Add(Me.flpKontenKanan)
-        Me.pnlResep.Controls.Add(Me.btnSimpan)
+        Me.pnlResep.Controls.Add(Me.btnSimpanperiksa)
         Me.pnlResep.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlResep.Location = New System.Drawing.Point(635, 10)
         Me.pnlResep.Margin = New System.Windows.Forms.Padding(5, 10, 10, 10)
@@ -262,9 +282,9 @@ Partial Class UcDokter
         Me.flpKontenKanan.Controls.Add(Me.Label9)
         Me.flpKontenKanan.Controls.Add(Me.txtAlergi)
         Me.flpKontenKanan.Controls.Add(Me.Label11)
-        Me.flpKontenKanan.Controls.Add(Me.txtResep)
+        Me.flpKontenKanan.Controls.Add(Me.txtTindakan)
         Me.flpKontenKanan.Controls.Add(Me.Label12)
-        Me.flpKontenKanan.Controls.Add(Me.btnRiwayatLama)
+        Me.flpKontenKanan.Controls.Add(Me.btnRiwayat)
         Me.flpKontenKanan.Dock = System.Windows.Forms.DockStyle.Fill
         Me.flpKontenKanan.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
         Me.flpKontenKanan.Location = New System.Drawing.Point(15, 15)
@@ -284,6 +304,19 @@ Partial Class UcDokter
         Me.Label9.TabIndex = 0
         Me.Label9.Text = "Catatan Dan Alergi"
         '
+        'txtAlergi
+        '
+        Me.txtAlergi.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtAlergi.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(235, Byte), Integer), CType(CType(238, Byte), Integer))
+        Me.txtAlergi.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtAlergi.Location = New System.Drawing.Point(3, 32)
+        Me.txtAlergi.Margin = New System.Windows.Forms.Padding(3, 10, 3, 3)
+        Me.txtAlergi.Multiline = True
+        Me.txtAlergi.Name = "txtAlergi"
+        Me.txtAlergi.Size = New System.Drawing.Size(319, 44)
+        Me.txtAlergi.TabIndex = 6
+        '
         'Label11
         '
         Me.Label11.AutoSize = True
@@ -295,17 +328,17 @@ Partial Class UcDokter
         Me.Label11.TabIndex = 2
         Me.Label11.Text = "E=Resep Dan Tindakan"
         '
-        'txtResep
+        'txtTindakan
         '
-        Me.txtResep.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.txtTindakan.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtResep.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtResep.Location = New System.Drawing.Point(3, 127)
-        Me.txtResep.Margin = New System.Windows.Forms.Padding(3, 15, 3, 3)
-        Me.txtResep.Multiline = True
-        Me.txtResep.Name = "txtResep"
-        Me.txtResep.Size = New System.Drawing.Size(319, 266)
-        Me.txtResep.TabIndex = 3
+        Me.txtTindakan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtTindakan.Location = New System.Drawing.Point(3, 127)
+        Me.txtTindakan.Margin = New System.Windows.Forms.Padding(3, 15, 3, 3)
+        Me.txtTindakan.Multiline = True
+        Me.txtTindakan.Name = "txtTindakan"
+        Me.txtTindakan.Size = New System.Drawing.Size(319, 266)
+        Me.txtTindakan.TabIndex = 3
         '
         'Label12
         '
@@ -318,24 +351,36 @@ Partial Class UcDokter
         Me.Label12.TabIndex = 4
         Me.Label12.Text = "AKSI LANJUTAN"
         '
-        'btnSimpan
+        'btnRiwayat
         '
-        Me.btnSimpan.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
-        Me.btnSimpan.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.btnSimpan.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSimpan.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSimpan.ForeColor = System.Drawing.Color.White
-        Me.btnSimpan.Location = New System.Drawing.Point(15, 513)
-        Me.btnSimpan.Name = "btnSimpan"
-        Me.btnSimpan.Size = New System.Drawing.Size(325, 52)
-        Me.btnSimpan.TabIndex = 0
-        Me.btnSimpan.Text = "SIMPAN DAN SELESAIKAN"
-        Me.btnSimpan.UseVisualStyleBackColor = False
+        Me.btnRiwayat.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnRiwayat.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnRiwayat.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
+        Me.btnRiwayat.Location = New System.Drawing.Point(3, 441)
+        Me.btnRiwayat.Name = "btnRiwayat"
+        Me.btnRiwayat.Size = New System.Drawing.Size(319, 48)
+        Me.btnRiwayat.TabIndex = 5
+        Me.btnRiwayat.Text = "Lihat Riwayat Lama"
+        Me.btnRiwayat.UseVisualStyleBackColor = True
+        '
+        'btnSimpanperiksa
+        '
+        Me.btnSimpanperiksa.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
+        Me.btnSimpanperiksa.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.btnSimpanperiksa.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSimpanperiksa.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSimpanperiksa.ForeColor = System.Drawing.Color.White
+        Me.btnSimpanperiksa.Location = New System.Drawing.Point(15, 513)
+        Me.btnSimpanperiksa.Name = "btnSimpanperiksa"
+        Me.btnSimpanperiksa.Size = New System.Drawing.Size(325, 52)
+        Me.btnSimpanperiksa.TabIndex = 0
+        Me.btnSimpanperiksa.Text = "SIMPAN DAN SELESAIKAN"
+        Me.btnSimpanperiksa.UseVisualStyleBackColor = False
         '
         'pnlList
         '
         Me.pnlList.BackColor = System.Drawing.Color.White
-        Me.pnlList.Controls.Add(Me.flpAntrian)
+        Me.pnlList.Controls.Add(Me.flpDaftarPasien)
         Me.pnlList.Controls.Add(Me.lblAntrianPasien)
         Me.pnlList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlList.Location = New System.Drawing.Point(10, 10)
@@ -345,16 +390,16 @@ Partial Class UcDokter
         Me.pnlList.Size = New System.Drawing.Size(245, 580)
         Me.pnlList.TabIndex = 3
         '
-        'flpAntrian
+        'flpDaftarPasien
         '
-        Me.flpAntrian.AutoScroll = True
-        Me.flpAntrian.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.flpAntrian.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
-        Me.flpAntrian.Location = New System.Drawing.Point(15, 36)
-        Me.flpAntrian.Name = "flpAntrian"
-        Me.flpAntrian.Size = New System.Drawing.Size(215, 529)
-        Me.flpAntrian.TabIndex = 1
-        Me.flpAntrian.WrapContents = False
+        Me.flpDaftarPasien.AutoScroll = True
+        Me.flpDaftarPasien.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.flpDaftarPasien.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
+        Me.flpDaftarPasien.Location = New System.Drawing.Point(15, 36)
+        Me.flpDaftarPasien.Name = "flpDaftarPasien"
+        Me.flpDaftarPasien.Size = New System.Drawing.Size(215, 529)
+        Me.flpDaftarPasien.TabIndex = 1
+        Me.flpDaftarPasien.WrapContents = False
         '
         'lblAntrianPasien
         '
@@ -378,57 +423,12 @@ Partial Class UcDokter
         Me.ContextMenuStrip2.Name = "ContextMenuStrip2"
         Me.ContextMenuStrip2.Size = New System.Drawing.Size(61, 4)
         '
-        'btnRiwayatLama
-        '
-        Me.btnRiwayatLama.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnRiwayatLama.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnRiwayatLama.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
-        Me.btnRiwayatLama.Location = New System.Drawing.Point(3, 441)
-        Me.btnRiwayatLama.Name = "btnRiwayatLama"
-        Me.btnRiwayatLama.Size = New System.Drawing.Size(319, 48)
-        Me.btnRiwayatLama.TabIndex = 5
-        Me.btnRiwayatLama.Text = "Lihat Riwayat Lama"
-        Me.btnRiwayatLama.UseVisualStyleBackColor = True
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.ForeColor = System.Drawing.Color.Gray
-        Me.Label13.Location = New System.Drawing.Point(41, 32)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(212, 15)
-        Me.Label13.TabIndex = 1
-        Me.Label13.Text = "Laki-laki, 45 Tahun | RM-00123 | Umum"
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackgroundImage = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.person_24dp_5985E1_FILL0_wght400_GRAD0_opsz24
-        Me.PictureBox1.Location = New System.Drawing.Point(11, 20)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(25, 27)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 2
-        Me.PictureBox1.TabStop = False
-        '
-        'txtAlergi
-        '
-        Me.txtAlergi.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtAlergi.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(235, Byte), Integer), CType(CType(238, Byte), Integer))
-        Me.txtAlergi.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtAlergi.Location = New System.Drawing.Point(3, 32)
-        Me.txtAlergi.Margin = New System.Windows.Forms.Padding(3, 10, 3, 3)
-        Me.txtAlergi.Multiline = True
-        Me.txtAlergi.Name = "txtAlergi"
-        Me.txtAlergi.Size = New System.Drawing.Size(319, 44)
-        Me.txtAlergi.TabIndex = 6
-        '
         'ContextMenuStrip3
         '
         Me.ContextMenuStrip3.Name = "ContextMenuStrip3"
         Me.ContextMenuStrip3.Size = New System.Drawing.Size(61, 4)
         '
-        'UcDokter
+        'ucDokter
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -436,19 +436,19 @@ Partial Class UcDokter
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.Name = "UcDokter"
+        Me.Name = "ucDokter"
         Me.Size = New System.Drawing.Size(1000, 600)
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.pnlPeriksa.ResumeLayout(False)
         Me.pnlPeriksa.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlResep.ResumeLayout(False)
         Me.flpKontenKanan.ResumeLayout(False)
         Me.flpKontenKanan.PerformLayout()
         Me.pnlList.ResumeLayout(False)
         Me.pnlList.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -459,10 +459,10 @@ Partial Class UcDokter
     Friend WithEvents lblAntrianPasien As Label
     Friend WithEvents pnlList As Panel
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents flpAntrian As FlowLayoutPanel
-    Friend WithEvents Label2 As Label
+    Friend WithEvents flpDaftarPasien As FlowLayoutPanel
+    Friend WithEvents lblNamaPasien As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents txtKeluhanUtama As TextBox
+    Friend WithEvents txtKeluhanawal As TextBox
     Friend WithEvents txtSubjective As TextBox
     Friend WithEvents Label5 As Label
     Friend WithEvents Label4 As Label
@@ -472,16 +472,16 @@ Partial Class UcDokter
     Friend WithEvents txtPlanning As TextBox
     Friend WithEvents Label8 As Label
     Friend WithEvents txtDiagnosa As TextBox
-    Friend WithEvents btnSimpan As Button
+    Friend WithEvents btnSimpanperiksa As Button
     Friend WithEvents flpKontenKanan As FlowLayoutPanel
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents Label9 As Label
     Friend WithEvents Label11 As Label
-    Friend WithEvents txtResep As TextBox
+    Friend WithEvents txtTindakan As TextBox
     Friend WithEvents Label12 As Label
     Friend WithEvents ContextMenuStrip2 As ContextMenuStrip
-    Friend WithEvents btnRiwayatLama As Button
-    Friend WithEvents Label13 As Label
+    Friend WithEvents btnRiwayat As Button
+    Friend WithEvents lblDetailPasien As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents txtAlergi As TextBox
     Friend WithEvents ContextMenuStrip3 As ContextMenuStrip

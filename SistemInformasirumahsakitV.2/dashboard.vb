@@ -143,4 +143,8 @@ Public Class frmDashboard
     Private Sub Btnrekam_Click(sender As Object, e As EventArgs) Handles Btnrekam.Click
         LoadUserControl(New ucrekammedis())
     End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        LoadUserControl(New UcDokter())
+    End Sub
 End Class
