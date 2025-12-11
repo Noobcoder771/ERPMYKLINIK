@@ -2,108 +2,163 @@
 
 Public Class ucManajemenPasien
 
+    ' --- 1. SAAT FORM DIBUKA ---
     Private Sub ucManajemenPasien_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Call AturGrid() ' <-- INI KUNCI AGAR TABEL RAPI
         Call TampilDataPasien("")
-
-        ' Pastikan kolom No RM tidak bisa diedit (Read Only), sisanya boleh
-        If dgvPasien.Columns.Contains("no_rm") Then
-            dgvPasien.Columns("no_rm").ReadOnly = True
-            dgvPasien.Columns("no_rm").DefaultCellStyle.BackColor = Color.LightGray ' Kasih warna beda
-        End If
     End Sub
 
-    Private Sub TableLayoutPanel1_Paint(sender As Object, e As PaintEventArgs)
+    ' --- 2. PENGATURAN GRID (ANTI NUBRUK) ---
+    Sub AturGrid()
+        ' Matikan pembuatan kolom otomatis (Wajib!)
+        dgvPasien.AutoGenerateColumns = False
 
+        ' MAPPING: Sambungkan Kolom Desainmu dengan Nama Kolom Database
+        ' Pastikan urutan indeks (0, 1, 2...) sesuai urutan kolom di desainmu
+
+        ' Kolom 0: No RM
+        dgvPasien.Columns(0).DataPropertyName = "no_rm"
+        dgvPasien.Columns(0).ReadOnly = True ' No RM gaboleh diedit
+        dgvPasien.Columns(0).DefaultCellStyle.BackColor = Color.LightGray
+
+        ' Kolom 1: Nama Lengkap
+        dgvPasien.Columns(1).DataPropertyName = "nama_pasien"
+
+        ' Kolom 2: Jenis Kelamin
+        dgvPasien.Columns(2).DataPropertyName = "jenis_kelamin"
+
+        ' Kolom 3: No Telepon
+        dgvPasien.Columns(3).DataPropertyName = "no_telepon"
+
+        ' Kolom 4: Tgl Registrasi
+        dgvPasien.Columns(4).DataPropertyName = "tgl_registrasi"
+        dgvPasien.Columns(4).ReadOnly = True ' Tanggal gaboleh diedit sembarangan
     End Sub
 
-    Private Sub Label4_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub TableLayoutPanel1_Paint_1(sender As Object, e As PaintEventArgs)
-
-    End Sub
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub tlpMain_Paint(sender As Object, e As PaintEventArgs) Handles tlpMain.Paint
-
-    End Sub
-
-    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
-
-    End Sub
-
-    Private Sub pnlSearch_Paint(sender As Object, e As PaintEventArgs) Handles pnlSearch.Paint
-
-    End Sub
-
-    Private Sub dgvPasien_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvPasien.CellContentClick
-        Try
-            ' Ambil data penting dari baris yang diedit
-            Dim BarisKe As Integer = e.RowIndex
-            Dim KolomKe As Integer = e.ColumnIndex
-
-            ' Ambil No RM sebagai kunci (Primary Key)
-            Dim KunciRM As String = dgvPasien.Rows(BarisKe).Cells("no_rm").Value.ToString()
-
-            ' Ambil Nama Kolom yang diedit (Harus sama dengan nama kolom di MySQL!)
-            Dim NamaKolom As String = dgvPasien.Columns(KolomKe).Name
-
-            ' Ambil Nilai Baru yang barusan diketik
-            Dim NilaiBaru As String = dgvPasien.Rows(BarisKe).Cells(KolomKe).Value.ToString()
-
-            ' --- PROSES UPDATE KE DATABASE ---
-            Call BukaKoneksi()
-
-            ' Query Dinamis: Update tabel SET kolom_ini = nilai_baru WHERE no_rm = kunci
-            Dim query As String = "UPDATE tbl_pasien SET " & NamaKolom & " = @nilai WHERE no_rm = @rm"
-
-            Cmd = New MySqlCommand(query, Conn)
-            Cmd.Parameters.AddWithValue("@nilai", NilaiBaru)
-            Cmd.Parameters.AddWithValue("@rm", KunciRM)
-
-            Cmd.ExecuteNonQuery()
-
-            ' Feedback kecil di pojok form atau console (Opsional)
-            ' Debug.WriteLine("Data tersimpan otomatis")
-
-        Catch ex As Exception
-            MsgBox("Gagal Simpan: " & ex.Message & vbCrLf & "Pastikan Nama Kolom Tabel sama dengan Database!")
-            ' Kembalikan data lama jika error (Reload)
-            Call TampilDataPasien("")
-        End Try
-
-        Call TutupKoneksi()
-    End Sub
+    ' --- 3. TAMPILKAN DATA ---
     Sub TampilDataPasien(keyword As String)
         Try
             Call BukaKoneksi()
             Dim query As String
 
-            ' Cek apakah sedang mencari atau menampilkan semua
             If keyword = "" Then
-                ' Ambil 50 data terbaru
-                query = "SELECT no_rm, nama_pasien, nik, jenis_kelamin, no_telepon, tgl_registrasi FROM tbl_pasien ORDER BY tgl_registrasi DESC LIMIT 50"
+                ' Tampilkan 50 data terbaru
+                query = "SELECT no_rm, nama_pasien, jenis_kelamin, no_telepon, tgl_registrasi FROM tbl_pasien ORDER BY tgl_registrasi DESC LIMIT 50"
             Else
-                ' Cari berdasarkan Nama atau RM
-                query = "SELECT no_rm, nama_pasien, nik, jenis_kelamin, no_telepon, tgl_registrasi FROM tbl_pasien WHERE no_rm LIKE '%" & keyword & "%' OR nama_pasien LIKE '%" & keyword & "%'"
+                ' Mode Pencarian
+                query = "SELECT no_rm, nama_pasien, jenis_kelamin, no_telepon, tgl_registrasi FROM tbl_pasien WHERE no_rm LIKE '%" & keyword & "%' OR nama_pasien LIKE '%" & keyword & "%'"
             End If
 
             Dim da As New MySqlDataAdapter(query, Conn)
             Dim dt As New DataTable
             da.Fill(dt)
 
-            ' Masukkan data ke DataGridView
             dgvPasien.DataSource = dt
-
-            ' (Opsional) Rapikan kolom
-            dgvPasien.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
 
         Catch ex As Exception
             MsgBox("Gagal Tampil Data: " & ex.Message)
         End Try
     End Sub
+
+    ' --- 4. TOMBOL CARI ---
+    Private Sub btnCari_Click(sender As Object, e As EventArgs) Handles btnCari.Click
+        ' Pastikan nama tombol carimu btnCari
+        Call TampilDataPasien(txtCari.Text)
+    End Sub
+
+    ' --- 5. SIMPAN OTOMATIS (EDIT ALA EXCEL) ---
+    ' Event ini berjalan saat kamu selesai mengedit sel dan tekan Enter
+    Private Sub dgvPasien_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgvPasien.CellEndEdit
+        If e.RowIndex < 0 Then Exit Sub
+
+        Try
+            Dim BarisKe As Integer = e.RowIndex
+            Dim KolomKe As Integer = e.ColumnIndex
+
+            ' Safety Check
+            If dgvPasien.Rows(BarisKe).Cells(0).Value Is Nothing Then Exit Sub
+
+            Dim KunciRM As String = dgvPasien.Rows(BarisKe).Cells(0).Value.ToString()
+            Dim NilaiBaru As String = ""
+
+            If dgvPasien.Rows(BarisKe).Cells(KolomKe).Value IsNot Nothing Then
+                NilaiBaru = dgvPasien.Rows(BarisKe).Cells(KolomKe).Value.ToString()
+            End If
+
+            ' Tentukan kolom mana yang diedit berdasarkan indeksnya
+            Dim NamaKolomDB As String = ""
+            Select Case KolomKe
+                Case 1 : NamaKolomDB = "nama_pasien"
+                Case 2 : NamaKolomDB = "jenis_kelamin"
+                Case 3 : NamaKolomDB = "no_telepon"
+            End Select
+
+            If NamaKolomDB = "" Then Exit Sub ' Kolom lain (RM/Tgl) diabaikan
+
+            ' Update Database
+            Call BukaKoneksi()
+            Dim query As String = "UPDATE tbl_pasien SET " & NamaKolomDB & " = @nilai WHERE no_rm = @rm"
+            Cmd = New MySqlCommand(query, Conn)
+            Cmd.Parameters.AddWithValue("@nilai", NilaiBaru)
+            Cmd.Parameters.AddWithValue("@rm", KunciRM)
+            Cmd.ExecuteNonQuery()
+
+            ' Feedback (Opsional)
+            ' MsgBox("Data tersimpan otomatis.") 
+
+        Catch ex As Exception
+            MsgBox("Gagal Simpan: " & ex.Message)
+            Call TampilDataPasien("") ' Refresh jika error
+        End Try
+        Call TutupKoneksi()
+    End Sub
+
+    ' --- 6. TOMBOL HAPUS PASIEN ---
+    Private Sub btnHapusPasien_Click(sender As Object, e As EventArgs) Handles btnHapusPasien.Click
+        ' Cek apakah ada baris yang dipilih
+        If dgvPasien.SelectedRows.Count = 0 And dgvPasien.CurrentRow Is Nothing Then
+            MsgBox("Klik dulu baris pasien yang mau dihapus!", MsgBoxStyle.Exclamation)
+            Exit Sub
+        End If
+
+        ' Ambil No RM dari baris yang aktif
+        Dim BarisAktif As Integer = dgvPasien.CurrentRow.Index
+        Dim NoRM As String = dgvPasien.Rows(BarisAktif).Cells(0).Value.ToString()
+        Dim Nama As String = dgvPasien.Rows(BarisAktif).Cells(1).Value.ToString()
+
+        If MsgBox("Yakin HAPUS PERMANEN data pasien: " & Nama & "?" & vbCrLf & "Data riwayat medis juga akan hilang!", MsgBoxStyle.YesNo + MsgBoxStyle.Critical) = MsgBoxResult.Yes Then
+            Try
+                Call BukaKoneksi()
+
+                ' Hapus data anak dulu (Janji Temu)
+                Dim cmd1 As New MySqlCommand("DELETE FROM tbl_janji_temu WHERE no_rm = @rm", Conn)
+                cmd1.Parameters.AddWithValue("@rm", NoRM)
+                cmd1.ExecuteNonQuery()
+
+                ' Hapus data induk (Pasien)
+                Dim cmd2 As New MySqlCommand("DELETE FROM tbl_pasien WHERE no_rm = @rm", Conn)
+                cmd2.Parameters.AddWithValue("@rm", NoRM)
+                cmd2.ExecuteNonQuery()
+
+                MsgBox("Data Terhapus.", MsgBoxStyle.Information)
+                Call TampilDataPasien("") ' Refresh Tabel
+
+            Catch ex As Exception
+                MsgBox("Gagal Hapus: " & ex.Message)
+            Finally
+                Call TutupKoneksi()
+            End Try
+        End If
+    End Sub
+
+    ' --- 7. TOMBOL EDIT DATA (INFO) ---
+    Private Sub btnEditData_Click(sender As Object, e As EventArgs) Handles btnEditData.Click
+        MsgBox("Fitur Edit Cepat Aktif!" & vbCrLf & vbCrLf & "Silakan KLIK LANGSUNG pada tabel (Nama/Telepon) untuk mengubah isinya, lalu tekan ENTER untuk menyimpan.", MsgBoxStyle.Information, "Info Edit")
+    End Sub
+
+    ' --- 8. TOMBOL RIWAYAT (PLACEHOLDER) ---
+    Private Sub btnRiwayat_Click(sender As Object, e As EventArgs) Handles btnRiwayat.Click
+        MsgBox("Fitur Riwayat Kunjungan akan segera hadir.", MsgBoxStyle.Information)
+    End Sub
+
 End Class

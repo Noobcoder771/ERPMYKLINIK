@@ -22,8 +22,8 @@ Partial Class ucManajemenPasien
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.tlpMain = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -33,25 +33,25 @@ Partial Class ucManajemenPasien
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.btncari = New System.Windows.Forms.Button()
+        Me.txtnama = New System.Windows.Forms.TextBox()
+        Me.txtcari = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.dgvPasien = New System.Windows.Forms.DataGridView()
-        Me.flpActions = New System.Windows.Forms.FlowLayoutPanel()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Button8 = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
         Me.no_rm = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.nama_pasien = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.jenis_kelamin = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.no_telepon = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tgl_registrasi = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.flpActions = New System.Windows.Forms.FlowLayoutPanel()
+        Me.btneditdata = New System.Windows.Forms.Button()
+        Me.btnriwayat = New System.Windows.Forms.Button()
+        Me.btnhapuspasien = New System.Windows.Forms.Button()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Button8 = New System.Windows.Forms.Button()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Button5 = New System.Windows.Forms.Button()
         Me.tlpMain.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.pnlSearch.SuspendLayout()
@@ -122,9 +122,9 @@ Partial Class ucManajemenPasien
         Me.pnlSearch.Controls.Add(Me.PictureBox1)
         Me.pnlSearch.Controls.Add(Me.Label5)
         Me.pnlSearch.Controls.Add(Me.Label4)
-        Me.pnlSearch.Controls.Add(Me.Button1)
-        Me.pnlSearch.Controls.Add(Me.TextBox2)
-        Me.pnlSearch.Controls.Add(Me.TextBox1)
+        Me.pnlSearch.Controls.Add(Me.btncari)
+        Me.pnlSearch.Controls.Add(Me.txtnama)
+        Me.pnlSearch.Controls.Add(Me.txtcari)
         Me.pnlSearch.Controls.Add(Me.Label3)
         Me.pnlSearch.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -175,34 +175,34 @@ Partial Class ucManajemenPasien
         Me.Label4.TabIndex = 4
         Me.Label4.Text = "No. Rekam Medis (No. RM)"
         '
-        'Button1
+        'btncari
         '
-        Me.Button1.BackColor = System.Drawing.Color.DodgerBlue
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(503, 51)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(85, 28)
-        Me.Button1.TabIndex = 3
-        Me.Button1.Text = "CARI"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.btncari.BackColor = System.Drawing.Color.DodgerBlue
+        Me.btncari.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btncari.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btncari.ForeColor = System.Drawing.Color.White
+        Me.btncari.Location = New System.Drawing.Point(503, 51)
+        Me.btncari.Name = "btncari"
+        Me.btncari.Size = New System.Drawing.Size(85, 28)
+        Me.btncari.TabIndex = 3
+        Me.btncari.Text = "CARI"
+        Me.btncari.UseVisualStyleBackColor = False
         '
-        'TextBox2
+        'txtnama
         '
-        Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(287, 57)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(181, 22)
-        Me.TextBox2.TabIndex = 2
+        Me.txtnama.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtnama.Location = New System.Drawing.Point(287, 57)
+        Me.txtnama.Name = "txtnama"
+        Me.txtnama.Size = New System.Drawing.Size(181, 22)
+        Me.txtnama.TabIndex = 2
         '
-        'TextBox1
+        'txtcari
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(25, 57)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(199, 22)
-        Me.TextBox1.TabIndex = 1
+        Me.txtcari.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtcari.Location = New System.Drawing.Point(25, 57)
+        Me.txtcari.Name = "txtcari"
+        Me.txtcari.Size = New System.Drawing.Size(199, 22)
+        Me.txtcari.TabIndex = 1
         '
         'Label3
         '
@@ -221,14 +221,14 @@ Partial Class ucManajemenPasien
         Me.dgvPasien.BackgroundColor = System.Drawing.Color.White
         Me.dgvPasien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvPasien.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.no_rm, Me.nama_pasien, Me.jenis_kelamin, Me.no_telepon, Me.tgl_registrasi})
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvPasien.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvPasien.DefaultCellStyle = DataGridViewCellStyle4
         Me.dgvPasien.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvPasien.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
         Me.dgvPasien.GridColor = System.Drawing.Color.Gainsboro
@@ -240,11 +240,40 @@ Partial Class ucManajemenPasien
         Me.dgvPasien.Size = New System.Drawing.Size(733, 197)
         Me.dgvPasien.TabIndex = 2
         '
+        'no_rm
+        '
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.no_rm.DefaultCellStyle = DataGridViewCellStyle3
+        Me.no_rm.FillWeight = 45.0!
+        Me.no_rm.HeaderText = "No. RM "
+        Me.no_rm.Name = "no_rm"
+        '
+        'nama_pasien
+        '
+        Me.nama_pasien.HeaderText = "Nama Lengkap"
+        Me.nama_pasien.Name = "nama_pasien"
+        '
+        'jenis_kelamin
+        '
+        Me.jenis_kelamin.HeaderText = "Jenis Kelamin"
+        Me.jenis_kelamin.Name = "jenis_kelamin"
+        '
+        'no_telepon
+        '
+        Me.no_telepon.HeaderText = "No. Telepon"
+        Me.no_telepon.Name = "no_telepon"
+        '
+        'tgl_registrasi
+        '
+        Me.tgl_registrasi.HeaderText = "Tgl. Registrasi"
+        Me.tgl_registrasi.Name = "tgl_registrasi"
+        '
         'flpActions
         '
-        Me.flpActions.Controls.Add(Me.Button2)
-        Me.flpActions.Controls.Add(Me.Button3)
-        Me.flpActions.Controls.Add(Me.Button4)
+        Me.flpActions.Controls.Add(Me.btneditdata)
+        Me.flpActions.Controls.Add(Me.btnriwayat)
+        Me.flpActions.Controls.Add(Me.btnhapuspasien)
         Me.flpActions.Dock = System.Windows.Forms.DockStyle.Fill
         Me.flpActions.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
         Me.flpActions.Location = New System.Drawing.Point(752, 215)
@@ -252,47 +281,47 @@ Partial Class ucManajemenPasien
         Me.flpActions.Size = New System.Drawing.Size(154, 197)
         Me.flpActions.TabIndex = 3
         '
-        'Button2
+        'btneditdata
         '
-        Me.Button2.BackColor = System.Drawing.Color.DodgerBlue
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.ForeColor = System.Drawing.Color.White
-        Me.Button2.Location = New System.Drawing.Point(0, 0)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(0, 0, 0, 15)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(147, 36)
-        Me.Button2.TabIndex = 0
-        Me.Button2.Text = "Edit Data"
-        Me.Button2.UseVisualStyleBackColor = False
+        Me.btneditdata.BackColor = System.Drawing.Color.DodgerBlue
+        Me.btneditdata.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btneditdata.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btneditdata.ForeColor = System.Drawing.Color.White
+        Me.btneditdata.Location = New System.Drawing.Point(0, 0)
+        Me.btneditdata.Margin = New System.Windows.Forms.Padding(0, 0, 0, 15)
+        Me.btneditdata.Name = "btneditdata"
+        Me.btneditdata.Size = New System.Drawing.Size(147, 36)
+        Me.btneditdata.TabIndex = 0
+        Me.btneditdata.Text = "Edit Data"
+        Me.btneditdata.UseVisualStyleBackColor = False
         '
-        'Button3
+        'btnriwayat
         '
-        Me.Button3.BackColor = System.Drawing.Color.Gray
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.ForeColor = System.Drawing.Color.White
-        Me.Button3.Location = New System.Drawing.Point(0, 51)
-        Me.Button3.Margin = New System.Windows.Forms.Padding(0, 0, 0, 15)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(147, 37)
-        Me.Button3.TabIndex = 1
-        Me.Button3.Text = "Riwayat Kunjungan"
-        Me.Button3.UseVisualStyleBackColor = False
+        Me.btnriwayat.BackColor = System.Drawing.Color.Gray
+        Me.btnriwayat.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnriwayat.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnriwayat.ForeColor = System.Drawing.Color.White
+        Me.btnriwayat.Location = New System.Drawing.Point(0, 51)
+        Me.btnriwayat.Margin = New System.Windows.Forms.Padding(0, 0, 0, 15)
+        Me.btnriwayat.Name = "btnriwayat"
+        Me.btnriwayat.Size = New System.Drawing.Size(147, 37)
+        Me.btnriwayat.TabIndex = 1
+        Me.btnriwayat.Text = "Riwayat Kunjungan"
+        Me.btnriwayat.UseVisualStyleBackColor = False
         '
-        'Button4
+        'btnhapuspasien
         '
-        Me.Button4.BackColor = System.Drawing.Color.Red
-        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button4.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.ForeColor = System.Drawing.Color.White
-        Me.Button4.Location = New System.Drawing.Point(0, 103)
-        Me.Button4.Margin = New System.Windows.Forms.Padding(0)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(147, 37)
-        Me.Button4.TabIndex = 2
-        Me.Button4.Text = "Hapus Pasien"
-        Me.Button4.UseVisualStyleBackColor = False
+        Me.btnhapuspasien.BackColor = System.Drawing.Color.Red
+        Me.btnhapuspasien.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnhapuspasien.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnhapuspasien.ForeColor = System.Drawing.Color.White
+        Me.btnhapuspasien.Location = New System.Drawing.Point(0, 103)
+        Me.btnhapuspasien.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnhapuspasien.Name = "btnhapuspasien"
+        Me.btnhapuspasien.Size = New System.Drawing.Size(147, 37)
+        Me.btnhapuspasien.TabIndex = 2
+        Me.btnhapuspasien.Text = "Hapus Pasien"
+        Me.btnhapuspasien.UseVisualStyleBackColor = False
         '
         'Panel2
         '
@@ -356,35 +385,6 @@ Partial Class ucManajemenPasien
         Me.Button5.Text = "Previous"
         Me.Button5.UseVisualStyleBackColor = False
         '
-        'no_rm
-        '
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.no_rm.DefaultCellStyle = DataGridViewCellStyle1
-        Me.no_rm.FillWeight = 45.0!
-        Me.no_rm.HeaderText = "No. RM "
-        Me.no_rm.Name = "no_rm"
-        '
-        'nama_pasien
-        '
-        Me.nama_pasien.HeaderText = "Nama Lengkap"
-        Me.nama_pasien.Name = "nama_pasien"
-        '
-        'jenis_kelamin
-        '
-        Me.jenis_kelamin.HeaderText = "Jenis Kelamin"
-        Me.jenis_kelamin.Name = "jenis_kelamin"
-        '
-        'no_telepon
-        '
-        Me.no_telepon.HeaderText = "No. Telepon"
-        Me.no_telepon.Name = "no_telepon"
-        '
-        'tgl_registrasi
-        '
-        Me.tgl_registrasi.HeaderText = "Tgl. Registrasi"
-        Me.tgl_registrasi.Name = "tgl_registrasi"
-        '
         'ucManajemenPasien
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -413,14 +413,14 @@ Partial Class ucManajemenPasien
     Friend WithEvents Label2 As Label
     Friend WithEvents pnlSearch As Panel
     Friend WithEvents Label3 As Label
-    Friend WithEvents Button1 As Button
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents btncari As Button
+    Friend WithEvents txtnama As TextBox
+    Friend WithEvents txtcari As TextBox
     Friend WithEvents dgvPasien As DataGridView
     Friend WithEvents flpActions As FlowLayoutPanel
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button4 As Button
+    Friend WithEvents btneditdata As Button
+    Friend WithEvents btnriwayat As Button
+    Friend WithEvents btnhapuspasien As Button
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Label5 As Label
     Friend WithEvents Label4 As Label

@@ -2,37 +2,25 @@
 
 Public Class ucDokter
 
-    ' --- VARIABEL GLOBAL UNTUK MENYIMPAN SESI ---
-    ' Nanti ID Dokter ini diambil dari Login. Sementara kita set default dulu.
-    Dim IDDokterLogin As String = "DR001"
-
-    ' Variabel Pasien yang sedang dipilih
+    ' --- VARIABEL GLOBAL ---
+    Dim IDDokterLogin As String = "DR001" ' Nanti diganti sesuai login
     Dim NoRegistrasiAktif As String = ""
     Dim NoRMAktif As String = ""
 
     ' --- 1. SAAT FORM DIBUKA ---
     Private Sub ucDokter_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Setup tampilan awal
         Call BersihkanForm()
-
-        ' Load antrian pasien hari ini
         Call MuatAntrianPasien()
-
-        ' (Opsional) Percantik tampilan via kode jika perlu
-        ' Call SetupTampilanModern() 
     End Sub
 
-    ' --- 2. LOGIKA MEMUAT ANTRIAN (Panel Kiri) ---
+    ' --- 2. LOGIKA MEMUAT ANTRIAN ---
     Sub MuatAntrianPasien()
         Try
-            flpDaftarPasien.Controls.Clear() ' Bersihkan daftar lama (Pastikan nama FlowLayoutPanel-nya flpDaftarPasien)
-
+            flpDaftarPasien.Controls.Clear()
             Call BukaKoneksi()
 
-            ' Query: Ambil pasien yang statusnya 'Menunggu' HARI INI
-            ' Kita JOIN dengan tbl_pasien untuk dapat namanya
+            ' Ambil pasien hari ini yang statusnya Menunggu
             Dim tglSekarang As String = Format(Now, "yyyy-MM-dd")
-
             Dim query As String = "SELECT j.no_registrasi, j.no_rm, j.keluhan, p.nama_pasien, p.jenis_kelamin " &
                                   "FROM tbl_janji_temu j " &
                                   "JOIN tbl_pasien p ON j.no_rm = p.no_rm " &
@@ -42,33 +30,23 @@ Public Class ucDokter
             Dim rd As MySqlDataReader = cmd.ExecuteReader
 
             While rd.Read
-                ' --- TEKNIK DYNAMIC CONTROL ---
-                ' Kita bikin tombol lewat kodingan (bukan drag-drop)
+                ' Buat Tombol Pasien
                 Dim btnPasien As New Button
-
-                ' Simpan data penting di dalam tombol (tersembunyi)
                 btnPasien.Tag = rd("no_registrasi").ToString()
-                btnPasien.Name = rd("no_rm").ToString() ' Simpan RM di properti Name
+                btnPasien.Name = rd("no_rm").ToString()
+                btnPasien.Text = rd("nama_pasien").ToString() & vbCrLf & "RM: " & rd("no_rm").ToString()
 
-                ' Desain Tombolnya biar mirip Kartu
-                btnPasien.Text = rd("nama_pasien").ToString() & vbCrLf &
-                                 "RM: " & rd("no_rm").ToString()
-
-                btnPasien.Width = flpDaftarPasien.Width - 25 ' Agar pas lebarnya
+                ' Styling Tombol
+                btnPasien.Width = flpDaftarPasien.Width - 25
                 btnPasien.Height = 70
                 btnPasien.BackColor = Color.White
                 btnPasien.FlatStyle = FlatStyle.Flat
-                btnPasien.FlatAppearance.BorderColor = Color.LightGray
                 btnPasien.TextAlign = ContentAlignment.MiddleLeft
                 btnPasien.Padding = New Padding(10, 0, 0, 0)
                 btnPasien.Cursor = Cursors.Hand
                 btnPasien.Font = New Font("Segoe UI", 10, FontStyle.Bold)
 
-                ' TAMBAHKAN EVENT KLIK (PENTING!)
-                ' Saat tombol ini diklik, dia akan memanggil fungsi 'PilihPasien'
                 AddHandler btnPasien.Click, AddressOf PilihPasien
-
-                ' Masukkan tombol ke Panel
                 flpDaftarPasien.Controls.Add(btnPasien)
             End While
             rd.Close()
@@ -80,29 +58,24 @@ Public Class ucDokter
         End Try
     End Sub
 
-    ' --- 3. SAAT SALAH SATU PASIEN DIKLIK ---
+    ' --- 3. SAAT PASIEN DIKLIK ---
     Private Sub PilihPasien(sender As Object, e As EventArgs)
-        ' Ubah tombol sender menjadi objek Button agar bisa dibaca
         Dim btn As Button = CType(sender, Button)
-
-        ' Ambil data dari tombol yang diklik
         NoRegistrasiAktif = btn.Tag.ToString()
         NoRMAktif = btn.Name.ToString()
 
-        ' Tampilkan detail ke Form Tengah
         Call TampilkanDetailPasien(NoRegistrasiAktif)
 
-        ' Ubah warna tombol biar ketahuan mana yang dipilih
+        ' Highlight Tombol
         For Each ctrl As Control In flpDaftarPasien.Controls
-            If TypeOf ctrl Is Button Then ctrl.BackColor = Color.White ' Reset warna lain
+            If TypeOf ctrl Is Button Then ctrl.BackColor = Color.White
         Next
-        btn.BackColor = Color.LightBlue ' Highlight yang dipilih
+        btn.BackColor = Color.LightBlue
     End Sub
 
     Sub TampilkanDetailPasien(NoReg As String)
         Try
             Call BukaKoneksi()
-            ' Ambil detail lengkap: Nama, Umur, Keluhan Awal
             Dim query As String = "SELECT j.keluhan, p.nama_pasien, p.jenis_kelamin, p.tanggal_lahir, p.alamat " &
                                   "FROM tbl_janji_temu j " &
                                   "JOIN tbl_pasien p ON j.no_rm = p.no_rm " &
@@ -113,20 +86,14 @@ Public Class ucDokter
             Rd = Cmd.ExecuteReader
 
             If Rd.Read Then
-                ' Isi Header (Pastikan nama label di desain kamu lblNamaPasien & lblDetailPasien)
                 lblNamaPasien.Text = Rd("nama_pasien").ToString()
 
-                ' Hitung Umur (Opsional)
                 Dim TglLahir As Date = CDate(Rd("tanggal_lahir"))
                 Dim Umur As Integer = Now.Year - TglLahir.Year
+                lblDetailPasien.Text = Rd("jenis_kelamin").ToString() & " | " & Umur & " Th | " & NoRMAktif
 
-                lblDetailPasien.Text = Rd("jenis_kelamin").ToString() & " | " & Umur & " Tahun | " & NoRMAktif
-
-                ' Isi Keluhan Awal (ReadOnly)
-                txtKeluhanAwal.Text = Rd("keluhan").ToString()
-
-                ' Aktifkan tombol simpan
-                btnSimpanPeriksa.Enabled = True
+                txtKeluhanawal.Text = Rd("keluhan").ToString()
+                btnSimpanperiksa.Enabled = True
             End If
             Rd.Close()
 
@@ -135,25 +102,26 @@ Public Class ucDokter
         End Try
     End Sub
 
-    ' --- 4. TOMBOL SIMPAN & SELESAIKAN (Panel Kanan) ---
-    Private Sub btnSimpanPeriksa_Click(sender As Object, e As EventArgs) Handles btnSimpanPeriksa.Click
+    ' --- 4. TOMBOL SIMPAN (REVISI: txtResep DIHAPUS) ---
+    Private Sub btnSimpanPeriksa_Click(sender As Object, e As EventArgs) Handles btnSimpanperiksa.Click
         ' A. Validasi
         If NoRegistrasiAktif = "" Then
-            MsgBox("Pilih pasien dulu dari antrian!", MsgBoxStyle.Exclamation)
+            MsgBox("Pilih pasien dulu!", MsgBoxStyle.Exclamation)
             Exit Sub
         End If
 
+        ' Validasi input SOAP (Subjective, Objective, Assessment, Planning)
         If txtDiagnosa.Text = "" Or txtTindakan.Text = "" Then
-            MsgBox("Diagnosa dan Resep wajib diisi!", MsgBoxStyle.Exclamation)
+            MsgBox("Diagnosa dan Tindakan/Resep wajib diisi!", MsgBoxStyle.Exclamation)
             Exit Sub
         End If
 
-        If MsgBox("Simpan rekam medis dan selesaikan pasien ini?", MsgBoxStyle.Question + MsgBoxStyle.YesNo) = MsgBoxResult.No Then Exit Sub
+        If MsgBox("Simpan rekam medis dan selesaikan?", MsgBoxStyle.Question + MsgBoxStyle.YesNo) = MsgBoxResult.No Then Exit Sub
 
         Try
             Call BukaKoneksi()
 
-            ' B. SIMPAN KE TBL_REKAM_MEDIS
+            ' B. Simpan ke Database
             Dim QuerySimpan As String = "INSERT INTO tbl_rekam_medis (no_registrasi, no_rm, id_dokter, tgl_periksa, keluhan_subjektif, diagnosa, tindakan, alergi_obat, resep_obat) " &
                                         "VALUES (@reg, @rm, @dr, @tgl, @s, @a, @p, @alergi, @resep)"
 
@@ -165,29 +133,30 @@ Public Class ucDokter
 
             ' SOAP Data
             Cmd.Parameters.AddWithValue("@s", txtSubjective.Text)
-            ' Note: Objective bisa digabung ke S atau P jika di database ga ada kolomnya, 
-            ' tapi idealnya ada kolom 'pemeriksaan_fisik' di DB. 
-            ' Untuk sekarang kita asumsikan kolomnya sesuai DB kamu.
-
             Cmd.Parameters.AddWithValue("@a", txtDiagnosa.Text)
+
+            ' --- REVISI DI SINI ---
+            ' Karena txtResep sudah digabung ke txtTindakan:
+
+            ' 1. Simpan ke kolom Tindakan (Planning)
             Cmd.Parameters.AddWithValue("@p", txtTindakan.Text)
 
-            ' Panel Kanan
-            Cmd.Parameters.AddWithValue("@alergi", txtAlergi.Text)
+            ' 2. Simpan JUGA ke kolom Resep (agar Farmasi bisa baca)
             Cmd.Parameters.AddWithValue("@resep", txtTindakan.Text)
+
+            ' Alergi
+            Cmd.Parameters.AddWithValue("@alergi", txtAlergi.Text)
 
             Cmd.ExecuteNonQuery()
 
-            ' C. UPDATE STATUS ANTRIAN JADI 'SELESAI'
-            ' Supaya pasien ini hilang dari daftar antrian
+            ' C. Update Status Antrian
             Dim QueryUpdate As String = "UPDATE tbl_janji_temu SET status = 'Selesai' WHERE no_registrasi = @reg"
             Cmd = New MySqlCommand(QueryUpdate, Conn)
             Cmd.Parameters.AddWithValue("@reg", NoRegistrasiAktif)
             Cmd.ExecuteNonQuery()
 
-            MsgBox("Pemeriksaan Selesai. Data tersimpan.", MsgBoxStyle.Information)
+            MsgBox("Pemeriksaan Selesai.", MsgBoxStyle.Information)
 
-            ' D. RESET FORM & REFRESH ANTRIAN
             Call BersihkanForm()
             Call MuatAntrianPasien()
 
@@ -198,7 +167,7 @@ Public Class ucDokter
         End Try
     End Sub
 
-    ' --- 5. BERSIHKAN LAYAR ---
+    ' --- 5. BERSIHKAN FORM (txtResep DIHAPUS) ---
     Sub BersihkanForm()
         lblNamaPasien.Text = "Pilih Pasien..."
         lblDetailPasien.Text = "- | - | -"
@@ -207,25 +176,23 @@ Public Class ucDokter
         txtSubjective.Clear()
         txtObjective.Clear()
         txtDiagnosa.Clear()
+
+        ' Cukup bersihkan ini saja (karena ini kotak gabungan)
         txtTindakan.Clear()
 
         txtAlergi.Clear()
-        txtTindakan.Clear()
 
         NoRegistrasiAktif = ""
         NoRMAktif = ""
-        btnSimpanPeriksa.Enabled = False
+        btnSimpanperiksa.Enabled = False
     End Sub
 
-    ' Tombol Lihat Riwayat (Opsional)
     Private Sub btnRiwayat_Click(sender As Object, e As EventArgs) Handles btnRiwayat.Click
         If NoRMAktif = "" Then
-            MsgBox("Pilih pasien dulu untuk melihat riwayatnya.")
+            MsgBox("Pilih pasien dulu.")
             Exit Sub
         End If
-
-        MsgBox("Fitur Riwayat untuk Pasien RM: " & NoRMAktif & " akan muncul di sini (Next Project).")
-        ' Nanti bisa buka Form baru berisi DataGridView riwayat medis lama
+        MsgBox("Fitur Riwayat: " & NoRMAktif)
     End Sub
 
 End Class
