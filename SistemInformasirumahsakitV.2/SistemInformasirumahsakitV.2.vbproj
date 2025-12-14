@@ -123,6 +123,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmCariObat.Designer.vb">
+      <DependentUpon>frmCariObat.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCariObat.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="modulkoneksi.vb" />
     <Compile Include="dashboard.vb">
       <SubType>Form</SubType>
@@ -217,6 +223,9 @@
   <ItemGroup>
     <EmbeddedResource Include="dashboard.resx">
       <DependentUpon>dashboard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCariObat.resx">
+      <DependentUpon>frmCariObat.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menulogin.resx">
       <DependentUpon>Menulogin.vb</DependentUpon>

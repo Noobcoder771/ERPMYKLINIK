@@ -195,4 +195,30 @@ Public Class ucDokter
         MsgBox("Fitur Riwayat: " & NoRMAktif)
     End Sub
 
+    Private Sub txtTindakan_KeyDown(sender As Object, e As KeyEventArgs) Handles txtTindakan.KeyDown
+
+        ' JIKA TOMBOL F1 DITEKAN
+        If e.KeyCode = Keys.F1 Then
+
+            ' 1. Buka Form Cari Obat sebagai Pop-up
+            Dim FormCari As New frmCariObat
+
+            If FormCari.ShowDialog() = DialogResult.OK Then
+                ' 2. Jika dokter memilih obat dan menekan OK
+                ' Tambahkan teks obat ke posisi kursor saat ini
+                Dim ObatDipilih As String = FormCari.HasilObat
+
+                ' Teknik menyisipkan teks tepat di posisi kedip kursor
+                Dim IndexAsli As Integer = txtTindakan.SelectionStart
+                txtTindakan.Text = txtTindakan.Text.Insert(IndexAsli, ObatDipilih)
+
+                ' Kembalikan kursor ke akhir teks obat
+                txtTindakan.SelectionStart = IndexAsli + ObatDipilih.Length
+                txtTindakan.Focus()
+            End If
+
+            ' Mencegah tombol F1 memunculkan Help Windows bawaan
+            e.SuppressKeyPress = True
+        End If
+    End Sub
 End Class

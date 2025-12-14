@@ -476,13 +476,13 @@ Partial Class ucDokter
     Friend WithEvents flpKontenKanan As FlowLayoutPanel
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents Label9 As Label
-    Friend WithEvents Label11 As Label
-    Friend WithEvents txtTindakan As TextBox
-    Friend WithEvents Label12 As Label
     Friend WithEvents ContextMenuStrip2 As ContextMenuStrip
-    Friend WithEvents btnRiwayat As Button
     Friend WithEvents lblDetailPasien As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents txtAlergi As TextBox
     Friend WithEvents ContextMenuStrip3 As ContextMenuStrip
+    Friend WithEvents Label11 As Label
+    Friend WithEvents txtTindakan As TextBox
+    Friend WithEvents Label12 As Label
+    Friend WithEvents btnRiwayat As Button
 End Class

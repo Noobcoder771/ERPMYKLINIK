@@ -174,4 +174,7 @@ Public Class ucPendaftaranPasien
         Next
     End Sub
 
+    Private Sub CentralPanel_Paint(sender As Object, e As PaintEventArgs) Handles CentralPanel.Paint
+
+    End Sub
 End Class
