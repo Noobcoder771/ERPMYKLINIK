@@ -17,66 +17,61 @@ Public Class Menulogin
         CenterLoginPanel()
     End Sub
 
-    Private Sub txtUsername_TextChanged(sender As Object, e As EventArgs) Handles txtUsername.TextChanged
+    Private Sub txtUsername_TextChanged(sender As Object, e As EventArgs) Handles txtUser.TextChanged
         If lblErrorMessage.Visible Then
             lblErrorMessage.Visible = False
         End If
     End Sub
 
-    Private Sub txtPassword_TextChanged(sender As Object, e As EventArgs) Handles txtPassword.TextChanged
+    Private Sub txtPassword_TextChanged(sender As Object, e As EventArgs) Handles txtpass.TextChanged
         If lblErrorMessage.Visible Then
             lblErrorMessage.Visible = False
         End If
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        lblErrorMessage.Visible = False
-
-        ' 2. Validasi Input Kosong (Permintaan Anda)
-        If String.IsNullOrWhiteSpace(txtUsername.Text) Or String.IsNullOrWhiteSpace(txtPassword.Text) Then
-            MessageBox.Show("Anda harus mengisi Username dan Kata Sandi.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return ' Berhenti eksekusi
+        If txtUser.Text = "" Or txtPass.Text = "" Then
+            MsgBox("Username dan Password tidak boleh kosong!", MsgBoxStyle.Exclamation)
+            Exit Sub
         End If
 
-        ' 3. Proses Login ke Database
-        ' Pastikan Anda punya Modul KoneksiDB.vb
-        Using conn As MySqlConnection = ModulKoneksi.GetConnection()
-            If conn Is Nothing Then Return ' Gagal dapat koneksi (pesan error dari KoneksiDB)
+        Try
+            Call BukaKoneksi() ' Memanggil koneksi dari Module1
 
-            Try
-                ' --- PENTING: GANTI INI SESUAI TABEL ANDA ---
-                Dim query As String = "SELECT COUNT(*) FROM tbl_admin WHERE username = @user AND password = @pass"
-                ' ---------------------------------------------
+            ' Cek Username & Password
+            Dim query As String = "SELECT * FROM tbl_user WHERE username = @user AND password = @pass"
+            Cmd = New MySqlCommand(query, Conn)
+            Cmd.Parameters.AddWithValue("@user", txtUser.Text)
+            Cmd.Parameters.AddWithValue("@pass", txtPass.Text)
 
-                Using cmd As New MySqlCommand(query, conn)
-                    ' Anti SQL Injection
-                    cmd.Parameters.AddWithValue("@user", txtUsername.Text)
-                    cmd.Parameters.AddWithValue("@pass", txtPassword.Text)
+            Rd = Cmd.ExecuteReader
 
+            If Rd.Read() Then
+                ' --- LOGIN SUKSES ---
 
-                    Dim result As Integer = Convert.ToInt32(cmd.ExecuteScalar())
+                ' 1. Simpan Identitas ke Module1 (Variabel Global)
+                ModulKoneksi.UserName = Rd("nama_lengkap").ToString()
+                ModulKoneksi.UserRole = Rd("role").ToString() ' Penting: Ambil Admin/Dokter/Staff
 
-                    If result > 0 Then
-                        ' --- LOGIN BERHASIL ---
-                        Me.Hide()
-                        ' Asumsi Form Dashboard Anda bernama Form1
-                        Dim frmDashboard As New frmDashboard()
-                        frmDashboard.Show()
+                MsgBox("Login Berhasil! Selamat Datang, " & ModulKoneksi.UserRole, MsgBoxStyle.Information)
 
-                    Else
-                        ' --- LOGIN GAGAL (Permintaan Anda) ---
-                        ' Tampilkan pesan error merah di label
-                        lblErrorMessage.Text = "Invalid username or password"
-                        lblErrorMessage.Visible = True
-                    End If
-                End Using
+                ' 2. Buka Dashboard
+                Dim MenuUtama As New frmDashboard ' Asumsikan Form1 adalah dashboard
+                MenuUtama.Show()
 
-            Catch ex As MySqlException
-                MessageBox.Show("Error Database: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Catch ex As Exception
-                MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
-        End Using
+                ' 3. Sembunyikan Form Login
+                Me.Hide()
+            Else
+                MsgBox("Username atau Password Salah!", MsgBoxStyle.Critical)
+            End If
+
+            Rd.Close()
+
+        Catch ex As Exception
+            MsgBox("Gagal Login: " & ex.Message)
+        Finally
+            Call TutupKoneksi()
+        End Try
     End Sub
 
     Private Sub mainPanel_Paint(sender As Object, e As PaintEventArgs) Handles mainPanel.Paint

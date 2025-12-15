@@ -36,4 +36,7 @@ Module ModulKoneksi
         Return connTemp
     End Function
 
+    Public UserRole As String = ""  ' Wadah untuk menyimpan jabatan (Admin/Dokter/Staff)
+    Public UserName As String = ""
+
 End Module

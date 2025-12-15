@@ -46,6 +46,8 @@ Partial Class ucFarmasi
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.pnlSearch = New System.Windows.Forms.Panel()
+        Me.btnhapus = New System.Windows.Forms.Button()
+        Me.btnsimpan = New System.Windows.Forms.Button()
         Me.btnCari = New System.Windows.Forms.Button()
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -60,8 +62,6 @@ Partial Class ucFarmasi
         Me.ContextMenuStrip6 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ContextMenuStrip7 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ContextMenuStrip8 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.btnsimpan = New System.Windows.Forms.Button()
-        Me.btnhapus = New System.Windows.Forms.Button()
         Me.PnlContent.SuspendLayout()
         Me.pnlWorkspace.SuspendLayout()
         Me.tlpMain.SuspendLayout()
@@ -313,6 +313,26 @@ Partial Class ucFarmasi
         Me.pnlSearch.Size = New System.Drawing.Size(920, 62)
         Me.pnlSearch.TabIndex = 2
         '
+        'btnhapus
+        '
+        Me.btnhapus.BackColor = System.Drawing.Color.Red
+        Me.btnhapus.Location = New System.Drawing.Point(416, 19)
+        Me.btnhapus.Name = "btnhapus"
+        Me.btnhapus.Size = New System.Drawing.Size(75, 23)
+        Me.btnhapus.TabIndex = 4
+        Me.btnhapus.Text = "HAPUS"
+        Me.btnhapus.UseVisualStyleBackColor = False
+        '
+        'btnsimpan
+        '
+        Me.btnsimpan.BackColor = System.Drawing.Color.Lime
+        Me.btnsimpan.Location = New System.Drawing.Point(321, 18)
+        Me.btnsimpan.Name = "btnsimpan"
+        Me.btnsimpan.Size = New System.Drawing.Size(75, 23)
+        Me.btnsimpan.TabIndex = 3
+        Me.btnsimpan.Text = "SIMPAN"
+        Me.btnsimpan.UseVisualStyleBackColor = False
+        '
         'btnCari
         '
         Me.btnCari.BackColor = System.Drawing.Color.DodgerBlue
@@ -407,24 +427,6 @@ Partial Class ucFarmasi
         '
         Me.ContextMenuStrip8.Name = "ContextMenuStrip8"
         Me.ContextMenuStrip8.Size = New System.Drawing.Size(61, 4)
-        '
-        'btnsimpan
-        '
-        Me.btnsimpan.Location = New System.Drawing.Point(321, 18)
-        Me.btnsimpan.Name = "btnsimpan"
-        Me.btnsimpan.Size = New System.Drawing.Size(75, 23)
-        Me.btnsimpan.TabIndex = 3
-        Me.btnsimpan.Text = "Button1"
-        Me.btnsimpan.UseVisualStyleBackColor = True
-        '
-        'btnhapus
-        '
-        Me.btnhapus.Location = New System.Drawing.Point(416, 19)
-        Me.btnhapus.Name = "btnhapus"
-        Me.btnhapus.Size = New System.Drawing.Size(75, 23)
-        Me.btnhapus.TabIndex = 4
-        Me.btnhapus.Text = "Button2"
-        Me.btnhapus.UseVisualStyleBackColor = True
         '
         'ucFarmasi
         '

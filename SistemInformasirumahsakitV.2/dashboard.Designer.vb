@@ -24,12 +24,12 @@ Partial Class frmDashboard
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.PanelTopBar = New System.Windows.Forms.Panel()
+        Me.lblnamauser = New System.Windows.Forms.Button()
         Me.lblAppName = New System.Windows.Forms.Label()
         Me.PanelMainContent = New System.Windows.Forms.Panel()
         Me.mainContentPanel = New System.Windows.Forms.Panel()
-        Me.sidebarPanel = New System.Windows.Forms.Panel()
-        Me.sidebarTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.pnlkonten = New System.Windows.Forms.Panel()
+        Me.btndokter = New System.Windows.Forms.Button()
         Me.Btnrekam = New System.Windows.Forms.Button()
         Me.Btnjanji = New System.Windows.Forms.Button()
         Me.Btnbilling = New System.Windows.Forms.Button()
@@ -38,22 +38,39 @@ Partial Class frmDashboard
         Me.Btnmanajemen = New System.Windows.Forms.Button()
         Me.Btnpendaftaran = New System.Windows.Forms.Button()
         Me.btnHome = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.sidebarTimer = New System.Windows.Forms.Timer(Me.components)
         Me.PanelTopBar.SuspendLayout()
         Me.PanelMainContent.SuspendLayout()
-        Me.sidebarPanel.SuspendLayout()
+        Me.pnlkonten.SuspendLayout()
         Me.SuspendLayout()
         '
         'PanelTopBar
         '
         Me.PanelTopBar.BackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
-        Me.PanelTopBar.Controls.Add(Me.Button1)
+        Me.PanelTopBar.Controls.Add(Me.lblnamauser)
         Me.PanelTopBar.Controls.Add(Me.lblAppName)
         Me.PanelTopBar.Dock = System.Windows.Forms.DockStyle.Top
         Me.PanelTopBar.Location = New System.Drawing.Point(0, 0)
         Me.PanelTopBar.Name = "PanelTopBar"
         Me.PanelTopBar.Size = New System.Drawing.Size(1184, 60)
         Me.PanelTopBar.TabIndex = 1
+        '
+        'lblnamauser
+        '
+        Me.lblnamauser.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblnamauser.AutoSize = True
+        Me.lblnamauser.FlatAppearance.BorderSize = 0
+        Me.lblnamauser.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.lblnamauser.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblnamauser.ForeColor = System.Drawing.Color.White
+        Me.lblnamauser.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.account_circle_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
+        Me.lblnamauser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.lblnamauser.Location = New System.Drawing.Point(942, 15)
+        Me.lblnamauser.Name = "lblnamauser"
+        Me.lblnamauser.Size = New System.Drawing.Size(230, 32)
+        Me.lblnamauser.TabIndex = 1
+        Me.lblnamauser.Text = "Hi, ..."
+        Me.lblnamauser.UseVisualStyleBackColor = True
         '
         'lblAppName
         '
@@ -70,7 +87,7 @@ Partial Class frmDashboard
         '
         Me.PanelMainContent.BackColor = System.Drawing.Color.White
         Me.PanelMainContent.Controls.Add(Me.mainContentPanel)
-        Me.PanelMainContent.Controls.Add(Me.sidebarPanel)
+        Me.PanelMainContent.Controls.Add(Me.pnlkonten)
         Me.PanelMainContent.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelMainContent.Location = New System.Drawing.Point(0, 60)
         Me.PanelMainContent.Name = "PanelMainContent"
@@ -85,43 +102,39 @@ Partial Class frmDashboard
         Me.mainContentPanel.Size = New System.Drawing.Size(984, 601)
         Me.mainContentPanel.TabIndex = 7
         '
-        'sidebarPanel
+        'pnlkonten
         '
-        Me.sidebarPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(73, Byte), Integer), CType(CType(94, Byte), Integer))
-        Me.sidebarPanel.Controls.Add(Me.Button2)
-        Me.sidebarPanel.Controls.Add(Me.Btnrekam)
-        Me.sidebarPanel.Controls.Add(Me.Btnjanji)
-        Me.sidebarPanel.Controls.Add(Me.Btnbilling)
-        Me.sidebarPanel.Controls.Add(Me.Btnfarmasi)
-        Me.sidebarPanel.Controls.Add(Me.Btnmenu)
-        Me.sidebarPanel.Controls.Add(Me.Btnmanajemen)
-        Me.sidebarPanel.Controls.Add(Me.Btnpendaftaran)
-        Me.sidebarPanel.Controls.Add(Me.btnHome)
-        Me.sidebarPanel.Dock = System.Windows.Forms.DockStyle.Left
-        Me.sidebarPanel.Location = New System.Drawing.Point(0, 0)
-        Me.sidebarPanel.Name = "sidebarPanel"
-        Me.sidebarPanel.Size = New System.Drawing.Size(200, 601)
-        Me.sidebarPanel.TabIndex = 6
+        Me.pnlkonten.BackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(73, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.pnlkonten.Controls.Add(Me.Btnmenu)
+        Me.pnlkonten.Controls.Add(Me.btndokter)
+        Me.pnlkonten.Controls.Add(Me.Btnrekam)
+        Me.pnlkonten.Controls.Add(Me.Btnjanji)
+        Me.pnlkonten.Controls.Add(Me.Btnbilling)
+        Me.pnlkonten.Controls.Add(Me.Btnfarmasi)
+        Me.pnlkonten.Controls.Add(Me.Btnmanajemen)
+        Me.pnlkonten.Controls.Add(Me.Btnpendaftaran)
+        Me.pnlkonten.Controls.Add(Me.btnHome)
+        Me.pnlkonten.Dock = System.Windows.Forms.DockStyle.Left
+        Me.pnlkonten.Location = New System.Drawing.Point(0, 0)
+        Me.pnlkonten.Name = "pnlkonten"
+        Me.pnlkonten.Size = New System.Drawing.Size(200, 601)
+        Me.pnlkonten.TabIndex = 6
         '
-        'sidebarTimer
+        'btndokter
         '
-        Me.sidebarTimer.Interval = 15
-        '
-        'Button2
-        '
-        Me.Button2.BackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(73, Byte), Integer), CType(CType(94, Byte), Integer))
-        Me.Button2.FlatAppearance.BorderSize = 0
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Font = New System.Drawing.Font("Segoe UI", 9.75!)
-        Me.Button2.ForeColor = System.Drawing.Color.White
-        Me.Button2.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.clinical_notes_24dp_F3F3F3_FILL0_wght400_GRAD0_opsz24
-        Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button2.Location = New System.Drawing.Point(3, 352)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(197, 70)
-        Me.Button2.TabIndex = 4
-        Me.Button2.Text = "Dokter"
-        Me.Button2.UseVisualStyleBackColor = False
+        Me.btndokter.BackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(73, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.btndokter.FlatAppearance.BorderSize = 0
+        Me.btndokter.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btndokter.Font = New System.Drawing.Font("Segoe UI", 9.75!)
+        Me.btndokter.ForeColor = System.Drawing.Color.White
+        Me.btndokter.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.clinical_notes_24dp_F3F3F3_FILL0_wght400_GRAD0_opsz24
+        Me.btndokter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btndokter.Location = New System.Drawing.Point(3, 352)
+        Me.btndokter.Name = "btndokter"
+        Me.btndokter.Size = New System.Drawing.Size(197, 70)
+        Me.btndokter.TabIndex = 4
+        Me.btndokter.Text = "Dokter"
+        Me.btndokter.UseVisualStyleBackColor = False
         '
         'Btnrekam
         '
@@ -195,7 +208,7 @@ Partial Class frmDashboard
         Me.Btnmenu.ForeColor = System.Drawing.Color.White
         Me.Btnmenu.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.menu_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
         Me.Btnmenu.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.Btnmenu.Location = New System.Drawing.Point(0, 0)
+        Me.Btnmenu.Location = New System.Drawing.Point(3, 6)
         Me.Btnmenu.Name = "Btnmenu"
         Me.Btnmenu.Size = New System.Drawing.Size(200, 50)
         Me.Btnmenu.TabIndex = 5
@@ -251,22 +264,9 @@ Partial Class frmDashboard
         Me.btnHome.Text = "Home"
         Me.btnHome.UseVisualStyleBackColor = False
         '
-        'Button1
+        'sidebarTimer
         '
-        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button1.AutoSize = True
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.account_circle_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(1069, 15)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(103, 32)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Hi, ..."
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.sidebarTimer.Interval = 15
         '
         'frmDashboard
         '
@@ -283,8 +283,8 @@ Partial Class frmDashboard
         Me.PanelTopBar.ResumeLayout(False)
         Me.PanelTopBar.PerformLayout()
         Me.PanelMainContent.ResumeLayout(False)
-        Me.sidebarPanel.ResumeLayout(False)
-        Me.sidebarPanel.PerformLayout()
+        Me.pnlkonten.ResumeLayout(False)
+        Me.pnlkonten.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -297,11 +297,11 @@ Partial Class frmDashboard
     Friend WithEvents Btnbilling As Button
     Friend WithEvents Btnjanji As Button
     Friend WithEvents lblAppName As Label
-    Friend WithEvents Button1 As Button
+    Friend WithEvents lblnamauser As Button
     Friend WithEvents Btnmenu As Button
     Friend WithEvents PanelMainContent As Panel
     Friend WithEvents sidebarTimer As Timer
-    Friend WithEvents sidebarPanel As Panel
+    Friend WithEvents pnlkonten As Panel
     Friend WithEvents mainContentPanel As Panel
-    Friend WithEvents Button2 As Button
+    Friend WithEvents btndokter As Button
 End Class

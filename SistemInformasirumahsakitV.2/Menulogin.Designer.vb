@@ -27,9 +27,9 @@ Partial Class Menulogin
         Me.lblErrorMessage = New System.Windows.Forms.Label()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.txtPassword = New System.Windows.Forms.TextBox()
+        Me.txtpass = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.txtUsername = New System.Windows.Forms.TextBox()
+        Me.txtUser = New System.Windows.Forms.TextBox()
         Me.lblaja = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.mainPanel.SuspendLayout()
@@ -43,9 +43,9 @@ Partial Class Menulogin
         Me.mainPanel.Controls.Add(Me.lblErrorMessage)
         Me.mainPanel.Controls.Add(Me.PictureBox2)
         Me.mainPanel.Controls.Add(Me.PictureBox1)
-        Me.mainPanel.Controls.Add(Me.txtPassword)
+        Me.mainPanel.Controls.Add(Me.txtpass)
         Me.mainPanel.Controls.Add(Me.Button1)
-        Me.mainPanel.Controls.Add(Me.txtUsername)
+        Me.mainPanel.Controls.Add(Me.txtUser)
         Me.mainPanel.Controls.Add(Me.lblaja)
         Me.mainPanel.Controls.Add(Me.Label1)
         Me.mainPanel.Location = New System.Drawing.Point(0, 0)
@@ -83,14 +83,14 @@ Partial Class Menulogin
         Me.PictureBox1.TabIndex = 5
         Me.PictureBox1.TabStop = False
         '
-        'txtPassword
+        'txtpass
         '
-        Me.txtPassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!)
-        Me.txtPassword.Location = New System.Drawing.Point(346, 258)
-        Me.txtPassword.Name = "txtPassword"
-        Me.txtPassword.Size = New System.Drawing.Size(258, 35)
-        Me.txtPassword.TabIndex = 4
-        Me.txtPassword.UseSystemPasswordChar = True
+        Me.txtpass.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!)
+        Me.txtpass.Location = New System.Drawing.Point(346, 258)
+        Me.txtpass.Name = "txtpass"
+        Me.txtpass.Size = New System.Drawing.Size(258, 35)
+        Me.txtpass.TabIndex = 4
+        Me.txtpass.UseSystemPasswordChar = True
         '
         'Button1
         '
@@ -105,13 +105,13 @@ Partial Class Menulogin
         Me.Button1.Text = "Login"
         Me.Button1.UseVisualStyleBackColor = False
         '
-        'txtUsername
+        'txtUser
         '
-        Me.txtUsername.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!)
-        Me.txtUsername.Location = New System.Drawing.Point(346, 204)
-        Me.txtUsername.Name = "txtUsername"
-        Me.txtUsername.Size = New System.Drawing.Size(258, 35)
-        Me.txtUsername.TabIndex = 2
+        Me.txtUser.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!)
+        Me.txtUser.Location = New System.Drawing.Point(346, 204)
+        Me.txtUser.Name = "txtUser"
+        Me.txtUser.Size = New System.Drawing.Size(258, 35)
+        Me.txtUser.TabIndex = 2
         '
         'lblaja
         '
@@ -153,10 +153,10 @@ Partial Class Menulogin
     End Sub
 
     Friend WithEvents mainPanel As Panel
-    Friend WithEvents txtUsername As TextBox
+    Friend WithEvents txtUser As TextBox
     Friend WithEvents lblaja As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents txtPassword As TextBox
+    Friend WithEvents txtpass As TextBox
     Friend WithEvents Button1 As Button
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents PictureBox1 As PictureBox
