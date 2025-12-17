@@ -2,24 +2,18 @@
 
 Public Class ucjanjitemu
 
-    ' Variabel Global
     Dim PasienTerpilih As String = ""
 
-    ' --- 1. SAAT FORM DIMUAT ---
     Private Sub ucjanjitemu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Setup Tampilan Awal
         txtCariRM.Text = "Masukan No. RM"
         txtCariRM.ForeColor = Color.Gray
         pnlHasil.Visible = False
 
-        ' Set Tanggal Hari Ini
         dtpjanji.MinDate = Now
 
-        ' ISI DATA POLI (PENTING)
         Call IsiComboPoli()
     End Sub
 
-    ' --- 2. ISI DROPDOWN POLI ---
     Sub IsiComboPoli()
         Try
             Call BukaKoneksi()
@@ -27,18 +21,14 @@ Public Class ucjanjitemu
             Dim dt As New DataTable
             da.Fill(dt)
 
-            ' Matikan dulu event handler biar gak meledak saat loading
             RemoveHandler cmbPoli.SelectedIndexChanged, AddressOf cmbPoli_SelectedIndexChanged
 
-            ' Setting dulu Member-nya
             cmbPoli.DisplayMember = "nama_poli"
             cmbPoli.ValueMember = "id_poli"
 
-            ' Baru isi datanya
             cmbPoli.DataSource = dt
-            cmbPoli.SelectedIndex = -1 ' Kosongkan pilihan awal
+            cmbPoli.SelectedIndex = -1
 
-            ' Nyalakan lagi event handler
             AddHandler cmbPoli.SelectedIndexChanged, AddressOf cmbPoli_SelectedIndexChanged
 
         Catch ex As Exception
@@ -46,19 +36,15 @@ Public Class ucjanjitemu
         End Try
     End Sub
 
-    ' --- 3. FILTER DOKTER OTOMATIS (PERBAIKAN ERROR TIMESPAN DI SINI) ---
     Sub FilterDokterOtomatis()
-        ' CEGAH ERROR: Kalau Poli belum dipilih/kosong, STOP. Jangan lanjut.
         If cmbPoli.SelectedIndex = -1 Or cmbPoli.SelectedValue Is Nothing Then Exit Sub
 
         Try
-            ' 1. Ambil Parameter
             Dim hariIni As String = GetHariIndo(dtpjanji.Value)
             Dim idPoliDipilih As String = cmbPoli.SelectedValue.ToString()
 
             Call BukaKoneksi()
 
-            ' 2. Query Database
             Dim query As String = "SELECT d.id_dokter, d.nama_dokter, j.jam_mulai, j.jam_selesai " &
                                   "FROM tbl_dokter d " &
                                   "JOIN tbl_jadwal_dokter j ON d.id_dokter = j.id_dokter " &
@@ -72,29 +58,21 @@ Public Class ucjanjitemu
             Dim dt As New DataTable
             da.Fill(dt)
 
-            ' 3. Format Tampilan di Dropdown (PERBAIKAN UTAMA)
             dt.Columns.Add("Tampilan", GetType(String))
 
             For Each row As DataRow In dt.Rows
-                ' --- FIX ERROR TIMESPAN ---
-                ' Ubah Waktu menjadi String (Teks) secara paksa
                 Dim jamMulai As String = row("jam_mulai").ToString()
                 Dim jamSelesai As String = row("jam_selesai").ToString()
 
-                ' Potong detiknya biar rapi (ambil 5 karakter pertama: 09:00)
                 If jamMulai.Length > 5 Then jamMulai = jamMulai.Substring(0, 5)
                 If jamSelesai.Length > 5 Then jamSelesai = jamSelesai.Substring(0, 5)
-
-                ' Gabungkan
                 row("Tampilan") = row("nama_dokter").ToString() & " | " & jamMulai & "-" & jamSelesai
             Next
-            ' ---------------------------
 
             cmbDokter.DataSource = dt
             cmbDokter.DisplayMember = "Tampilan"
             cmbDokter.ValueMember = "id_dokter"
 
-            ' 4. Cek Hasilnya
             If dt.Rows.Count = 0 Then
                 cmbDokter.DataSource = Nothing
                 cmbDokter.Items.Clear()
@@ -108,17 +86,14 @@ Public Class ucjanjitemu
         End Try
     End Sub
 
-    ' Trigger: Saat Poli Berubah
     Private Sub cmbPoli_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPoli.SelectedIndexChanged
         Call FilterDokterOtomatis()
     End Sub
 
-    ' Trigger: Saat Tanggal Berubah
     Private Sub dtpjanji_ValueChanged(sender As Object, e As EventArgs) Handles dtpjanji.ValueChanged
         Call FilterDokterOtomatis()
     End Sub
 
-    ' --- 4. TOMBOL CARI PASIEN ---
     Private Sub btnCari_Click(sender As Object, e As EventArgs) Handles btnCari.Click
         If txtCariRM.Text = "" Or txtCariRM.Text = "Masukan No. RM" Then
             MsgBox("Isi No RM dulu!", MsgBoxStyle.Exclamation)
@@ -151,7 +126,6 @@ Public Class ucjanjitemu
         End Try
     End Sub
 
-    ' --- 5. TOMBOL BUAT JANJI (SIMPAN) ---
     Private Sub btnBuatJanji_Click(sender As Object, e As EventArgs) Handles btnBuatJanji.Click
         If PasienTerpilih = "" Or cmbDokter.SelectedIndex = -1 Then
             MsgBox("Data belum lengkap (Pasien/Dokter)!", MsgBoxStyle.Exclamation)
@@ -178,7 +152,6 @@ Public Class ucjanjitemu
 
             MsgBox("Sukses! No Reg: " & NoReg)
 
-            ' Reset form...
             txtCariRM.Text = "Masukan No. RM"
             txtCariRM.ForeColor = Color.Gray
             pnlHasil.Visible = False
@@ -194,7 +167,6 @@ Public Class ucjanjitemu
         End Try
     End Sub
 
-    ' --- FUNGSI PENDUKUNG ---
     Function GetHariIndo(tanggal As DateTime) As String
         Select Case tanggal.DayOfWeek
             Case DayOfWeek.Sunday : Return "Minggu"
@@ -208,7 +180,6 @@ Public Class ucjanjitemu
         End Select
     End Function
 
-    ' FUNGSI GENERATE REGISTRASI (YANG LENGKAP)
     Function GenerateNoRegistrasi() As String
         Dim noReg As String = ""
         Try
@@ -235,7 +206,6 @@ Public Class ucjanjitemu
         Return noReg
     End Function
 
-    ' Placeholder
     Private Sub txtCariRM_Enter(sender As Object, e As EventArgs) Handles txtCariRM.Enter
         If txtCariRM.Text = "Masukan No. RM" Then
             txtCariRM.Text = ""

@@ -23,7 +23,7 @@ Partial Class ucbilling
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
@@ -37,8 +37,9 @@ Partial Class ucbilling
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.txtnoreg = New System.Windows.Forms.TextBox()
         Me.txtdokter = New System.Windows.Forms.TextBox()
-        Me.btnProsesBilling = New System.Windows.Forms.Button()
+        Me.btnProses = New System.Windows.Forms.Button()
         Me.txtnorm = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -72,7 +73,7 @@ Partial Class ucbilling
         Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ContextMenuStrip3 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ContextMenuStrip4 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.txtnoreg = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.tlpMain.SuspendLayout()
         Me.tlpLeft.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -217,7 +218,7 @@ Partial Class ucbilling
         '
         Me.Panel2.Controls.Add(Me.txtnoreg)
         Me.Panel2.Controls.Add(Me.txtdokter)
-        Me.Panel2.Controls.Add(Me.btnProsesBilling)
+        Me.Panel2.Controls.Add(Me.btnProses)
         Me.Panel2.Controls.Add(Me.txtnorm)
         Me.Panel2.Controls.Add(Me.Label5)
         Me.Panel2.Controls.Add(Me.Label4)
@@ -230,6 +231,13 @@ Partial Class ucbilling
         Me.Panel2.Size = New System.Drawing.Size(453, 177)
         Me.Panel2.TabIndex = 1
         '
+        'txtnoreg
+        '
+        Me.txtnoreg.Location = New System.Drawing.Point(129, 21)
+        Me.txtnoreg.Name = "txtnoreg"
+        Me.txtnoreg.Size = New System.Drawing.Size(144, 20)
+        Me.txtnoreg.TabIndex = 8
+        '
         'txtdokter
         '
         Me.txtdokter.Location = New System.Drawing.Point(129, 93)
@@ -237,17 +245,17 @@ Partial Class ucbilling
         Me.txtdokter.Size = New System.Drawing.Size(144, 20)
         Me.txtdokter.TabIndex = 7
         '
-        'btnProsesBilling
+        'btnProses
         '
-        Me.btnProsesBilling.BackColor = System.Drawing.Color.DodgerBlue
-        Me.btnProsesBilling.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnProsesBilling.ForeColor = System.Drawing.Color.White
-        Me.btnProsesBilling.Location = New System.Drawing.Point(11, 134)
-        Me.btnProsesBilling.Name = "btnProsesBilling"
-        Me.btnProsesBilling.Size = New System.Drawing.Size(262, 35)
-        Me.btnProsesBilling.TabIndex = 6
-        Me.btnProsesBilling.Text = "LIBAT DAN PROSES BILLING"
-        Me.btnProsesBilling.UseVisualStyleBackColor = False
+        Me.btnProses.BackColor = System.Drawing.Color.DodgerBlue
+        Me.btnProses.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnProses.ForeColor = System.Drawing.Color.White
+        Me.btnProses.Location = New System.Drawing.Point(11, 134)
+        Me.btnProses.Name = "btnProses"
+        Me.btnProses.Size = New System.Drawing.Size(262, 35)
+        Me.btnProses.TabIndex = 6
+        Me.btnProses.Text = "LIBAT DAN PROSES BILLING"
+        Me.btnProses.UseVisualStyleBackColor = False
         '
         'txtnorm
         '
@@ -332,8 +340,8 @@ Partial Class ucbilling
         '
         'Column6
         '
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Column6.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Column6.DefaultCellStyle = DataGridViewCellStyle2
         Me.Column6.HeaderText = "Rincian Tindakan"
         Me.Column6.Name = "Column6"
         Me.Column6.ReadOnly = True
@@ -359,6 +367,7 @@ Partial Class ucbilling
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.Button1)
         Me.GroupBox3.Controls.Add(Me.dgvObat)
         Me.GroupBox3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox3.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -445,7 +454,6 @@ Partial Class ucbilling
         Me.txtUangBayar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtUangBayar.Location = New System.Drawing.Point(105, 66)
         Me.txtUangBayar.Name = "txtUangBayar"
-        Me.txtUangBayar.ReadOnly = True
         Me.txtUangBayar.Size = New System.Drawing.Size(151, 22)
         Me.txtUangBayar.TabIndex = 4
         '
@@ -511,12 +519,14 @@ Partial Class ucbilling
         Me.ContextMenuStrip4.Name = "ContextMenuStrip4"
         Me.ContextMenuStrip4.Size = New System.Drawing.Size(61, 4)
         '
-        'txtnoreg
+        'Button1
         '
-        Me.txtnoreg.Location = New System.Drawing.Point(129, 21)
-        Me.txtnoreg.Name = "txtnoreg"
-        Me.txtnoreg.Size = New System.Drawing.Size(144, 20)
-        Me.txtnoreg.TabIndex = 8
+        Me.Button1.Location = New System.Drawing.Point(370, 0)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 1
+        Me.Button1.Text = "CariObat"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'ucbilling
         '
@@ -564,7 +574,7 @@ Partial Class ucbilling
     Friend WithEvents Label3 As Label
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents ColorDialog1 As ColorDialog
-    Friend WithEvents btnProsesBilling As Button
+    Friend WithEvents btnProses As Button
     Friend WithEvents tlpRight As TableLayoutPanel
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents BackgroundWorker2 As System.ComponentModel.BackgroundWorker
@@ -597,4 +607,5 @@ Partial Class ucbilling
     Friend WithEvents Column13 As DataGridViewTextBoxColumn
     Friend WithEvents txtdokter As TextBox
     Friend WithEvents txtnoreg As TextBox
+    Friend WithEvents Button1 As Button
 End Class

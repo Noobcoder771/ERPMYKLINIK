@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmCariObat
+Partial Class pilihobatkasir
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -43,7 +43,7 @@ Partial Class frmCariObat
         Me.lstObat.Size = New System.Drawing.Size(284, 341)
         Me.lstObat.TabIndex = 1
         '
-        'frmCariObat
+        'CariObat
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -51,7 +51,7 @@ Partial Class frmCariObat
         Me.Controls.Add(Me.lstObat)
         Me.Controls.Add(Me.txtSearch)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
-        Me.Name = "frmCariObat"
+        Me.Name = "CariObat"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmCariObat"
         Me.ResumeLayout(False)

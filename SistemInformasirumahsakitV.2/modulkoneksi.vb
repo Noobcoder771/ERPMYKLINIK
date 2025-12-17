@@ -38,5 +38,5 @@ Module ModulKoneksi
 
     Public UserRole As String = ""  ' Wadah untuk menyimpan jabatan (Admin/Dokter/Staff)
     Public UserName As String = ""
-
+    Public NoRMPasienTerpilih As String = ""
 End Module

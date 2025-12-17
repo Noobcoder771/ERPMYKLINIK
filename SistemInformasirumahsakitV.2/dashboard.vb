@@ -12,7 +12,12 @@ Public Class frmDashboard
         UpdateMenuButtonText()
         LoadUserControl(New ucHome())
         Call BukaHalaman(New ucHome)
-        lblNamaUser.Text = "Halo, " & ModulKoneksi.UserName & " (" & ModulKoneksi.UserRole & ")"
+        lblnamauser.Text = "Hi, " & ModulKoneksi.UserName & " ▼" ' Tambah panah biar user tau bisa diklik
+        lblnamauser.Cursor = Cursors.Hand ' Ubah kursor jadi tangan saat disorot
+
+        ' B. Tampilkan Nama & Role di dalam Menu Dropdown
+        itemNamaUser.Text = ModulKoneksi.UserName & vbCrLf & "(" & ModulKoneksi.UserRole & ")"
+        itemNamaUser.Enabled = False
     End Sub
 
     ' --- 2. FUNGSI GANTI HALAMAN (Helper) ---
@@ -158,5 +163,20 @@ Public Class frmDashboard
 
     Private Sub PanelTopBar_Paint(sender As Object, e As PaintEventArgs) Handles PanelTopBar.Paint
 
+    End Sub
+
+    Private Sub ContextMenuStrip1_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles cmsUserMenu.Opening
+
+    End Sub
+
+    Private Sub lblnamauser_Click(sender As Object, e As EventArgs) Handles lblnamauser.Click
+        cmsUserMenu.Show(lblnamauser, 0, lblnamauser.Height)
+    End Sub
+    Private Sub itemLogout_Click(sender As Object, e As EventArgs) Handles itemLogout.Click
+        If MsgBox("Yakin ingin logout?", MsgBoxStyle.YesNo + MsgBoxStyle.Question) = MsgBoxResult.Yes Then
+            Dim Login As New Menulogin
+            Login.Show()
+            Me.Close()
+        End If
     End Sub
 End Class

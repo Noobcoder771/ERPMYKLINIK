@@ -2,41 +2,41 @@
 
 Public Class ucbilling
 
-    ' Variabel Global
+    ' --- VARIABEL GLOBAL ---
     Dim NoRegAktif As String = ""
     Dim GrandTotal As Decimal = 0
 
     ' --- 1. LOAD AWAL ---
-    Private Sub ucKasir_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Call SiapkanTabel()
+    Private Sub ucbilling_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Siapkan tabel kanan (Tindakan & Obat) agar bersih
+        Call SiapkanTabelKanan()
+
+        ' Load daftar antrian di tabel KIRI
         Call LoadAntrianKasir()
 
-        ' Kunci Inputan Identitas
+        ' Reset Textbox
         txtTotalTagihan.Text = "0"
         txtUangBayar.Text = "0"
-        txtTotalTagihan.ReadOnly = True
 
+        ' Kunci Textbox
+        txtTotalTagihan.ReadOnly = True
         txtdokter.ReadOnly = True
-        txtNoRM.ReadOnly = True
-        txtNoReg.ReadOnly = True
+        txtnorm.ReadOnly = True
+        txtnoreg.ReadOnly = True
     End Sub
 
-    ' --- 2. PERSIAPAN TABEL (MODIFIKASI: Editable) ---
-    Sub SiapkanTabel()
-        ' A. Tabel Tindakan (BISA DIEDIT)
+    ' --- 2. PERSIAPAN TABEL KANAN ---
+    Sub SiapkanTabelKanan()
+        ' A. Tabel Tindakan
         dgvTindakan.Columns.Clear()
         dgvTindakan.Columns.Add("nama", "Rincian Tindakan")
         dgvTindakan.Columns.Add("biaya", "Biaya (Rp)")
         dgvTindakan.Columns.Add("qty", "Qty")
         dgvTindakan.Columns.Add("subtotal", "Subtotal")
-
         dgvTindakan.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-
-        ' Kunci kolom Subtotal saja (karena ini hasil hitungan)
         dgvTindakan.Columns("subtotal").ReadOnly = True
-        ' Kolom Nama, Biaya, Qty BIARKAN BISA DIEDIT (ReadOnly = False)
 
-        ' B. Tabel Obat (Tetap ReadOnly demi keamanan stok)
+        ' B. Tabel Obat
         dgvObat.Columns.Clear()
         dgvObat.Columns.Add("nama", "Nama Obat")
         dgvObat.Columns.Add("harga", "Harga")
@@ -46,12 +46,13 @@ Public Class ucbilling
         dgvObat.ReadOnly = True
     End Sub
 
-    ' --- 3. LOAD ANTRIAN ---
+    ' --- 3. LOAD ANTRIAN (TABEL KIRI) ---
     Sub LoadAntrianKasir()
         Try
             Call BukaKoneksi()
             Dim tgl As String = Format(Now, "yyyy-MM-dd")
 
+            ' Ambil data pasien yang belum lunas
             Dim query As String = "SELECT j.no_registrasi, j.no_rm, p.nama_pasien, d.nama_dokter " &
                                   "FROM tbl_janji_temu j " &
                                   "JOIN tbl_pasien p ON j.no_rm = p.no_rm " &
@@ -62,165 +63,192 @@ Public Class ucbilling
             Dim dt As New DataTable
             da.Fill(dt)
             dgvAntrian.DataSource = dt
-            dgvAntrian.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+
+            Call RapikanTabelAntrian()
 
         Catch ex As Exception
             MsgBox("Gagal Load Antrian: " & ex.Message)
         End Try
     End Sub
 
-    ' --- 4. SAAT KLIK PASIEN ---
-    Private Sub dgvAntrian_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvAntrian.CellClick
-        If e.RowIndex < 0 Then Exit Sub
+    ' --- 4. RAPIKAN TABEL ANTRIAN ---
+    Sub RapikanTabelAntrian()
+        If dgvAntrian.Rows.Count > 0 Then
+            dgvAntrian.Columns("no_registrasi").HeaderText = "No. Reg"
+            dgvAntrian.Columns("no_rm").HeaderText = "No. RM"
+            dgvAntrian.Columns("nama_pasien").HeaderText = "Pasien"
+            dgvAntrian.Columns("nama_dokter").HeaderText = "Dokter"
+            dgvAntrian.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            dgvAntrian.RowHeadersVisible = False
+            dgvAntrian.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+            dgvAntrian.BackgroundColor = Color.White
+            dgvAntrian.BorderStyle = BorderStyle.None
+        End If
+    End Sub
+
+    ' --- 5. TOMBOL PROSES (Pindahkan Data ke Kanan) ---
+    Private Sub btnProses_Click(sender As Object, e As EventArgs) Handles btnProses.Click
+        If dgvAntrian.CurrentRow Is Nothing Then
+            MsgBox("Pilih dulu pasien di tabel kiri!", MsgBoxStyle.Exclamation)
+            Exit Sub
+        End If
 
         Try
-            NoRegAktif = dgvAntrian.Rows(e.RowIndex).Cells("no_registrasi").Value.ToString()
-
-            ' Isi Identitas Otomatis
+            ' 1. Ambil Data
+            NoRegAktif = dgvAntrian.CurrentRow.Cells("no_registrasi").Value.ToString()
             txtnoreg.Text = NoRegAktif
-            txtnorm.Text = dgvAntrian.Rows(e.RowIndex).Cells("no_rm").Value.ToString()
-            txtdokter.Text = dgvAntrian.Rows(e.RowIndex).Cells("nama_dokter").Value.ToString()
+            txtnorm.Text = dgvAntrian.CurrentRow.Cells("no_rm").Value.ToString()
+            txtdokter.Text = dgvAntrian.CurrentRow.Cells("nama_dokter").Value.ToString()
 
-            ' Load Obat & Set Default Tindakan
-            Call HitungBiayaObat()
-
-            ' Reset Tindakan & Beri Template Awal
+            ' 2. Bersihkan Tabel Kanan
             dgvTindakan.Rows.Clear()
-            ' Kita kasih default biar Kasir gak ngetik dari nol, tapi bisa diedit/hapus
+            dgvObat.Rows.Clear()
+
+            ' 3. Default Jasa Dokter (Kasir bisa hapus/edit nanti)
             dgvTindakan.Rows.Add("Jasa Dokter Umum", "50000", "1", "50000")
             dgvTindakan.Rows.Add("Biaya Admin", "10000", "1", "10000")
 
+            ' 4. Load Obat (PENTING)
+            Call HitungBiayaObat()
+
+            ' 5. Hitung Total Akhir
             Call HitungGrandTotal()
 
         Catch ex As Exception
-            MsgBox("Error Pilih Pasien: " & ex.Message)
+            MsgBox("Error Proses: " & ex.Message)
         End Try
     End Sub
 
-    ' --- 5. LOGIKA EDIT MANUAL (INTI PERUBAHAN) ---
-    ' Event ini berjalan SETIAP KALI Kasir selesai mengetik di tabel tindakan
-    Private Sub dgvTindakan_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgvTindakan.CellEndEdit
-        Try
-            ' Ambil baris yang sedang diedit
-            Dim row As DataGridViewRow = dgvTindakan.Rows(e.RowIndex)
-
-            ' Ambil Nilai Biaya & Qty yang baru diketik
-            ' Val() mengubah teks jadi angka (aman dari error jika kosong)
-            Dim Biaya As Decimal = Val(row.Cells("biaya").Value)
-            Dim Qty As Integer = Val(row.Cells("qty").Value)
-
-            ' Hitung Subtotal Baru
-            Dim Subtotal As Decimal = Biaya * Qty
-
-            ' Update kolom Subtotal
-            row.Cells("subtotal").Value = Subtotal
-
-            ' Update Total Tagihan Keseluruhan
-            Call HitungGrandTotal()
-
-        Catch ex As Exception
-            ' Abaikan error kecil saat ngetik
-        End Try
-    End Sub
-
-    ' --- 6. HITUNG GRAND TOTAL ---
-    Sub HitungGrandTotal()
-        GrandTotal = 0
-
-        ' Jumlahkan Tabel Tindakan
-        For Each row As DataGridViewRow In dgvTindakan.Rows
-            ' Cek biar baris kosong gak dihitung
-            If row.Cells("subtotal").Value IsNot Nothing Then
-                GrandTotal += CDec(row.Cells("subtotal").Value)
-            End If
-        Next
-
-        ' Jumlahkan Tabel Obat
-        For Each row As DataGridViewRow In dgvObat.Rows
-            If row.Cells("subtotal").Value IsNot Nothing Then
-                GrandTotal += CDec(row.Cells("subtotal").Value)
-            End If
-        Next
-
-        ' Tampilkan format Rupiah (tanpa Rp biar rapi di textbox)
-        txtTotalTagihan.Text = FormatNumber(GrandTotal, 0)
-    End Sub
-
-    ' --- 7. LOAD OBAT (TETAP SAMA) ---
+    ' --- 6. LOAD OBAT (BAGIAN UTAMA PERBAIKAN) ---
     Sub HitungBiayaObat()
-        dgvObat.Rows.Clear()
         Try
             Call BukaKoneksi()
+
+            ' Query Join 3 Tabel: Farmasi -> Detail -> Obat
+            ' Pastikan nama kolom 'id_resep' BENAR ada di database Anda
             Dim query As String = "SELECT o.nama_obat, o.harga_satuan, fd.jumlah, fd.subtotal " &
                                   "FROM tbl_farmasi f " &
-                                  "JOIN tbl_farmasi_detail fd ON f.id_farmasi = fd.id_resep " &
+                                  "JOIN tbl_farmasi_detail fd ON f.id_resep = fd.id_resep " &
                                   "JOIN tbl_obat o ON fd.id_obat = o.id_obat " &
                                   "WHERE f.no_registrasi = '" & NoRegAktif & "'"
 
             Cmd = New MySqlCommand(query, Conn)
             Rd = Cmd.ExecuteReader
+
+            Dim AdaData As Boolean = False
+
             While Rd.Read
-                dgvObat.Rows.Add(Rd("nama_obat"), FormatNumber(Rd("harga_satuan"), 0), Rd("jumlah"), FormatNumber(Rd("subtotal"), 0))
+                AdaData = True
+                ' Cek Null agar tidak error
+                Dim Nama As String = If(IsDBNull(Rd("nama_obat")), "-", Rd("nama_obat").ToString())
+                Dim Harga As Decimal = If(IsDBNull(Rd("harga_satuan")), 0, CDec(Rd("harga_satuan")))
+                Dim Jml As Integer = If(IsDBNull(Rd("jumlah")), 0, CInt(Rd("jumlah")))
+                Dim SubTotal As Decimal = If(IsDBNull(Rd("subtotal")), 0, CDec(Rd("subtotal")))
+
+                ' Masukkan ke Tabel
+                dgvObat.Rows.Add(Nama, FormatNumber(Harga, 0), Jml, FormatNumber(SubTotal, 0))
             End While
             Rd.Close()
+
+            ' Debugging: Beri tahu jika obat tidak ketemu
+            If AdaData = False Then
+                ' MsgBox("Info: Tidak ada data obat untuk pasien ini (Mungkin belum ditebus di Farmasi).", MsgBoxStyle.Information)
+            End If
+
         Catch ex As Exception
-            MsgBox("Gagal Load Obat: " & ex.Message)
+            MsgBox("Gagal Load Obat: " & ex.Message & vbCrLf & "Pastikan kolom 'id_resep' ada di tabel tbl_farmasi.")
+        Finally
+            Call TutupKoneksi()
         End Try
     End Sub
 
-    ' --- 8. PROSES BAYAR ---
-    Private Sub btnBayar_Click(sender As Object, e As EventArgs) Handles btnBayar.Click
+    ' --- 7. EDIT MANUAL TINDAKAN ---
+    Private Sub dgvTindakan_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgvTindakan.CellEndEdit
+        Try
+            Dim row As DataGridViewRow = dgvTindakan.Rows(e.RowIndex)
+
+            ' Gunakan Double.Parse agar aman membaca angka format "10,000"
+            Dim BiayaStr As String = row.Cells("biaya").Value.ToString().Replace(",", "")
+            Dim Biaya As Decimal = Val(BiayaStr)
+
+            Dim Qty As Integer = Val(row.Cells("qty").Value)
+
+            row.Cells("subtotal").Value = FormatNumber(Biaya * Qty, 0)
+
+            Call HitungGrandTotal()
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    ' --- 8. HITUNG GRAND TOTAL ---
+    Sub HitungGrandTotal()
+        GrandTotal = 0
+
+        ' Hitung Tindakan
+        For Each row As DataGridViewRow In dgvTindakan.Rows
+            If row.Cells("subtotal").Value IsNot Nothing Then
+                ' Hapus koma sebelum dijumlahkan
+                Dim Nilai As String = row.Cells("subtotal").Value.ToString().Replace(",", "")
+                GrandTotal += Val(Nilai)
+            End If
+        Next
+
+        ' Hitung Obat
+        For Each row As DataGridViewRow In dgvObat.Rows
+            If row.Cells("subtotal").Value IsNot Nothing Then
+                Dim Nilai As String = row.Cells("subtotal").Value.ToString().Replace(",", "")
+                GrandTotal += Val(Nilai)
+            End If
+        Next
+
+        txtTotalTagihan.Text = FormatNumber(GrandTotal, 0)
+    End Sub
+
+    ' --- 9. BAYAR ---
+    Private Sub btnBayar_Click(sender As Object, e As EventArgs) Handles btnbayar.Click
         If NoRegAktif = "" Then Exit Sub
 
-        Dim UangBayar As Decimal = Val(txtUangBayar.Text)
+        Dim UangBayar As Decimal = Val(txtUangBayar.Text.Replace(",", ""))
 
         If UangBayar < GrandTotal Then
-            MsgBox("Uang Kurang! Kurang: " & FormatNumber(GrandTotal - UangBayar, 0), MsgBoxStyle.Critical)
+            MsgBox("Uang Kurang!", MsgBoxStyle.Critical)
             Exit Sub
         End If
 
         Dim Kembalian As Decimal = UangBayar - GrandTotal
 
-        If MsgBox("LUNAS? Kembalian: " & FormatNumber(Kembalian, 0), MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+        If MsgBox("LUNAS? Kembalian: Rp " & FormatNumber(Kembalian, 0), MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
             Try
                 Call BukaKoneksi()
-                ' Update Lunas di Janji Temu
-                Dim cmd As New MySqlCommand("UPDATE tbl_janji_temu SET status='Lunas' WHERE no_registrasi='" & NoRegAktif & "'", Conn)
-                cmd.ExecuteNonQuery()
 
-                ' Update Lunas di Farmasi
-                Dim cmd2 As New MySqlCommand("UPDATE tbl_farmasi SET status_bayar='Lunas' WHERE no_registrasi='" & NoRegAktif & "'", Conn)
-                cmd2.ExecuteNonQuery()
+                ' Update Janji Temu
+                Dim q1 As String = "UPDATE tbl_janji_temu SET status='Lunas' WHERE no_registrasi='" & NoRegAktif & "'"
+                Dim cmdAsal As New MySqlCommand(q1, Conn)
+                cmdAsal.ExecuteNonQuery()
 
-                ' --- SIMPAN DETAIL TINDAKAN KE DATABASE (OPSIONAL/NEXT STEP) ---
-                ' Di sini bisa ditambahkan kode INSERT ke tbl_pembayaran_detail jika ingin menyimpan history harga yang diedit manual tadi.
+                ' Update Farmasi
+                Dim q2 As String = "UPDATE tbl_farmasi SET status_bayar='Lunas' WHERE no_registrasi='" & NoRegAktif & "'"
+                Dim cmdFarmasi As New MySqlCommand(q2, Conn)
+                cmdFarmasi.ExecuteNonQuery()
 
-                MsgBox("Transaksi Selesai.", MsgBoxStyle.Information)
+                MsgBox("Pembayaran Berhasil.", MsgBoxStyle.Information)
 
-                ' Reset Form
+                ' Refresh Halaman
+                Call ucbilling_Load(Nothing, Nothing)
+                NoRegAktif = ""
                 dgvTindakan.Rows.Clear()
                 dgvObat.Rows.Clear()
-                txtTotalTagihan.Text = "0"
-                txtUangBayar.Text = "0"
-                txtNoRM.Clear()
-                txtdokter.Clear()
-                NoRegAktif = ""
 
-                Call LoadAntrianKasir()
             Catch ex As Exception
-                MsgBox("Error: " & ex.Message)
+                MsgBox("Error Bayar: " & ex.Message)
             End Try
         End If
     End Sub
 
-    ' Fitur Hapus Baris Tindakan dengan Tombol Delete Keyboard
-    Private Sub dgvTindakan_KeyDown(sender As Object, e As KeyEventArgs) Handles dgvTindakan.KeyDown
-        If e.KeyCode = Keys.Delete Then
-            If dgvTindakan.CurrentRow IsNot Nothing Then
-                dgvTindakan.Rows.Remove(dgvTindakan.CurrentRow)
-                Call HitungGrandTotal() ' Hitung ulang setelah hapus
-            End If
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim FormCari As New pilihobatkasir
+        If FormCari.ShowDialog() = DialogResult.OK Then
+            ' Data diambil dari FormCari.IDObatDipilih, dll.
         End If
     End Sub
-
 End Class

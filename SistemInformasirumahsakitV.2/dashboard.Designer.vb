@@ -29,19 +29,26 @@ Partial Class frmDashboard
         Me.PanelMainContent = New System.Windows.Forms.Panel()
         Me.mainContentPanel = New System.Windows.Forms.Panel()
         Me.pnlkonten = New System.Windows.Forms.Panel()
+        Me.Btnmenu = New System.Windows.Forms.Button()
         Me.btndokter = New System.Windows.Forms.Button()
         Me.Btnrekam = New System.Windows.Forms.Button()
         Me.Btnjanji = New System.Windows.Forms.Button()
         Me.Btnbilling = New System.Windows.Forms.Button()
         Me.Btnfarmasi = New System.Windows.Forms.Button()
-        Me.Btnmenu = New System.Windows.Forms.Button()
         Me.Btnmanajemen = New System.Windows.Forms.Button()
         Me.Btnpendaftaran = New System.Windows.Forms.Button()
         Me.btnHome = New System.Windows.Forms.Button()
         Me.sidebarTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.cmsUserMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ItemNamaUserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.itemNamaUser = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.itemLogout = New System.Windows.Forms.ToolStripMenuItem()
         Me.PanelTopBar.SuspendLayout()
         Me.PanelMainContent.SuspendLayout()
         Me.pnlkonten.SuspendLayout()
+        Me.cmsUserMenu.SuspendLayout()
         Me.SuspendLayout()
         '
         'PanelTopBar
@@ -65,9 +72,9 @@ Partial Class frmDashboard
         Me.lblnamauser.ForeColor = System.Drawing.Color.White
         Me.lblnamauser.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.account_circle_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
         Me.lblnamauser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lblnamauser.Location = New System.Drawing.Point(942, 15)
+        Me.lblnamauser.Location = New System.Drawing.Point(963, 15)
         Me.lblnamauser.Name = "lblnamauser"
-        Me.lblnamauser.Size = New System.Drawing.Size(230, 32)
+        Me.lblnamauser.Size = New System.Drawing.Size(209, 32)
         Me.lblnamauser.TabIndex = 1
         Me.lblnamauser.Text = "Hi, ..."
         Me.lblnamauser.UseVisualStyleBackColor = True
@@ -119,6 +126,20 @@ Partial Class frmDashboard
         Me.pnlkonten.Name = "pnlkonten"
         Me.pnlkonten.Size = New System.Drawing.Size(200, 601)
         Me.pnlkonten.TabIndex = 6
+        '
+        'Btnmenu
+        '
+        Me.Btnmenu.BackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(73, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.Btnmenu.FlatAppearance.BorderSize = 0
+        Me.Btnmenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btnmenu.ForeColor = System.Drawing.Color.White
+        Me.Btnmenu.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.menu_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
+        Me.Btnmenu.ImageAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.Btnmenu.Location = New System.Drawing.Point(3, 6)
+        Me.Btnmenu.Name = "Btnmenu"
+        Me.Btnmenu.Size = New System.Drawing.Size(200, 50)
+        Me.Btnmenu.TabIndex = 5
+        Me.Btnmenu.UseVisualStyleBackColor = False
         '
         'btndokter
         '
@@ -200,20 +221,6 @@ Partial Class frmDashboard
         Me.Btnfarmasi.Text = "Farmasi"
         Me.Btnfarmasi.UseVisualStyleBackColor = False
         '
-        'Btnmenu
-        '
-        Me.Btnmenu.BackColor = System.Drawing.Color.FromArgb(CType(CType(52, Byte), Integer), CType(CType(73, Byte), Integer), CType(CType(94, Byte), Integer))
-        Me.Btnmenu.FlatAppearance.BorderSize = 0
-        Me.Btnmenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btnmenu.ForeColor = System.Drawing.Color.White
-        Me.Btnmenu.Image = Global.SistemInformasirumahsakitV._2.My.Resources.Resources.menu_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
-        Me.Btnmenu.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.Btnmenu.Location = New System.Drawing.Point(3, 6)
-        Me.Btnmenu.Name = "Btnmenu"
-        Me.Btnmenu.Size = New System.Drawing.Size(200, 50)
-        Me.Btnmenu.TabIndex = 5
-        Me.Btnmenu.UseVisualStyleBackColor = False
-        '
         'Btnmanajemen
         '
         Me.Btnmanajemen.AutoSize = True
@@ -268,6 +275,41 @@ Partial Class frmDashboard
         '
         Me.sidebarTimer.Interval = 15
         '
+        'cmsUserMenu
+        '
+        Me.cmsUserMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ItemNamaUserToolStripMenuItem, Me.ToolStripMenuItem1, Me.ToolStripMenuItem2, Me.itemLogout})
+        Me.cmsUserMenu.Name = "cmsUserMenu"
+        Me.cmsUserMenu.Size = New System.Drawing.Size(154, 60)
+        '
+        'ItemNamaUserToolStripMenuItem
+        '
+        Me.ItemNamaUserToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.itemNamaUser})
+        Me.ItemNamaUserToolStripMenuItem.Name = "ItemNamaUserToolStripMenuItem"
+        Me.ItemNamaUserToolStripMenuItem.Size = New System.Drawing.Size(153, 22)
+        Me.ItemNamaUserToolStripMenuItem.Text = "itemNamaUser"
+        '
+        'itemNamaUser
+        '
+        Me.itemNamaUser.Name = "itemNamaUser"
+        Me.itemNamaUser.Size = New System.Drawing.Size(182, 22)
+        Me.itemNamaUser.Text = "ToolStripMenuItem1"
+        '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(150, 6)
+        '
+        'ToolStripMenuItem2
+        '
+        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(150, 6)
+        '
+        'itemLogout
+        '
+        Me.itemLogout.Name = "itemLogout"
+        Me.itemLogout.Size = New System.Drawing.Size(153, 22)
+        Me.itemLogout.Text = "logout"
+        '
         'frmDashboard
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -285,6 +327,7 @@ Partial Class frmDashboard
         Me.PanelMainContent.ResumeLayout(False)
         Me.pnlkonten.ResumeLayout(False)
         Me.pnlkonten.PerformLayout()
+        Me.cmsUserMenu.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -304,4 +347,10 @@ Partial Class frmDashboard
     Friend WithEvents pnlkonten As Panel
     Friend WithEvents mainContentPanel As Panel
     Friend WithEvents btndokter As Button
+    Friend WithEvents cmsUserMenu As ContextMenuStrip
+    Friend WithEvents ItemNamaUserToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents itemNamaUser As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem1 As ToolStripSeparator
+    Friend WithEvents ToolStripMenuItem2 As ToolStripSeparator
+    Friend WithEvents itemLogout As ToolStripMenuItem
 End Class

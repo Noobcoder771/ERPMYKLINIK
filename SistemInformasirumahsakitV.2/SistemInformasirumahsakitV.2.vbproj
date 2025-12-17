@@ -207,18 +207,6 @@
     <Compile Include="ucrekammedis.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User.Designer.vb">
-      <DependentUpon>User.vb</DependentUpon>
-    </Compile>
-    <Compile Include="User.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="usermini.Designer.vb">
-      <DependentUpon>usermini.vb</DependentUpon>
-    </Compile>
-    <Compile Include="usermini.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="dashboard.resx">
@@ -259,9 +247,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucrekammedis.resx">
       <DependentUpon>ucrekammedis.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User.resx">
-      <DependentUpon>User.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

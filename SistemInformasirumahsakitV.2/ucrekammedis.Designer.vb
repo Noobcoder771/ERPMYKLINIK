@@ -277,7 +277,7 @@ Partial Class ucRekamMedis
         Me.Panel4.Location = New System.Drawing.Point(2, 36)
         Me.Panel4.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(264, 43)
+        Me.Panel4.Size = New System.Drawing.Size(286, 43)
         Me.Panel4.TabIndex = 0
         '
         'txtDiagnosa
@@ -286,7 +286,7 @@ Partial Class ucRekamMedis
         Me.txtDiagnosa.Margin = New System.Windows.Forms.Padding(2)
         Me.txtDiagnosa.Name = "txtDiagnosa"
         Me.txtDiagnosa.ReadOnly = True
-        Me.txtDiagnosa.Size = New System.Drawing.Size(248, 20)
+        Me.txtDiagnosa.Size = New System.Drawing.Size(272, 20)
         Me.txtDiagnosa.TabIndex = 0
         '
         'Panel3
@@ -310,7 +310,7 @@ Partial Class ucRekamMedis
         Me.Panel5.Location = New System.Drawing.Point(3, 92)
         Me.Panel5.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(268, 84)
+        Me.Panel5.Size = New System.Drawing.Size(283, 84)
         Me.Panel5.TabIndex = 9
         '
         'txttindakan
@@ -319,7 +319,7 @@ Partial Class ucRekamMedis
         Me.txttindakan.Multiline = True
         Me.txttindakan.Name = "txttindakan"
         Me.txttindakan.ReadOnly = True
-        Me.txttindakan.Size = New System.Drawing.Size(259, 60)
+        Me.txttindakan.Size = New System.Drawing.Size(274, 60)
         Me.txttindakan.TabIndex = 3
         '
         'Label6

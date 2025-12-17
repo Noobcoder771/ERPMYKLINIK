@@ -3,12 +3,10 @@
 Public Class ucPendaftaranPasien
     Dim NoRMBaru As String = ""
 
-    ' --- 1. SAAT FORM DIBUKA ---
     Private Sub ucPendaftaranPasien_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call IsiComboPoli()
         Call PercantikTampilan()
 
-        ' Setting ComboBox Pembayaran
         cmbBayar.Items.Clear()
         cmbBayar.Items.Add("Umum / Tunai")
         cmbBayar.Items.Add("BPJS Kesehatan")
@@ -16,7 +14,6 @@ Public Class ucPendaftaranPasien
         cmbBayar.SelectedIndex = 0
     End Sub
 
-    ' --- 2. ISI COMBOBOX POLI ---
     Sub IsiComboPoli()
         Try
             Call BukaKoneksi()
@@ -33,7 +30,6 @@ Public Class ucPendaftaranPasien
         End Try
     End Sub
 
-    ' --- 3. GENERATE NO RM OTOMATIS (Induk) ---
     Function GenerateNoRM() As String
         Call BukaKoneksi()
         Dim tgl As String = Format(Now, "yyyyMM")
@@ -52,8 +48,6 @@ Public Class ucPendaftaranPasien
         Return "RM" & tgl & urutan
     End Function
 
-    ' --- 4. GENERATE NO REGISTRASI OTOMATIS (Tiket Kunjungan) ---
-    ' INI YANG KEMARIN LUPA DITAMBAHKAN
     Function GenerateNoRegistrasi() As String
         Dim noReg As String = ""
         Try
@@ -62,7 +56,6 @@ Public Class ucPendaftaranPasien
             Dim tgl As String = Format(Now, "yyyyMMdd")
             Dim prefix As String = "REG" & tgl
 
-            ' Cek nomor terakhir hari ini
             Dim query As String = "SELECT no_registrasi FROM tbl_janji_temu WHERE no_registrasi LIKE '" & prefix & "%' ORDER BY no_registrasi DESC LIMIT 1"
             Dim cmdReg As New MySqlCommand(query, Conn)
             Dim rdReg As MySqlDataReader = cmdReg.ExecuteReader()
@@ -81,9 +74,7 @@ Public Class ucPendaftaranPasien
         Return noReg
     End Function
 
-    ' --- 5. TOMBOL SIMPAN (LOGIKA UTAMA) ---
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        ' A. Validasi
         If txtnama.Text = "" Or txtnik.Text = "" Or cmbpoli.SelectedIndex = -1 Or cmbBayar.Text = "" Then
             MsgBox("Mohon lengkapi Nama, NIK, Poli, dan Metode Pembayaran!", MsgBoxStyle.Exclamation)
             Exit Sub
@@ -94,14 +85,12 @@ Public Class ucPendaftaranPasien
         Try
             Call BukaKoneksi()
 
-            ' B. Generate KODE UNIK
-            NoRMBaru = GenerateNoRM()               ' Untuk Pasien (Seumur Hidup)
-            Dim NoRegBaru As String = GenerateNoRegistrasi() ' Untuk Kunjungan Hari Ini (Tiket)
+            NoRMBaru = GenerateNoRM()
+            Dim NoRegBaru As String = GenerateNoRegistrasi()
 
             Dim WaktuSekarang As String = Now.ToString("yyyy-MM-dd HH:mm:ss")
             Dim TanggalSaja As String = Now.ToString("yyyy-MM-dd")
 
-            ' C. SIMPAN KE TABEL PASIEN (DATA INDUK)
             Dim QueryPasien As String = "INSERT INTO tbl_pasien (no_rm, nama_pasien, nik, tanggal_lahir, jenis_kelamin, alamat, no_telepon, tgl_registrasi) VALUES (@rm, @nama, @nik, @lahir, @jk, @alamat, @telp, @tgl_reg)"
 
             Cmd = New MySqlCommand(QueryPasien, Conn)
@@ -115,12 +104,10 @@ Public Class ucPendaftaranPasien
             Cmd.Parameters.AddWithValue("@tgl_reg", TanggalSaja)
             Cmd.ExecuteNonQuery()
 
-            ' D. SIMPAN KE TABEL JANJI TEMU (TIKET KUNJUNGAN)
-            ' PERBAIKAN: Sekarang kita menyertakan @reg (no_registrasi) agar tidak error Duplicate Entry
             Dim QueryJanji As String = "INSERT INTO tbl_janji_temu (no_registrasi, no_rm, id_dokter, id_poli, cara_bayar, tanggal_janji, keluhan, tanggal_dibuat, no_antrian, status) VALUES (@reg, @rm, 0, @poli, @bayar, @tgl_janji, @keluhan, @tgl_buat, 0, 'Menunggu')"
 
             Cmd = New MySqlCommand(QueryJanji, Conn)
-            Cmd.Parameters.AddWithValue("@reg", NoRegBaru) ' <--- INI KUNCI PERBAIKANNYA
+            Cmd.Parameters.AddWithValue("@reg", NoRegBaru)
             Cmd.Parameters.AddWithValue("@rm", NoRMBaru)
             Cmd.Parameters.AddWithValue("@poli", cmbpoli.SelectedValue)
             Cmd.Parameters.AddWithValue("@bayar", cmbBayar.Text)
@@ -129,7 +116,6 @@ Public Class ucPendaftaranPasien
             Cmd.Parameters.AddWithValue("@tgl_buat", WaktuSekarang)
             Cmd.ExecuteNonQuery()
 
-            ' E. BERHASIL
             MsgBox("Pendaftaran Berhasil!" & vbCrLf &
                 "Nama: " & txtnama.Text & vbCrLf &
                 "No. RM: " & NoRMBaru & vbCrLf &
@@ -144,7 +130,6 @@ Public Class ucPendaftaranPasien
         End Try
     End Sub
 
-    ' --- 6. TOMBOL HAPUS / BERSIHKAN ---
     Private Sub hpsbtn_Click(sender As Object, e As EventArgs) Handles hpsbtn.Click
         Call BersihkanForm()
     End Sub
@@ -162,7 +147,6 @@ Public Class ucPendaftaranPasien
         txtnama.Focus()
     End Sub
 
-    ' --- 7. PERCANTIK TAMPILAN ---
     Sub PercantikTampilan()
         For Each ctrl As Control In Me.Controls
             If TypeOf ctrl Is TextBox Then DirectCast(ctrl, TextBox).BorderStyle = BorderStyle.FixedSingle
